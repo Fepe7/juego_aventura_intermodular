@@ -11,7 +11,7 @@ public class Main {
 
         //Los metes en un array, quiero que cuando se enfrente a un enemigo, elija elija una posicion del array aleatoriamente
         //dando una sensacion de combate
-        Personaje personajesPartida[] = {personaje1, personaje2, personaje3, personaje4};
+        Personaje[] personajesPartida = {personaje1, personaje2, personaje3, personaje4};
 
 
 

@@ -1,21 +1,19 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class GuardarDatos {
-    public static void main(String[] args) {
-        Personaje jugador = Personaje.CrearPersonaje();
+    public static void guardarPersonajes(Personaje[] personajes, String nombreArchivo) {
 
-        Gson gson = new Gson();
-        String json = gson.toJson(jugador);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        System.out.println("JSON generado:");
-        System.out.println(json);
-
-        try (FileWriter writer = new FileWriter("jugador.json")) {
-            writer.write(json);
-            System.out.println("Datos guardados en jugador.json");
+        try (FileWriter writer = new FileWriter(nombreArchivo)) {
+            gson.toJson(personajes, writer);
+            System.out.println("Personajes guardados en " + nombreArchivo);
         } catch (IOException e) {
+            System.out.println("Error al guardar los personajes.");
             e.printStackTrace();
         }
     }
