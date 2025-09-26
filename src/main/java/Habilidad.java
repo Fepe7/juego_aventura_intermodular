@@ -1,0 +1,97 @@
+public class Habilidad {
+    private String nombre;
+    private int costeMana;
+    private int danyo;
+    private String descripcion;
+    private TipoHabilidad tipoHabilidad;
+
+
+    //Constructor para las habilidades, por defecto son las de daño
+    public Habilidad(String nombre, int costeMana, int danio, String descripcion) {
+        this.nombre = nombre;
+        this.costeMana = costeMana;
+        this.danyo = danio;
+        this.tipoHabilidad = TipoHabilidad.DANYO;
+        this.descripcion = descripcion;
+    }
+
+
+    public Habilidad(String nombre, int costeMana, TipoHabilidad tipo, String descripcion) {
+        this.nombre = nombre;
+        this.costeMana = costeMana;
+        this.tipoHabilidad = tipo;
+        this.descripcion = descripcion;
+    }
+
+
+    public void golpePoderoso(Personaje p, Enemigos e) {
+        int vidaQuitar = 15 + p.getAtaque();
+        e.setVida(e.getVida() - vidaQuitar);
+    }
+
+
+    //Aumenta el daño toda la batalla
+    public void rugidoBatalla(Personaje p, Enemigos e) {
+        p.setAtaque(p.getAtaque() + 10);
+    }
+
+
+    // Bola de fuego: daño fijo + ataque del personaje
+    public void bolaDeFuego(Personaje p, Enemigos e) {
+        int vidaQuitar = 35 + p.getAtaque();
+        e.setVida(e.getVida() - vidaQuitar);
+    }
+
+    // Palabra curativa: cura al personaje
+    public void palabraCurativa(Personaje p) {
+        p.setVida(p.getVida() + 20);
+    }
+
+    // Flecha precisa: daño fijo + ataque del personaje
+    public void flechaPrecisa(Personaje p, Enemigos e) {
+        int vidaQuitar = 20 + p.getAtaque();
+        e.setVida(e.getVida() - vidaQuitar);
+    }
+
+    // Trozo de carne: cura al personaje
+    public void trozoDeCarne(Personaje p) {
+        p.setVida(p.getVida() + 20);
+    }
+
+    // Ataque furtivo: daño fijo + ataque del personaje
+    public void ataqueFurtivo(Personaje p, Enemigos e) {
+        int vidaQuitar = 25 + p.getAtaque();
+        e.setVida(e.getVida() - vidaQuitar);
+    }
+
+    public void golpeVenenoso(Personaje p, Enemigos e) {
+        int vidaQuitar = p.getAtaque() + 15; // Daño base
+        e.setVida(e.getVida() - vidaQuitar - 15);
+    }
+
+
+    @Override
+    public String toString() {
+        return nombre + ": " + descripcion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCosteMana() {
+        return costeMana;
+    }
+
+    public int getDanyo() {
+        return danyo;
+    }
+
+    public TipoHabilidad getTipoHabilidad() {
+        return tipoHabilidad;
+    }
+
+    public void setTipoHabilidad(TipoHabilidad tipoHabilidad) {
+        this.tipoHabilidad = tipoHabilidad;
+    }
+}

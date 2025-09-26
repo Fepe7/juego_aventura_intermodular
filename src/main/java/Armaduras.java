@@ -1,0 +1,41 @@
+public class Armaduras extends Objeto {
+    public Armaduras(String nombre, String descripcion) {
+        super(nombre, descripcion);
+    }
+
+    public void escudoPerfeccionado(Personaje p) {
+        p.setVida(p.getVida() + 10);
+    }
+
+    public void armaduraPlacas(Personaje p) {
+        if (p.getClase() != TiposClases.GUERRERO) {
+            System.out.println("No puedes equiparte esta armadura siendo de una clase disinta a " + TiposClases.GUERRERO);
+        } else {
+            p.setVida(p.getVida() + 30);
+            p.setVelocidad(p.getVelocidad() - 10);
+        }
+    }
+
+    public void tunicaMagica(Personaje p) {
+        if (p.getClase() != TiposClases.MAGO) {
+            System.out.println("No puedes equiparte esta armadura siendo de una clase disinta a " + TiposClases.MAGO);
+        } else {
+            p.setVida(p.getVida() + 15);
+            p.setMana(p.getMana() + 15);
+        }
+    }
+
+    public void armaduraLigera(Personaje p) {
+        if (p.getClase() != TiposClases.ARQUERO && p.getClase() != TiposClases.ASESINO) {
+            System.out.println("No puedes equiparte esta armadura siendo de una clase disinta a " + TiposClases.ARQUERO + " o " + TiposClases.ASESINO);
+        } else {
+            p.setVida(p.getVida() + 10);
+            p.setVelocidad(p.getVelocidad() + 10);
+        }
+    }
+
+    public void escudoBendito(Personaje p) {
+        p.setVida(p.getVida() + 20);
+    }
+
+}
