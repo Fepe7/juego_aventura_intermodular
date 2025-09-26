@@ -7,7 +7,6 @@ public class Personaje extends Entidad {
 
     private TiposClases idClase;
     private int nivel;
-    private static List<Objeto> inventario = new ArrayList<>();
     private static List<Objeto> objetosEquipados = new ArrayList<>();
     private int vidaMaxima;
 
@@ -112,15 +111,6 @@ public class Personaje extends Entidad {
         return idClase;
     }
 
-    public static void agregarAlInventario(Objeto objeto) {
-        inventario.add(objeto);
-    }
-
-    public static List<Objeto> getInventario() {
-        return inventario;
-    }
-
-
     public int getNivel() {
         return nivel;
     }
@@ -136,6 +126,80 @@ public class Personaje extends Entidad {
     public void setVida_maxima(int vidaMaxima) {
         this.vidaMaxima = vidaMaxima;
     }
+
+
+
+
+    // Métodos para el inventario individual
+    public void equiparObjeto(Objeto objeto) {
+        objetosEquipados.add(objeto);
+        InventarioGlobal inventarioGlobal = new InventarioGlobal();
+
+        // Elimina el objeto del inventario global
+        InventarioGlobal.eliminarDelInventarioGlobal(objeto);
+
+        // Llama al método correspondiente del objeto usando reflexión
+        String nombreObjetoMetodo = Juego.getString(objeto);
+        try {
+            // Invoca el método del objeto que recibe un Personaje como parámetro
+            //Esto para que se ejecute el metodo del objeto que hemos equipado
+            Objeto.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(objeto, this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public static void desequiparObjeto(Objeto objeto, Personaje p) {
+        if (objetosEquipados.contains(objeto)) {
+            objetosEquipados.remove(objeto);
+
+            //Añade el objeto al inventario global
+            InventarioGlobal.agregarAlInventarioGlobal(objeto);
+
+            //Pilla el nombre del metodo que revierte los efectos del objeto
+            //El nombre del metodo es "quitar" + nombre del objeto con la primera letra en mayusculas
+            //Ejemplo: quitarEscudoPerfeccionado
+            String nombreMetodoQuitar = "quitar" + formateoQuitarObjetos(Juego.getString(objeto));
+            try {
+                Objeto.class.getMethod(nombreMetodoQuitar, Personaje.class).invoke(objeto, p);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+    //Divide el nombre del objeto en partes y le pone la primera letra de cada parte en mayusculas
+    //Ejemplo: escudo perfeccionado -> EscudoPerfeccionado
+    //Esto es para crear el nombre del metodo que quita los efectos del objeto
+    //Se usa en el metodo desequiparObjeto
+    private static String formateoQuitarObjetos(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        } else {
+            String[] partes = str.split("[\\s-]+");
+            StringBuilder resultado = new StringBuilder();
+            for (String parte : partes) {
+                if (!parte.isEmpty()) {
+                    resultado.append(parte.substring(0, 1).toUpperCase());
+                    if (parte.length() > 1) {
+                        resultado.append(parte.substring(1));
+                    }
+                }
+            }
+            return resultado.toString();
+        }
+    }
+
+
+    public List<Objeto> getObjetosEquipados() {
+        return objetosEquipados;
+    }
+
+
 }
 
 

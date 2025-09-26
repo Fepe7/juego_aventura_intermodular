@@ -19,7 +19,7 @@ public class Juego {
 
 
     //Devuelve el metodo a usar dependiendo del nombre del objeto
-    private static String getString(Objeto objetoSeleccionado) {
+    static String getString(Objeto objetoSeleccionado) {
         String nombreObjeto = objetoSeleccionado.getNombre().toLowerCase();
 
         String nombreMetodo = "";
@@ -136,7 +136,7 @@ public class Juego {
             case 3:
                 System.out.println("Menu de objetos");
 
-                List<Objeto> inventario = Personaje.getInventario();
+                List<Objeto> inventario = Personaje.getInventarioGlobal();
                 if (inventario.isEmpty()) {
                     System.out.println("El inventario esta vacio");
                 } else {

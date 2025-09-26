@@ -2,10 +2,11 @@
   {
     "idClase": "GUERRERO",
     "nivel": 1,
+    "vidaMaxima": 200,
     "vida": 120,
     "ataque": 40,
     "velocidad": 25,
-    "nombre": "Santi",
+    "nombre": "Felipe",
     "vivo": true,
     "mana": 30,
     "habilidades": [
@@ -28,6 +29,7 @@
   {
     "idClase": "MAGO",
     "nivel": 1,
+    "vidaMaxima": 0,
     "vida": 70,
     "ataque": 25,
     "velocidad": 35,
@@ -54,10 +56,11 @@
   {
     "idClase": "ARQUERO",
     "nivel": 1,
+    "vidaMaxima": 0,
     "vida": 90,
     "ataque": 30,
     "velocidad": 45,
-    "nombre": "Felipe",
+    "nombre": "Santi",
     "vivo": true,
     "mana": 100,
     "habilidades": [
@@ -80,10 +83,11 @@
   {
     "idClase": "ASESINO",
     "nivel": 1,
+    "vidaMaxima": 0,
     "vida": 60,
     "ataque": 25,
     "velocidad": 65,
-    "nombre": "Pascual",
+    "nombre": "Dani4",
     "vivo": true,
     "mana": 30,
     "habilidades": [
