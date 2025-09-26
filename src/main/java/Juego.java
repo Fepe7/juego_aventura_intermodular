@@ -13,7 +13,7 @@ public class Juego {
         ordenTurnos.addAll(Arrays.asList(personajes));
         ordenTurnos.addAll(Arrays.asList(enemigo));
 
-        ordenTurnos.sort(Comparator.comparing(p -> p instanceof Personaje ? ((Personaje) p).getVelocidad() : ((Enemigos) p).getVelocidad()).reversed());
+        ordenTurnos.sort(Comparator.comparing(p -> Integer.valueOf(p instanceof Personaje ? ((Personaje) p).getVelocidad() : ((Enemigos) p).getVelocidad())).reversed());
         return ordenTurnos;
     }
 

@@ -8,6 +8,8 @@ public class Personaje extends Entidad {
     private TiposClases idClase;
     private int nivel;
     private static List<Objeto> inventario = new ArrayList<>();
+    private static List<Objeto> objetosEquipados = new ArrayList<>();
+    private int vidaMaxima;
 
 
     Personaje(String nombre) {
@@ -51,6 +53,7 @@ public class Personaje extends Entidad {
                 personaje.setAtaque(40);
                 personaje.setVivo(true);
                 personaje.setNivel(1);
+                personaje.setVida_maxima(200);
                 personaje.agregarHabilidad(new Habilidad("Golpe Poderoso", 10, 50, "Consume 10 de maná y hace un golpe que hace +15 de daño "));
                 personaje.agregarHabilidad(new Habilidad("Escudo de fuego", 15, TipoHabilidad.APOYO, "Consume 15 de maná y obtiene +10 de ataque durante el combate"));
                 break;
@@ -117,6 +120,7 @@ public class Personaje extends Entidad {
         return inventario;
     }
 
+
     public int getNivel() {
         return nivel;
     }
@@ -125,8 +129,12 @@ public class Personaje extends Entidad {
         this.nivel = nivel;
     }
 
-    public int getVidaMaxima() {
-        return 100;
+    public int getVida_maxima() {
+        return vidaMaxima;
+    }
+
+    public void setVida_maxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
     }
 }
 
