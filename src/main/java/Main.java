@@ -14,10 +14,12 @@ public class Main {
         Personaje[] personajesPartida = {personaje1, personaje2, personaje3, personaje4};
 
 
-
         for (int i = 0; i < personajesPartida.length; i++) {
             System.out.println(personajesPartida[i]);
         }
+
+        GuardarDatos guardarDatos = new GuardarDatos();
+        GuardarDatos.guardarPersonajes(personajesPartida);
 
     }
 }
