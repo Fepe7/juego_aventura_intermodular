@@ -18,4 +18,17 @@ public class GuardarDatos {
             System.out.println("Error al guardar los personajes: " + e.getMessage());
         }
     }
+    
+    public static void guardarObjetos(InventarioGlobal inventarioGlobal) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        
+        String archivo = "objetos.json";
+        
+        try (FileWriter writer = new FileWriter(archivo)) {
+            gson.toJson(inventarioGlobal, writer);
+            System.out.println("Objetos guardados en " + archivo);
+        } catch (IOException e) {
+            System.out.println("Error al guardar los objetos: " + e.getMessage());
+        }
+    }
 }
