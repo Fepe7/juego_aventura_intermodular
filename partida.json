@@ -1,0 +1,106 @@
+[
+  {
+    "idClase": "GUERRERO",
+    "nivel": 1,
+    "vida": 120,
+    "ataque": 40,
+    "velocidad": 25,
+    "nombre": "Santi",
+    "vivo": true,
+    "mana": 30,
+    "habilidades": [
+      {
+        "nombre": "Golpe Poderoso",
+        "costeMana": 10,
+        "danyo": 50,
+        "descripcion": "Consume 10 de maná y hace un golpe que hace +15 de daño ",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Escudo de fuego",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "MAGO",
+    "nivel": 1,
+    "vida": 70,
+    "ataque": 25,
+    "velocidad": 35,
+    "nombre": "Xavi",
+    "vivo": true,
+    "mana": 100,
+    "habilidades": [
+      {
+        "nombre": "Bola de fuego",
+        "costeMana": 20,
+        "danyo": 35,
+        "descripcion": "Consume 20 de maná e inflinge +35 de daño",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Palabra curativa",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y se cura 20 de vida",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "ARQUERO",
+    "nivel": 1,
+    "vida": 90,
+    "ataque": 30,
+    "velocidad": 45,
+    "nombre": "Felipe",
+    "vivo": true,
+    "mana": 100,
+    "habilidades": [
+      {
+        "nombre": "Flecha precisa",
+        "costeMana": 15,
+        "danyo": 20,
+        "descripcion": "Consume 15 de maná y lanza una flecha e inflinge +20 de daño",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Trozo de carne",
+        "costeMana": 0,
+        "danyo": 0,
+        "descripcion": "Consume 10 de maná y restaura 20 de vida",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "ASESINO",
+    "nivel": 1,
+    "vida": 60,
+    "ataque": 25,
+    "velocidad": 65,
+    "nombre": "Pascual",
+    "vivo": true,
+    "mana": 30,
+    "habilidades": [
+      {
+        "nombre": "Ataque furtivo",
+        "costeMana": 15,
+        "danyo": 25,
+        "descripcion": "Consume 10 de maná y ataca por detras e inflinge +25 de daño",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Golpe venenoso",
+        "costeMana": 10,
+        "danyo": 0,
+        "descripcion": "Consume 10 de maná e inflinge daño normal y aplica veneno (5 de daño extra por 3 turnos si quieres, o lo podemos dejar por 15 de daño mas)",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  }
+]
