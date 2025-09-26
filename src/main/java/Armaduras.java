@@ -4,14 +4,14 @@ public class Armaduras extends Objeto {
     }
 
     public void escudoPerfeccionado(Personaje p) {
-        p.setVida(p.getVida() + 10);
+        p.setVida_maxima(p.getVida_maxima() + 10);
     }
 
     public void armaduraPlacas(Personaje p) {
         if (p.getClase() != TiposClases.GUERRERO) {
             System.out.println("No puedes equiparte esta armadura siendo de una clase disinta a " + TiposClases.GUERRERO);
         } else {
-            p.setVida(p.getVida() + 30);
+            p.setVida_maxima(p.getVida_maxima() + 30);
             p.setVelocidad(p.getVelocidad() - 10);
         }
     }
@@ -20,7 +20,7 @@ public class Armaduras extends Objeto {
         if (p.getClase() != TiposClases.MAGO) {
             System.out.println("No puedes equiparte esta armadura siendo de una clase disinta a " + TiposClases.MAGO);
         } else {
-            p.setVida(p.getVida() + 15);
+            p.setVida_maxima(p.getVida_maxima() + 15);
             p.setMana(p.getMana() + 15);
         }
     }
@@ -29,13 +29,13 @@ public class Armaduras extends Objeto {
         if (p.getClase() != TiposClases.ARQUERO && p.getClase() != TiposClases.ASESINO) {
             System.out.println("No puedes equiparte esta armadura siendo de una clase disinta a " + TiposClases.ARQUERO + " o " + TiposClases.ASESINO);
         } else {
-            p.setVida(p.getVida() + 10);
+            p.setVida_maxima(p.getVida_maxima() + 10);
             p.setVelocidad(p.getVelocidad() + 10);
         }
     }
 
     public void escudoBendito(Personaje p) {
-        p.setVida(p.getVida() + 20);
+        p.setVida_maxima(p.getVida_maxima() + 20);
     }
 
 }
