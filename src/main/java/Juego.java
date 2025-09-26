@@ -136,7 +136,7 @@ public class Juego {
             case 3:
                 System.out.println("Menu de objetos");
 
-                List<Objeto> inventario = Personaje.getInventarioGlobal();
+                List<Objeto> inventario = InventarioGlobal.getInventarioGlobal();
                 if (inventario.isEmpty()) {
                     System.out.println("El inventario esta vacio");
                 } else {
