@@ -18,6 +18,8 @@ public class GestorPersonajesJSON {
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
+
+
     // Método para guardar una lista de personajes en un archivo JSON
     public void guardarPersonajes(List<PersonajeRPG> personajes) {
         try {
