@@ -117,7 +117,6 @@ public class Personaje extends Entidad {
         return inventario;
     }
 
-
     public int getNivel() {
         return nivel;
     }
@@ -126,6 +125,9 @@ public class Personaje extends Entidad {
         this.nivel = nivel;
     }
 
+    public int getVidaMaxima() {
+        return 100;
+    }
 }
 
 

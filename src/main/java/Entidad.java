@@ -74,8 +74,9 @@ public class Entidad {
         return ataque;
     }
 
-    public void setVida(int vida) {
+    public int setVida(int vida) {
         this.vida = vida;
+        return vida;
     }
 
     public void setAtaque(int ataque) {

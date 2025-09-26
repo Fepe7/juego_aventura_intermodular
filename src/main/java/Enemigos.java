@@ -39,8 +39,9 @@ public class Enemigos extends Entidad{
         return vida;
     }
 
-    public void setVida(int vida) {
+    public int setVida(int vida) {
         this.vida = vida;
+        return vida;
     }
 
     public String getDescripcion() {
