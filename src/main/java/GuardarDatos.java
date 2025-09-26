@@ -13,8 +13,7 @@ public class GuardarDatos {
             gson.toJson(personajes, writer);
             System.out.println("Personajes guardados en " + nombreArchivo);
         } catch (IOException e) {
-            System.out.println("Error al guardar los personajes.");
-            e.printStackTrace();
+            System.out.println("Error al guardar los personajes: " + e.getMessage());
         }
     }
 }
