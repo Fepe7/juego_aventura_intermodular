@@ -12,7 +12,7 @@ public class ImportarDatos {
 
             System.out.println("Jugador cargado desde JSON:");
             System.out.println("Nombre: " + personaje.getNombre());
-            System.out.println("Clase: " + personaje.getIdClase());
+            System.out.println("Clase: " + personaje.getClase());
             System.out.println("Vida: " + personaje.getVida());
             System.out.println("Ataque: " + personaje.getAtaque());
             System.out.println("Velocidad: " + personaje.getVelocidad());
@@ -20,8 +20,8 @@ public class ImportarDatos {
             System.out.println("Mana: " + personaje.getMana());
             System.out.println("Vivo: " + personaje.isVivo());
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo JSON.");
-            e.printStackTrace();
+            System.out.println("Error al leer el archivo JSON: " +   e.getMessage());
+
         }
     }
 }
