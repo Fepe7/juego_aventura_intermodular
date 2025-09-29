@@ -13,19 +13,20 @@ public class Entidad {
     private List<Habilidad> habilidades = new ArrayList<>();
 
 
-
     //Constructor para los enemigos
     Entidad(String nombre, int vida, int ataque, int velocidad) {
         this.nombre = nombre;
         this.vida = vida;
         this.ataque = ataque;
+        this.velocidad = velocidad;
         this.vivo = true;
     }
 
 
     //Constructor para los personajes jugables
-    Entidad(String nombre){
+    Entidad(String nombre) {
         this.nombre = nombre;
+
     }
 
 
@@ -34,7 +35,7 @@ public class Entidad {
         habilidades.add(h);
     }
 
-    public int getVida() {
+    public  int getVida() {
         return vida;
     }
 

@@ -35,9 +35,6 @@ public class Enemigos extends Entidad{
         this.nombre = nombre;
     }
 
-    public int getVida() {
-        return vida;
-    }
 
     public int setVida(int vida) {
         this.vida = vida;

@@ -54,7 +54,7 @@ public class Personaje extends Entidad {
                 personaje.setNivel(1);
                 personaje.setVida_maxima(200);
                 personaje.agregarHabilidad(new Habilidad("Golpe Poderoso", 10, 50, "Consume 10 de maná y hace un golpe que hace +15 de daño "));
-                personaje.agregarHabilidad(new Habilidad("Escudo de fuego", 15, TipoHabilidad.APOYO, "Consume 15 de maná y obtiene +10 de ataque durante el combate"));
+                personaje.agregarHabilidad(new Habilidad("Rugido Batalla", 15, TipoHabilidad.APOYO, "Consume 15 de maná y obtiene +10 de ataque durante el combate"));
                 break;
             //Mago
             case 2:
@@ -90,7 +90,7 @@ public class Personaje extends Entidad {
                 personaje.setVivo(true);
                 personaje.setNivel(1);
                 personaje.agregarHabilidad(new Habilidad("Ataque furtivo", 15, 25, "Consume 10 de maná y ataca por detras e inflinge +25 de daño"));
-                personaje.agregarHabilidad(new Habilidad("Golpe venenoso", 10, TipoHabilidad.APOYO, "Consume 10 de maná e inflinge daño normal y aplica veneno (5 de daño extra por 3 turnos si quieres, o lo podemos dejar por 15 de daño mas)"));
+                personaje.agregarHabilidad(new Habilidad("Golpe venenoso", 10, TipoHabilidad.DANYO, "Consume 10 de maná e inflinge daño normal y aplica veneno (5 de daño extra por 3 turnos si quieres, o lo podemos dejar por 15 de daño mas)"));
                 break;
         }
         return personaje;
@@ -99,7 +99,7 @@ public class Personaje extends Entidad {
 
     @Override
     public String toString() {
-        return "El personaje " + nombre + " de la clase " + idClase + " tiene " + vida + " de vida, " + ataque + " de ataque y " + velocidad + " de velocidad.";
+        return "El personaje " + nombre + " de la clase " + idClase + " tiene " + vida +" de vida, " + ataque + " de ataque y " + velocidad + " de velocidad.";
     }
 
 
@@ -128,8 +128,6 @@ public class Personaje extends Entidad {
     }
 
 
-
-
     // Métodos para el inventario individual
     public void equiparObjeto(Objeto objeto) {
         objetosEquipados.add(objeto);
@@ -150,13 +148,12 @@ public class Personaje extends Entidad {
     }
 
 
-
-    public static void desequiparObjeto(Objeto objeto, Personaje p) {
+    public static void desequiparObjeto(Objeto objeto, Personaje p, ArrayList<Objeto> inventarioGlobal) {
         if (objetosEquipados.contains(objeto)) {
             objetosEquipados.remove(objeto);
 
             //Añade el objeto al inventario global
-            InventarioGlobal.agregarAlInventarioGlobal(objeto);
+            InventarioGlobal.agregarAlInventarioGlobal(objeto, inventarioGlobal);
 
             //Pilla el nombre del metodo que revierte los efectos del objeto
             //El nombre del metodo es "quitar" + nombre del objeto con la primera letra en mayusculas
@@ -171,7 +168,6 @@ public class Personaje extends Entidad {
     }
 
 
-
     //Divide el nombre del objeto en partes y le pone la primera letra de cada parte en mayusculas
     //Ejemplo: escudo perfeccionado -> EscudoPerfeccionado
     //Esto es para crear el nombre del metodo que quita los efectos del objeto
@@ -180,6 +176,7 @@ public class Personaje extends Entidad {
         if (str == null || str.isEmpty()) {
             return str;
         } else {
+            //Divide el string en partes usando espacios como separadores
             String[] partes = str.split("[\\s-]+");
             StringBuilder resultado = new StringBuilder();
             for (String parte : partes) {
@@ -199,8 +196,11 @@ public class Personaje extends Entidad {
         return objetosEquipados;
     }
 
-
 }
+
+
+
+
 
 
 

@@ -27,12 +27,16 @@ public class Habilidad {
     public void golpePoderoso(Personaje p, Enemigos e) {
         int vidaQuitar = 15 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
     }
 
 
     //Aumenta el daño toda la batalla
-    public void rugidoBatalla(Personaje p, Enemigos e) {
+    public void rugidoDeBatalla(Personaje p) {
         p.setAtaque(p.getAtaque() + 10);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Tu ataque ha aumentado en 10 puntos");
     }
 
 
@@ -40,33 +44,49 @@ public class Habilidad {
     public void bolaDeFuego(Personaje p, Enemigos e) {
         int vidaQuitar = 35 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
+
     }
 
     // Palabra curativa: cura al personaje
     public void palabraCurativa(Personaje p) {
         p.setVida(p.getVida() + 20);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Te has curado 20 puntos de vida");
     }
 
     // Flecha precisa: daño fijo + ataque del personaje
     public void flechaPrecisa(Personaje p, Enemigos e) {
         int vidaQuitar = 20 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
+
     }
 
     // Trozo de carne: cura al personaje
     public void trozoDeCarne(Personaje p) {
         p.setVida(p.getVida() + 20);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Te has curado 20 puntos de vida");
     }
 
     // Ataque furtivo: daño fijo + ataque del personaje
     public void ataqueFurtivo(Personaje p, Enemigos e) {
         int vidaQuitar = 25 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
+
     }
 
     public void golpeVenenoso(Personaje p, Enemigos e) {
         int vidaQuitar = p.getAtaque() + 15; // Daño base
         e.setVida(e.getVida() - vidaQuitar - 15);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
+
     }
 
 
