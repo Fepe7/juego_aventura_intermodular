@@ -19,7 +19,7 @@ public class GuardarDatos {
         }
     }
     
-    public static void guardarObjetos(InventarioGlobal inventarioGlobal) {
+    public static void guardarObjetos(Objeto[] inventarioGlobal) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         
         String archivo = "objetos.json";

@@ -19,7 +19,6 @@ public class Main {
             System.out.println(personajesPartida[i]);
         }
 
-        GuardarDatos guardarDatos = new GuardarDatos();
         GuardarDatos.guardarPersonajes(personajesPartida);
         GuardarDatos.guardarObjetos(objetosGlobales);
 
