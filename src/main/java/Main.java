@@ -24,7 +24,7 @@ public class Main {
 
 
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
-            Enemigos enemigo = new Enemigos("Goblin", 100, 15, 10, "Un goblin salvaje chill");
+            Enemigos enemigo = new Enemigos("Goblin", 100, 15, 10, "Un goblin salvaje");
             System.out.println("Un " + enemigo.getNombre() + " ha aparecido!");
             while (enemigo.isVivo() && (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo())) {
                 Juego.turnoActual(personajesPartida, enemigo);
@@ -46,6 +46,7 @@ public class Main {
             System.out.println(personajesPartida[i]);
         }
 
+        GuardarDatos guardarDatos = new GuardarDatos();
         GuardarDatos.guardarPersonajes(personajesPartida);
 
 
