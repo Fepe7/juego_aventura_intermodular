@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Main {
-    static void main(String[] args) {
+    public static void main(String[] args) {
 
         //Creas los 4 personajes iniciales
         Personaje personaje1 = Personaje.CrearPersonaje();

@@ -5,7 +5,7 @@
     "vida": 120,
     "ataque": 40,
     "velocidad": 25,
-    "nombre": "a",
+    "nombre": "Xavi",
     "vivo": true,
     "mana": 30,
     "habilidades": [
@@ -31,7 +31,7 @@
     "vida": 70,
     "ataque": 25,
     "velocidad": 35,
-    "nombre": "b",
+    "nombre": "Santi",
     "vivo": true,
     "mana": 100,
     "habilidades": [
@@ -57,7 +57,7 @@
     "vida": 90,
     "ataque": 30,
     "velocidad": 45,
-    "nombre": "c",
+    "nombre": "Felipe",
     "vivo": true,
     "mana": 100,
     "habilidades": [
@@ -83,9 +83,9 @@
     "vida": 60,
     "ataque": 25,
     "velocidad": 65,
-    "nombre": "d",
+    "nombre": "Daniel",
     "vivo": true,
-    "mana": 30,
+    "mana": 15,
     "habilidades": [
       {
         "nombre": "Ataque furtivo",
