@@ -16,7 +16,6 @@ public class ImportarDatos {
             System.out.println("Vida: " + personaje.getVida());
             System.out.println("Ataque: " + personaje.getAtaque());
             System.out.println("Velocidad: " + personaje.getVelocidad());
-            System.out.println("Nivel: " + personaje.getNivel());
             System.out.println("Mana: " + personaje.getMana());
             System.out.println("Vivo: " + personaje.isVivo());
         } catch (IOException e) {

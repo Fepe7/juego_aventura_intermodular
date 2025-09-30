@@ -33,6 +33,8 @@ public class Main {
             if (!enemigo.isVivo()) {
                 System.out.println("Has derrotado al " + enemigo.getNombre() + "!");
                 //Aqui iria lo de pasar de habitacion y toda la pesca
+
+                SistemaPostBatalla.opcionesPostBatalla(personajesPartida, inventarioGlobal);
                 break;
             } else {
                 System.out.println("Todos tus personajes han muerto. Fin del juego.");
@@ -49,6 +51,8 @@ public class Main {
 
         GuardarDatos guardarDatos = new GuardarDatos();
         GuardarDatos.guardarPersonajes(personajesPartida);
+        InventarioGlobal inventarioGlobal1 =  new InventarioGlobal();
+        GuardarDatos.guardarObjetos(inventarioGlobal1);
 
 
     }
