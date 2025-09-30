@@ -78,7 +78,7 @@ public class Juego {
     //Accion del enemigo, ataca a un personaje random, si el personaje muere se pone su estado a muerto
     public static void accionEnemigo(Enemigos e, Personaje[] personajes) {
         System.out.println("Es el turno del enemigo " + e.getNombre() + ", ataca a un personaje!");
-        //Elige un personaje random para atacar
+        //Elige un personaje random para atacar, si no esta vivo vuelve a elegir otro personaje
         Random rand = new Random();
         Personaje objetivo;
         do {
@@ -95,6 +95,16 @@ public class Juego {
             System.out.println(objetivo.getNombre() + " ha muerto!");
         }
     }
+
+
+    public static boolean comporbarMuerte(Enemigos e) {
+        if (e.getVida() <= 0) {
+            e.setVivo(false);
+            System.out.println(e.getNombre() + " ha muerto!");
+            return true;
+        }else return false;
+    }
+
 
 
     public static void accionPersonaje(Personaje p, Enemigos enemigo) {
@@ -116,7 +126,12 @@ public class Juego {
                     int vida_quitar = p.getAtaque();
                     System.out.println("Has quitado " + vida_quitar + " de vida al enemigo");
                     //Quita la vida del enemigo
-                    enemigo.setAtaque(enemigo.getVida() - vida_quitar);
+                    enemigo.setVida(enemigo.getVida() - vida_quitar);
+                    if (comporbarMuerte(enemigo)){
+                        continuar = 1;
+                        break;
+                    }
+                    System.out.println("El enemigo tiene " + enemigo.getVida() + " de vida");
                     continuar = 1;
                     break;
 
@@ -164,6 +179,14 @@ public class Juego {
                                             metodo.invoke(habilidadSeleccionada, p, enemigo);
                                             //Se resta el mana del personaje
                                             p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
+
+                                            if (comporbarMuerte(enemigo)){
+                                                continuar = 1;
+                                                break;
+                                            }
+
+                                            System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
+
                                             habilidadValida = true;
                                         } else if (habilidadSeleccionada.getTipoHabilidad() == TipoHabilidad.APOYO) {
                                             metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class);

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    static void main(String[] args) {
 
         //Creas los 4 personajes iniciales
         Personaje personaje1 = Personaje.CrearPersonaje();
@@ -23,6 +23,7 @@ public class Main {
 
 
 
+        //Este bucle hay que cambiarlo entero para que cuando se gane cambies de habitacion ytodo eso
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
             Enemigos enemigo = new Enemigos("Goblin", 100, 15, 10, "Un goblin salvaje");
             System.out.println("Un " + enemigo.getNombre() + " ha aparecido!");
@@ -31,13 +32,13 @@ public class Main {
             }
             if (!enemigo.isVivo()) {
                 System.out.println("Has derrotado al " + enemigo.getNombre() + "!");
-                //Aqui puedes añadir logica para que el enemigo suelte objetos o experiencia
+                //Aqui iria lo de pasar de habitacion y toda la pesca
+                break;
             } else {
                 System.out.println("Todos tus personajes han muerto. Fin del juego.");
                 break;
             }
         }
-
 
 
         for (

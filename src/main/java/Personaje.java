@@ -6,7 +6,6 @@ public class Personaje extends Entidad {
 
 
     private TiposClases idClase;
-    private int nivel;
     private static List<Objeto> objetosEquipados = new ArrayList<>();
     private int vidaMaxima;
 
@@ -51,7 +50,6 @@ public class Personaje extends Entidad {
                 personaje.setVelocidad(25);
                 personaje.setAtaque(40);
                 personaje.setVivo(true);
-                personaje.setNivel(1);
                 personaje.setVida_maxima(200);
                 personaje.agregarHabilidad(new Habilidad("Golpe Poderoso", 10, 50, "Consume 10 de maná y hace un golpe que hace +15 de daño "));
                 personaje.agregarHabilidad(new Habilidad("Rugido Batalla", 15, TipoHabilidad.APOYO, "Consume 15 de maná y obtiene +10 de ataque durante el combate"));
@@ -64,7 +62,6 @@ public class Personaje extends Entidad {
                 personaje.setVelocidad(35);
                 personaje.setAtaque(25);
                 personaje.setVivo(true);
-                personaje.setNivel(1);
                 personaje.agregarHabilidad(new Habilidad("Bola de fuego", 20, 35, "Consume 20 de maná e inflinge +35 de daño"));
                 personaje.agregarHabilidad(new Habilidad("Palabra curativa", 15, TipoHabilidad.APOYO, "Consume 15 de maná y se cura 20 de vida"));
                 break;
@@ -76,7 +73,6 @@ public class Personaje extends Entidad {
                 personaje.setVelocidad(45);
                 personaje.setAtaque(30);
                 personaje.setVivo(true);
-                personaje.setNivel(1);
                 personaje.agregarHabilidad(new Habilidad("Flecha precisa", 15, 20, "Consume 15 de maná y lanza una flecha e inflinge +20 de daño"));
                 personaje.agregarHabilidad(new Habilidad("Trozo de carne", 0, TipoHabilidad.APOYO, "Consume 10 de maná y restaura 20 de vida"));
                 break;
@@ -88,7 +84,6 @@ public class Personaje extends Entidad {
                 personaje.setVelocidad(65);
                 personaje.setAtaque(25);
                 personaje.setVivo(true);
-                personaje.setNivel(1);
                 personaje.agregarHabilidad(new Habilidad("Ataque furtivo", 15, 25, "Consume 10 de maná y ataca por detras e inflinge +25 de daño"));
                 personaje.agregarHabilidad(new Habilidad("Golpe venenoso", 10, TipoHabilidad.DANYO, "Consume 10 de maná e inflinge daño normal y aplica veneno (5 de daño extra por 3 turnos si quieres, o lo podemos dejar por 15 de daño mas)"));
                 break;
@@ -109,14 +104,6 @@ public class Personaje extends Entidad {
 
     public TiposClases getClase() {
         return idClase;
-    }
-
-    public int getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
     }
 
     public int getVida_maxima() {
