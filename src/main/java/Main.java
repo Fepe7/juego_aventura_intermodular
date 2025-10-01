@@ -53,8 +53,6 @@ public class Main {
         InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de mana", "Restaura 30 puntos de mana"));
 
 
-
-
         int ronda = 0;
 
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
@@ -99,7 +97,7 @@ public class Main {
 
         GuardarDatos guardarDatos = new GuardarDatos();
         GuardarDatos.guardarPersonajes(personajesPartida);
-        GuardarDatos.guardarObjetos(inventarioGlobal);
+        GuardarDatos.guardarObjetos(InventarioGlobal.getInventarioGlobal());
 
         System.out.println("Partida guardada correctamente.");
     }
