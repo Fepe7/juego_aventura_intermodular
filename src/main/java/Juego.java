@@ -232,10 +232,10 @@ public class Juego {
                                 try {
                                     //Obtiene un metodo de la clase objeto por el nombre
                                     //Esto para usar el metodo corrspondiente al objeto
-                                    java.lang.reflect.Method metodo = Objeto.class.getMethod(nombreMetodo);
+                                    java.lang.reflect.Method metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
 
                                     //Se ejecuta el metodo que queriamos sobre el personaje
-                                    metodo.invoke(objetoSeleccionado);
+                                    metodo.invoke(objetoSeleccionado, p);
                                     System.out.println("Has usado el objeto: " + objetoSeleccionado.getNombre());
                                     //Se elimina el objeto del inventario
                                     inventario.remove(decisionObjeto);
