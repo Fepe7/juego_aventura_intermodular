@@ -215,13 +215,13 @@ public class Juego {
                                             //Se resta el mana del personaje
                                             p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
                                             continuar = 1;
+                                            habilidadValida = true;
                                             if (comporbarMuerte(enemigo)){
                                                 continuar = 1;
                                                 break;
                                             }
 
                                             System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
-                                            habilidadValida = true;
                                         } else if (habilidadSeleccionada.getTipoHabilidad() == TipoHabilidad.APOYO) {
                                             metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class);
                                             //Se ejecuta el metodo que queriamos sobre el personaje
@@ -229,6 +229,7 @@ public class Juego {
                                             //Se resta el mana del personaje
                                             p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
                                             continuar = 1;
+                                            habilidadValida = true;
                                         }
                                     } catch (Exception e) {
                                         System.out.println("No se pudo ejecutar el método: " + nombreMetodo);

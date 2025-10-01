@@ -51,12 +51,10 @@ public class Main {
             personajesPartida = crearPartidaNueva();
         }
 
-        // Obté una referència (per compatibilitat amb signatures existents)
         ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
 
         int ronda = 0;
 
-        // ... existing code ...
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
             Enemigos enemigo = Combates.combate(ronda);
             System.out.println("¡Un " + enemigo.getNombre() + " ha aparecido! Prepárate para la batalla.");

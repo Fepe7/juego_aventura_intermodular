@@ -66,7 +66,7 @@ public class Personaje extends Entidad {
                 personaje.setVivo(true);
                 personaje.setVida_maxima(120);
                 personaje.agregarHabilidad(new Habilidad("Golpe Poderoso", 10, 50, "Consume 10 de maná y hace un golpe que hace +15 de daño "));
-                personaje.agregarHabilidad(new Habilidad("Rugido Batalla", 15, TipoHabilidad.APOYO, "Consume 15 de maná y obtiene +10 de ataque durante el combate"));
+                personaje.agregarHabilidad(new Habilidad("Rugido de Batalla", 15, TipoHabilidad.APOYO, "Consume 15 de maná y obtiene +10 de ataque durante el combate"));
                 break;
             //Mago
             case 2:

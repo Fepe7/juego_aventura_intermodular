@@ -1,10 +1,6 @@
 [
   {
-    "nombre": "Pocion de mana",
-    "descripcion": "Restaura 30 puntos de mana"
-  },
-  {
-    "nombre": "Escudo Bendito",
-    "descripcion": "Aumenta la vida máxima en 20 puntos"
+    "nombre": "Poción de velocidad",
+    "descripcion": "Aumenta la velocidad en 20 puntos"
   }
 ]
