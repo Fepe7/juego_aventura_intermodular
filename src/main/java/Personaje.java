@@ -135,16 +135,11 @@ public class Personaje extends Entidad {
     // Métodos para el inventario individual
     public void equiparObjeto(Objeto objeto) {
         objetosEquipados.add(objeto);
-        InventarioGlobal inventarioGlobal = new InventarioGlobal();
 
-        // Elimina el objeto del inventario global
         InventarioGlobal.eliminarDelInventarioGlobal(objeto);
 
-        // Llama al método correspondiente del objeto usando reflexión
         String nombreObjetoMetodo = Juego.getString(objeto);
         try {
-            // Invoca el método del objeto que recibe un Personaje como parámetro
-            //Esto para que se ejecute el metodo del objeto que hemos equipado
             Objeto.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(objeto, this);
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,12 +147,11 @@ public class Personaje extends Entidad {
     }
 
 
-    public static void desequiparObjeto(Objeto objeto, Personaje p, ArrayList<Objeto> inventarioGlobal) {
+    public static void desequiparObjeto(Objeto objeto, Personaje p) {
         if (objetosEquipados.contains(objeto)) {
             objetosEquipados.remove(objeto);
 
-            //Añade el objeto al inventario global
-            InventarioGlobal.agregarAlInventarioGlobal(objeto, inventarioGlobal);
+            InventarioGlobal.agregarAlInventarioGlobal(objeto);
 
             //Pilla el nombre del metodo que revierte los efectos del objeto
             //El nombre del metodo es "quitar" + nombre del objeto con la primera letra en mayusculas

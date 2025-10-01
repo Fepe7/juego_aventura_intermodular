@@ -1,25 +1,42 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        //Creas los 4 personajes iniciales
-        Personaje personaje1 = Personaje.CrearPersonaje();
-        Personaje personaje2 = Personaje.CrearPersonaje();
-        Personaje personaje3 = Personaje.CrearPersonaje();
-        Personaje personaje4 = Personaje.CrearPersonaje();
+        Personaje[] personajesPartida;
 
+        if (ImportarDatos.existePartidaGuardada()) {
+            System.out.println("Se ha detectado una partida guardada.");
+            System.out.println("1) Importar partida guardada");
+            System.out.println("2) Crear una nueva partida");
+            System.out.print("Escoge una opción (1-2): ");
+            String opcion = scanner.nextLine().trim();
 
-        //Los metes en un array, quiero que cuando se enfrente a un enemigo, elija elija una posicion del array aleatoriamente
-        //dando una sensacion de combate
-        Personaje[] personajesPartida = {personaje1, personaje2, personaje3, personaje4};
+            if ("1".equals(opcion)) {
+                personajesPartida = ImportarDatos.cargarPersonajes();
+                if (personajesPartida == null || personajesPartida.length == 0) {
+                    System.out.println("No se ha podido importar la partida. Se creará una nueva partida.");
+                    personajesPartida = crearPartidaNueva();
+                } else {
+                    System.out.println("Partida importada correctamente.");
+                }
+            } else {
+                personajesPartida = crearPartidaNueva();
+            }
+        } else {
+            System.out.println("No se ha encontrado ninguna partida guardada. Se creará una nueva partida.");
+            personajesPartida = crearPartidaNueva();
+        }
+
 
         //Creo el inventario global
         ArrayList<Objeto> inventarioGlobal = new ArrayList<>();
 
         //Añado objetos al inventario global, son los objetos iniciales
-        InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de vida", "Restaura 50 puntos de vida"), inventarioGlobal);
-        InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de mana", "Restaura 30 puntos de mana"), inventarioGlobal);
+        InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de vida", "Restaura 50 puntos de vida"));
+        InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de mana", "Restaura 30 puntos de mana"));
 
 
 
@@ -49,9 +66,17 @@ public class Main {
         //Guardar datos al salir del juego
         GuardarDatos guardarDatos = new GuardarDatos();
         GuardarDatos.guardarPersonajes(personajesPartida);
-        InventarioGlobal inventarioGlobal1 =  new InventarioGlobal();
-        GuardarDatos.guardarObjetos(inventarioGlobal1);
+        GuardarDatos.guardarObjetos(inventarioGlobal);
     }
+
+    private static Personaje[] crearPartidaNueva() {
+        Personaje personaje1 = Personaje.CrearPersonaje();
+        Personaje personaje2 = Personaje.CrearPersonaje();
+        Personaje personaje3 = Personaje.CrearPersonaje();
+        Personaje personaje4 = Personaje.CrearPersonaje();
+        return new Personaje[]{personaje1, personaje2, personaje3, personaje4};
+    }
+
 }
 
 

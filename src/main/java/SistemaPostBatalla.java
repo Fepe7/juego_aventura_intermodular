@@ -106,7 +106,7 @@ public class SistemaPostBatalla {
                 break;
         }
 
-        InventarioGlobal.agregarAlInventarioGlobal(pocion, inventarioGlobal);
+        InventarioGlobal.agregarAlInventarioGlobal(pocion);
         System.out.println("La poción ha sido añadida a tu inventario.");
     }
 
@@ -119,7 +119,7 @@ public class SistemaPostBatalla {
             System.out.println("En su interior encuentras un arma antigua...");
 
             Armas armaEncontrada = generarArmaAleatoria();
-            InventarioGlobal.agregarAlInventarioGlobal(armaEncontrada, inventarioGlobal);
+            InventarioGlobal.agregarAlInventarioGlobal(armaEncontrada);
             System.out.println("¡Has encontrado: " + armaEncontrada.getNombre() + "!");
         } else {
             System.out.println("¡Un monstruo salta desde las sombras!");
@@ -135,7 +135,7 @@ public class SistemaPostBatalla {
             if (!ogro.isVivo()) {
                 System.out.println("¡Has derrotado al Ogro! Como recompensa encuentras su tesoro...");
                 Objeto tesoro = new Objeto("Elixir de poder", "Aumenta el ataque en 10 puntos");
-                InventarioGlobal.agregarAlInventarioGlobal(tesoro, inventarioGlobal);
+                InventarioGlobal.agregarAlInventarioGlobal(tesoro);
             }
         }
     }
@@ -146,7 +146,7 @@ public class SistemaPostBatalla {
         System.out.println("Un viajero veterano se acerca: '¡Hola aventurero! Tengo algo que podría serte útil.'");
 
         Armaduras armaduraPrestada = generarArmaduraAleatoria();
-        InventarioGlobal.agregarAlInventarioGlobal(armaduraPrestada, inventarioGlobal);
+        InventarioGlobal.agregarAlInventarioGlobal(armaduraPrestada);
         System.out.println("El viajero te presta: " + armaduraPrestada.getNombre());
         System.out.println("'¡Úsala sabiamente en tu aventura!'");
     }
@@ -161,7 +161,7 @@ public class SistemaPostBatalla {
 
             for (int i = 0; i < 2; i++) {
                 Objeto pocion = new Objeto("Poción de vida", "Restaura 50 puntos de vida");
-                InventarioGlobal.agregarAlInventarioGlobal(pocion, inventarioGlobal);
+                InventarioGlobal.agregarAlInventarioGlobal(pocion);
             }
         } else {
             System.out.println("¡La magia del bosque ha atraído a un Ogro Místico!");
@@ -191,7 +191,7 @@ public class SistemaPostBatalla {
         System.out.println("En el fondo brilla algo... ¡Es un tesoro!");
 
         Objeto tesoro = generarObjetoAleatorio();
-        InventarioGlobal.agregarAlInventarioGlobal(tesoro, inventarioGlobal);
+        InventarioGlobal.agregarAlInventarioGlobal(tesoro);
         System.out.println("¡Has encontrado: " + tesoro.getNombre() + "!");
     }
 
