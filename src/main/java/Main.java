@@ -35,6 +35,13 @@ public class Main {
                     personajesPartida = crearPartidaNueva();
                 } else {
                     System.out.println("Partida importada correctamente.");
+                    var objetos = ImportarDatos.cargarObjetos();
+                    if ( objetos != null ) {
+                        InventarioGlobal.setInventarioGlobal(objetos);
+                        System.out.println("Objetos importados correctamente.");
+                    } else {
+                        System.out.println("No se han podido importar los objetos. Se usarán los objetos iniciales.");
+                    }
                 }
             } else {
                 personajesPartida = crearPartidaNueva();
@@ -44,17 +51,12 @@ public class Main {
             personajesPartida = crearPartidaNueva();
         }
 
-
-        //Creo el inventario global
-        ArrayList<Objeto> inventarioGlobal = new ArrayList<>();
-
-        //Añado objetos al inventario global, son los objetos iniciales
-        InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de vida", "Restaura 50 puntos de vida"));
-        InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de mana", "Restaura 30 puntos de mana"));
-
+        // Obté una referència (per compatibilitat amb signatures existents)
+        ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
 
         int ronda = 0;
 
+        // ... existing code ...
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
             Enemigos enemigo = Combates.combate(ronda);
             System.out.println("¡Un " + enemigo.getNombre() + " ha aparecido! Prepárate para la batalla.");
@@ -79,8 +81,6 @@ public class Main {
                 break;
             }
         }
-
-
     }
 
     private static Personaje[] crearPartidaNueva() {
@@ -91,7 +91,6 @@ public class Main {
         return new Personaje[]{personaje1, personaje2, personaje3, personaje4};
     }
 
-
     private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal) {
         System.out.println("Guardando partida...");
 
@@ -101,7 +100,6 @@ public class Main {
 
         System.out.println("Partida guardada correctamente.");
     }
-
 }
 
 
