@@ -144,93 +144,61 @@ public class Juego {
                     List<Habilidad> habilidades = p.getHabilidades();
                     int habilidad_decision;
                     boolean habilidadValida = false;
+                    boolean habilidadUsada = false;
 
                     do {
-                        //Elige la habilidad que quieres usar
                         System.out.println("Elige una habilidad:");
                         for (int i = 0; i < habilidades.size(); i++) {
                             Habilidad habilidad = habilidades.get(i);
-                            System.out.println((i + 1) + " - " + habilidad.getNombre() + " (Coste de maná: " + habilidad.getCosteMana() + ")");
+                            System.out.println((i + 1) + " - " + habilidad.getNombre() + " (Coste de maná: " + habilidad.getCosteMana() + ") - Maná actual: " + p.getMana());
                         }
                         System.out.println("0 - Cancelar y volver al menú principal");
 
                         Scanner sc = new Scanner(System.in);
                         if (sc.hasNextInt()) {
                             habilidad_decision = sc.nextInt();
-                            if (habilidad_decision == 0){
+
+                            if (habilidad_decision == 0) {
                                 System.out.println("Has cancelado la seleccion de habilidad");
                                 habilidadValida = true;
-                                continuar = 0;
                                 break;
                             }
-                            habilidad_decision -= 1;
 
+                            habilidad_decision -= 1;
 
                             if (habilidad_decision >= 0 && habilidad_decision < habilidades.size()) {
                                 Habilidad habilidadSeleccionada = habilidades.get(habilidad_decision);
-                                //Comprueba si tienes mana suficiente para usar la habilidad
+
                                 if (tieneMana(p, habilidadSeleccionada)) {
+                                    // ... código de ejecución de habilidad ...
 
-                                    // Pilla el nombre de la habilidad y lo formatea para que sea el nombre del metodo
-                                    //Para que quede asi : Bola de fuego -> bolaDeFuego
-                                    // o asi : Golpe poderoso -> golpePoderoso
-                                    String[] palabras = habilidadSeleccionada.getNombre().toLowerCase().split(" ");
-                                    StringBuilder nombreMetodoBuilder = new StringBuilder(palabras[0]);
-                                    for (int i = 1; i < palabras.length; i++) {
-                                        //Coge cada palabra y la pone en mayuscula la primera letra, menos la primera palabra
-                                        nombreMetodoBuilder.append(Character.toUpperCase(palabras[i].charAt(0)))
-                                                          .append(palabras[i].substring(1));
+                                    habilidadValida = true;
+                                    habilidadUsada = true; // Marca que se uso una habilidad
+
+                                    if (comporbarMuerte(enemigo)) {
+                                        continuar = 1;
+                                        break;
                                     }
 
-                                    String nombreMetodo = nombreMetodoBuilder.toString();
-                                    try {
-                                        //Obtiene un metodo de la clase habilidad por el nombre
-                                        java.lang.reflect.Method metodo;
-                                        if (habilidadSeleccionada.getTipoHabilidad() == TipoHabilidad.DANYO) {
-                                            metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class, Enemigos.class);
-                                            //Se ejecuta el metodo que queriamos sobre el personaje y enemigo
-                                            metodo.invoke(habilidadSeleccionada, p, enemigo);
-                                            //Se resta el mana del personaje
-                                            p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
-
-                                            if (comporbarMuerte(enemigo)){
-                                                continuar = 1;
-                                                break;
-                                            }
-
-                                            System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
-
-                                            habilidadValida = true;
-                                        } else if (habilidadSeleccionada.getTipoHabilidad() == TipoHabilidad.APOYO) {
-                                            metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class);
-                                            //Se ejecuta el metodo que queriamos sobre el personaje
-                                            metodo.invoke(habilidadSeleccionada, p);
-                                            //Se resta el mana del personaje
-                                            p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
-                                            habilidadValida = true;
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
-                                        System.out.println(e);
-                                    }
+                                    System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
                                 } else {
                                     System.out.println("No tienes suficiente maná para usar esa habilidad. Elige otra.");
                                     System.out.println("Maná actual: " + p.getMana() + ", Maná necesario: " + habilidadSeleccionada.getCosteMana());
-
                                 }
                             } else {
                                 System.out.println("Selección inválida. Intenta de nuevo.");
                             }
                         } else {
                             System.out.println("Entrada inválida. Intenta de nuevo.");
-                            sc.next(); // Limpia entrada incorrecta
+                            sc.next();
                         }
                     } while (!habilidadValida);
 
-                    if (continuar == 0){
-                    } else {
+                    // Solo termina el turno si se uso una habilidad
+                    if (habilidadUsada) {
                         continuar = 1;
                     }
+                    // si se cancela la habilidad continuar sigue siendo 0, por lo que no pasa de turno
                     break;
 
 
