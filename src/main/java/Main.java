@@ -8,7 +8,7 @@ public class Main {
         Personaje[] personajesPartida;
 
         if (ImportarDatos.existePartidaGuardada()) {
-            int opcion = 2;
+            int opcion = 0;
 
             try {
                 do {
@@ -28,7 +28,7 @@ public class Main {
                 System.err.println("Error: " + e.getMessage());
             }
 
-            if ("1".equals(opcion)) {
+            if (opcion == 1) {
                 personajesPartida = ImportarDatos.cargarPersonajes();
                 if (personajesPartida == null || personajesPartida.length == 0) {
                     System.out.println("No se ha podido importar la partida. Se creará una nueva partida.");
