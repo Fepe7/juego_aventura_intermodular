@@ -39,7 +39,7 @@ public class SistemaPostBatalla {
         for (Personaje p : personajes) {
             if (p.isVivo()) {
                 p.setVida(p.getVida_maxima());
-                System.out.println(p.getNombre() + " ha recuperado toda su vida! [" + p.getVida_maxima() + "/" + p.getVida_maxima() + "]");
+                System.out.println(p.getNombre() + " ha recuperado toda su vida! [" + p.getVida() + "/" + p.getVida_maxima() + "]");
             }
         }
 
@@ -111,7 +111,7 @@ public class SistemaPostBatalla {
     }
 
     private static void eventoCueva(Personaje[] personajes, ArrayList<Objeto> inventarioGlobal) {
-        System.out.println("\n🕳️ CUEVA MISTERIOSA");
+        System.out.println("\n CUEVA MISTERIOSA");
         System.out.println("Una cueva oscura se abre ante ti...");
 
         if (random.nextBoolean()) {

@@ -1,7 +1,7 @@
 [
   {
     "idClase": "GUERRERO",
-    "vidaMaxima": 200,
+    "vidaMaxima": 120,
     "vida": 120,
     "ataque": 40,
     "velocidad": 25,
@@ -27,7 +27,7 @@
   },
   {
     "idClase": "MAGO",
-    "vidaMaxima": 0,
+    "vidaMaxima": 70,
     "vida": 70,
     "ataque": 25,
     "velocidad": 35,
@@ -53,7 +53,7 @@
   },
   {
     "idClase": "ARQUERO",
-    "vidaMaxima": 0,
+    "vidaMaxima": 90,
     "vida": 90,
     "ataque": 30,
     "velocidad": 45,
@@ -79,7 +79,7 @@
   },
   {
     "idClase": "ASESINO",
-    "vidaMaxima": 0,
+    "vidaMaxima": 60,
     "vida": 60,
     "ataque": 25,
     "velocidad": 65,

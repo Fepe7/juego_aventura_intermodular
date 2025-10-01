@@ -23,6 +23,7 @@ public class Main {
 
 
 
+
         //Este bucle hay que cambiarlo entero para que cuando se gane cambies de habitacion ytodo eso
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
             Enemigos enemigo = new Enemigos("Goblin", 100, 15, 10, "Un goblin salvaje");
