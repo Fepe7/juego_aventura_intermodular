@@ -51,6 +51,7 @@ public class Main {
         //Añado objetos al inventario global, son los objetos iniciales
         InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de vida", "Restaura 50 puntos de vida"));
         InventarioGlobal.agregarAlInventarioGlobal(new Objeto("Pocion de mana", "Restaura 30 puntos de mana"));
+        InventarioGlobal.agregarAlInventarioGlobal(new Armaduras("Túnica Mágica" , "Hace cosas"));
 
 
         int ronda = 0;

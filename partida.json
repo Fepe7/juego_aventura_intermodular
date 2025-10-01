@@ -2,12 +2,12 @@
   {
     "idClase": "ASESINO",
     "vidaMaxima": 60,
-    "vida": 80,
+    "vida": 100,
     "ataque": 25,
     "velocidad": 65,
     "nombre": "ASESINO",
     "vivo": true,
-    "mana": 0,
+    "mana": 50,
     "habilidades": [
       {
         "nombre": "Ataque furtivo",
@@ -33,7 +33,7 @@
     "velocidad": 45,
     "nombre": "ARQUERO",
     "vivo": true,
-    "mana": 115,
+    "mana": 90,
     "habilidades": [
       {
         "nombre": "Flecha precisa",
@@ -59,7 +59,7 @@
     "velocidad": 35,
     "nombre": "MAGO",
     "vivo": true,
-    "mana": 80,
+    "mana": 60,
     "habilidades": [
       {
         "nombre": "Bola de fuego",
@@ -85,7 +85,7 @@
     "velocidad": 25,
     "nombre": "GUERRERO",
     "vivo": true,
-    "mana": 20,
+    "mana": 30,
     "habilidades": [
       {
         "nombre": "Golpe Poderoso",

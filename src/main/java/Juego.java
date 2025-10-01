@@ -21,26 +21,48 @@ public class Juego {
     //Devuelve el metodo a usar dependiendo del nombre del objeto
     static String getString(Objeto objetoSeleccionado) {
         String nombreObjeto = objetoSeleccionado.getNombre().toLowerCase();
-
         String nombreMetodo = "";
 
-        //Dado que hay una pocion de cada, el nombre del efecto no se repite
-        if (nombreObjeto.contains("vida")) {
-            nombreMetodo = "pocionVida";
-        } else if (nombreObjeto.contains("velocidad")) {
-            nombreMetodo = "pocionVelocidad";
-        } else if (nombreObjeto.contains("comida")) {
-            nombreMetodo = "comidaCurativa";
-        } else if (nombreObjeto.contains("maná") || nombreObjeto.contains("mana")) {
-            nombreMetodo = "pocionMana";
-        } else if (nombreObjeto.contains("carne seca")) {
-            nombreMetodo = "carneSeca";
-        } else if (nombreObjeto.contains("elixir")) {
-            nombreMetodo = "elixirPoder";
+        // Verifica si es una armadura
+        if (objetoSeleccionado instanceof Armaduras) {
+            if (nombreObjeto.contains("escudo perfeccionado")) {
+                nombreMetodo = "escudoPerfeccionado";
+            } else if (nombreObjeto.contains("armadura de placas") || nombreObjeto.contains("armadura placas")) {
+                nombreMetodo = "armaduraPlacas";
+            } else if (nombreObjeto.contains("túnica mágica") || nombreObjeto.contains("tunica magica")) {
+                nombreMetodo = "tunicaMagica";
+            } else if (nombreObjeto.contains("armadura ligera")) {
+                nombreMetodo = "armaduraLigera";
+            } else if (nombreObjeto.contains("escudo bendito")) {
+                nombreMetodo = "escudoBendito";
+            }
+        } else if (objetoSeleccionado instanceof Armas) {
+            // Aquí puedes agregar la lógica para armas si es necesario
+            if (nombreObjeto.contains("espada de hierro") || nombreObjeto.contains("espada hierro")) {
+                nombreMetodo = "espadaHierroPerfeccionada";
+            } else if (nombreObjeto.contains("bastón elemental") || nombreObjeto.contains("baston elemental")) {
+                nombreMetodo = "bastonElemental";
+            }
+            // Agregar más casos según sea necesario
+        } else {
+            // Objetos consumibles normales
+            if (nombreObjeto.contains("vida")) {
+                nombreMetodo = "pocionVida";
+            } else if (nombreObjeto.contains("velocidad")) {
+                nombreMetodo = "pocionVelocidad";
+            } else if (nombreObjeto.contains("comida")) {
+                nombreMetodo = "comidaCurativa";
+            } else if (nombreObjeto.contains("maná") || nombreObjeto.contains("mana")) {
+                nombreMetodo = "pocionMana";
+            } else if (nombreObjeto.contains("carne seca")) {
+                nombreMetodo = "carneSeca";
+            } else if (nombreObjeto.contains("elixir")) {
+                nombreMetodo = "elixirPoder";
+            }
         }
+
         return nombreMetodo;
     }
-
 
     //Este metodo es el que gestiona las acciones de los personajes y enemigos en cada turno
     //Recibe como parametros los arrays de personajes y enemigos
@@ -258,12 +280,18 @@ public class Juego {
                                 try {
                                     //Obtiene un metodo de la clase objeto por el nombre
                                     //Esto para usar el metodo corrspondiente al objeto
-                                    java.lang.reflect.Method metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
+                                    java.lang.reflect.Method metodo;
 
-                                    //Se ejecuta el metodo que queriamos sobre el personaje
+                                    // Usa la clase correcta según el tipo de objeto
+                                    if (objetoSeleccionado instanceof Armaduras) {
+                                        metodo = Armaduras.class.getMethod(nombreMetodo, Personaje.class);
+                                    } else if (objetoSeleccionado instanceof Armas) {
+                                        metodo = Armas.class.getMethod(nombreMetodo, Personaje.class);
+                                    } else {
+                                        metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
+                                    }
                                     metodo.invoke(objetoSeleccionado, p);
                                     System.out.println("Has usado el objeto: " + objetoSeleccionado.getNombre());
-                                    //Se elimina el objeto del inventario
                                     inventario.remove(decisionObjeto);
                                 } catch (Exception e) {
                                     System.out.println("No se pudo ejecutar el método: " + nombreMetodo);

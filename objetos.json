@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "nombre": "Pocion de vida",
+    "descripcion": "Restaura 50 puntos de vida"
+  },
+  {
+    "nombre": "Pocion de mana",
+    "descripcion": "Restaura 30 puntos de mana"
+  }
+]

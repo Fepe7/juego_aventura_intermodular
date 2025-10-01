@@ -212,7 +212,7 @@ public class SistemaPostBatalla {
         String[][] armaduras = {
                 {"Escudo Perfeccionado", "Aumenta la vida máxima en 10 puntos"},
                 {"Armadura de Placas", "Aumenta la vida máxima en 30 (Solo Guerrero)"},
-                {"Túnica Mágica", "Aumenta vida y maná en 15 (Solo Mago)"},
+                {"Túnica Mágica", "ccccccc"},
                 {"Armadura Ligera", "Aumenta vida y velocidad en 10 (Arquero/Asesino)"},
                 {"Escudo Bendito", "Aumenta la vida máxima en 20 puntos"}
         };
