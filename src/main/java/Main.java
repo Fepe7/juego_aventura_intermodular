@@ -8,11 +8,25 @@ public class Main {
         Personaje[] personajesPartida;
 
         if (ImportarDatos.existePartidaGuardada()) {
-            System.out.println("Se ha detectado una partida guardada.");
-            System.out.println("1) Importar partida guardada");
-            System.out.println("2) Crear una nueva partida");
-            System.out.print("Escoge una opción (1-2): ");
-            String opcion = scanner.nextLine().trim();
+            int opcion = 2;
+
+            try {
+                do {
+                    System.out.println("""
+                        Se ha detectado una partida guardada.
+                        1) Importar partida guardada
+                        2) Crear una nueva partida
+                        Escoge una opción (1-2): """);
+
+                    opcion = scanner.nextInt();
+
+                    if (opcion < 1 || opcion > 2) {
+                        System.out.println("Introduce uno de los números indicados.");
+                    }
+                } while (opcion < 1 || opcion > 2);
+            } catch (Exception e) {
+                System.err.println("Error: " + e.getMessage());
+            }
 
             if ("1".equals(opcion)) {
                 personajesPartida = ImportarDatos.cargarPersonajes();
@@ -52,8 +66,14 @@ public class Main {
             }
 
             if (!enemigo.isVivo()) {
-                System.out.println("Has derrotado al " + enemigo.getNombre() + "!");
                 //Aqui iria lo de pasar de habitacion y toda la pesca
+                System.out.println("\n=== VICTORIA! ===");
+                System.out.println("\n¿Quieres guardar partida (S/N) ?\n");
+                String respuesta = scanner.next();
+                if ("s".equalsIgnoreCase(respuesta)) {
+                    guardadPartida(personajesPartida, inventarioGlobal);
+                }
+
                 ronda++;
 
                 SistemaPostBatalla.opcionesPostBatalla(personajesPartida, inventarioGlobal);
@@ -63,10 +83,7 @@ public class Main {
             }
         }
 
-        //Guardar datos al salir del juego
-        GuardarDatos guardarDatos = new GuardarDatos();
-        GuardarDatos.guardarPersonajes(personajesPartida);
-        GuardarDatos.guardarObjetos(inventarioGlobal);
+
     }
 
     private static Personaje[] crearPartidaNueva() {
@@ -75,6 +92,17 @@ public class Main {
         Personaje personaje3 = Personaje.CrearPersonaje();
         Personaje personaje4 = Personaje.CrearPersonaje();
         return new Personaje[]{personaje1, personaje2, personaje3, personaje4};
+    }
+
+
+    private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal) {
+        System.out.println("Guardando partida...");
+
+        GuardarDatos guardarDatos = new GuardarDatos();
+        GuardarDatos.guardarPersonajes(personajesPartida);
+        GuardarDatos.guardarObjetos(inventarioGlobal);
+
+        System.out.println("Partida guardada correctamente.");
     }
 
 }

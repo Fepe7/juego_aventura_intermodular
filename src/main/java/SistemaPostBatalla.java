@@ -9,7 +9,6 @@ public class SistemaPostBatalla {
         boolean opcionValida = false;
 
         while (!opcionValida) {
-            System.out.println("\n=== VICTORIA! ===");
             System.out.println("Has derrotado al enemigo. ¿Qué deseas hacer?");
             System.out.println("1. Ir a la HOGUERA (Restaura toda la vida de tus personajes)");
             System.out.println("2. Explorar el CAMPAMENTO (Puedes encontrar objetos útiles o eventos)");
