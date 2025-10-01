@@ -1,53 +1,27 @@
 [
   {
-    "idClase": "GUERRERO",
-    "vidaMaxima": 120,
-    "vida": 120,
-    "ataque": 40,
-    "velocidad": 25,
-    "nombre": "a",
-    "vivo": true,
-    "mana": 30,
-    "habilidades": [
-      {
-        "nombre": "Golpe Poderoso",
-        "costeMana": 10,
-        "danyo": 50,
-        "descripcion": "Consume 10 de maná y hace un golpe que hace +15 de daño ",
-        "tipoHabilidad": "DANYO"
-      },
-      {
-        "nombre": "Rugido Batalla",
-        "costeMana": 15,
-        "danyo": 0,
-        "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
-        "tipoHabilidad": "APOYO"
-      }
-    ]
-  },
-  {
-    "idClase": "MAGO",
-    "vidaMaxima": 70,
-    "vida": 70,
+    "idClase": "ASESINO",
+    "vidaMaxima": 60,
+    "vida": 80,
     "ataque": 25,
-    "velocidad": 35,
-    "nombre": "b",
+    "velocidad": 65,
+    "nombre": "ASESINO",
     "vivo": true,
-    "mana": 100,
+    "mana": 0,
     "habilidades": [
       {
-        "nombre": "Bola de fuego",
-        "costeMana": 20,
-        "danyo": 35,
-        "descripcion": "Consume 20 de maná e inflinge +35 de daño",
+        "nombre": "Ataque furtivo",
+        "costeMana": 15,
+        "danyo": 25,
+        "descripcion": "Consume 10 de maná y ataca por detras e inflinge +25 de daño",
         "tipoHabilidad": "DANYO"
       },
       {
-        "nombre": "Palabra curativa",
-        "costeMana": 15,
+        "nombre": "Golpe venenoso",
+        "costeMana": 10,
         "danyo": 0,
-        "descripcion": "Consume 15 de maná y se cura 20 de vida",
-        "tipoHabilidad": "APOYO"
+        "descripcion": "Consume 10 de maná e inflinge daño normal y aplica veneno (5 de daño extra por 3 turnos si quieres, o lo podemos dejar por 15 de daño mas)",
+        "tipoHabilidad": "DANYO"
       }
     ]
   },
@@ -57,9 +31,9 @@
     "vida": 90,
     "ataque": 30,
     "velocidad": 45,
-    "nombre": "c",
+    "nombre": "ARQUERO",
     "vivo": true,
-    "mana": 100,
+    "mana": 115,
     "habilidades": [
       {
         "nombre": "Flecha precisa",
@@ -78,28 +52,54 @@
     ]
   },
   {
-    "idClase": "ASESINO",
-    "vidaMaxima": 60,
-    "vida": 60,
+    "idClase": "MAGO",
+    "vidaMaxima": 70,
+    "vida": 70,
     "ataque": 25,
-    "velocidad": 65,
-    "nombre": "d",
+    "velocidad": 35,
+    "nombre": "MAGO",
     "vivo": true,
-    "mana": 30,
+    "mana": 80,
     "habilidades": [
       {
-        "nombre": "Ataque furtivo",
-        "costeMana": 15,
-        "danyo": 25,
-        "descripcion": "Consume 10 de maná y ataca por detras e inflinge +25 de daño",
+        "nombre": "Bola de fuego",
+        "costeMana": 20,
+        "danyo": 35,
+        "descripcion": "Consume 20 de maná e inflinge +35 de daño",
         "tipoHabilidad": "DANYO"
       },
       {
-        "nombre": "Golpe venenoso",
-        "costeMana": 10,
+        "nombre": "Palabra curativa",
+        "costeMana": 15,
         "danyo": 0,
-        "descripcion": "Consume 10 de maná e inflinge daño normal y aplica veneno (5 de daño extra por 3 turnos si quieres, o lo podemos dejar por 15 de daño mas)",
+        "descripcion": "Consume 15 de maná y se cura 20 de vida",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "GUERRERO",
+    "vidaMaxima": 120,
+    "vida": 120,
+    "ataque": 40,
+    "velocidad": 25,
+    "nombre": "GUERRERO",
+    "vivo": true,
+    "mana": 20,
+    "habilidades": [
+      {
+        "nombre": "Golpe Poderoso",
+        "costeMana": 10,
+        "danyo": 50,
+        "descripcion": "Consume 10 de maná y hace un golpe que hace +15 de daño ",
         "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Rugido Batalla",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
+        "tipoHabilidad": "APOYO"
       }
     ]
   }

@@ -192,14 +192,13 @@ public class Juego {
                                             metodo.invoke(habilidadSeleccionada, p, enemigo);
                                             //Se resta el mana del personaje
                                             p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
-
+                                            continuar = 1;
                                             if (comporbarMuerte(enemigo)){
                                                 continuar = 1;
                                                 break;
                                             }
 
                                             System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
-
                                             habilidadValida = true;
                                         } else if (habilidadSeleccionada.getTipoHabilidad() == TipoHabilidad.APOYO) {
                                             metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class);
@@ -207,7 +206,7 @@ public class Juego {
                                             metodo.invoke(habilidadSeleccionada, p);
                                             //Se resta el mana del personaje
                                             p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
-                                            habilidadValida = true;
+                                            continuar = 1;
                                         }
                                     } catch (Exception e) {
                                         System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
@@ -226,11 +225,6 @@ public class Juego {
                             sc.next(); // Limpia entrada incorrecta
                         }
                     } while (!habilidadValida);
-
-                    if (continuar == 0){
-                    } else {
-                        continuar = 1;
-                    }
                     break;
 
 
@@ -264,15 +258,16 @@ public class Juego {
                                 try {
                                     //Obtiene un metodo de la clase objeto por el nombre
                                     //Esto para usar el metodo corrspondiente al objeto
-                                    java.lang.reflect.Method metodo = Objeto.class.getMethod(nombreMetodo);
+                                    java.lang.reflect.Method metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
 
                                     //Se ejecuta el metodo que queriamos sobre el personaje
-                                    metodo.invoke(objetoSeleccionado);
+                                    metodo.invoke(objetoSeleccionado, p);
                                     System.out.println("Has usado el objeto: " + objetoSeleccionado.getNombre());
                                     //Se elimina el objeto del inventario
                                     inventario.remove(decisionObjeto);
                                 } catch (Exception e) {
                                     System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
+                                    System.out.println(e);
                                 }
                             } else {
                                 //Aqui es imposible que llege el programa, lo dejo para pruebas

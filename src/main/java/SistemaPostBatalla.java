@@ -38,6 +38,8 @@ public class SistemaPostBatalla {
         for (Personaje p : personajes) {
             if (p.isVivo()) {
                 p.setVida(p.getVida_maxima());
+                p.setMana(p.getMana() + 20); //
+                System.out.println("Se recupera 20 puntos de maná.");
                 System.out.println(p.getNombre() + " ha recuperado toda su vida! [" + p.getVida() + "/" + p.getVida_maxima() + "]");
             }
         }

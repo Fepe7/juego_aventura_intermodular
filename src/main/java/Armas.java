@@ -4,7 +4,7 @@ public class Armas extends Objeto {
     }
 
     // Armas GUERRERO
-    public void espadaHierroPerfeccionada(Personaje p) {
+    public static void espadaHierroPerfeccionada(Personaje p) {
         if (p.getClase() != TiposClases.GUERRERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.GUERRERO);
         } else {
@@ -12,7 +12,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void espadaDragon(Personaje p) {
+    public static void espadaDragon(Personaje p) {
         if (p.getClase() != TiposClases.GUERRERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.GUERRERO);
         } else {
@@ -20,7 +20,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void hachaGuerra(Personaje p) {
+    public static void hachaGuerra(Personaje p) {
         if (p.getClase() != TiposClases.GUERRERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.GUERRERO);
         } else {
@@ -29,7 +29,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void martilloRunico(Personaje p) {
+    public static void martilloRunico(Personaje p) {
         if (p.getClase() != TiposClases.GUERRERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.GUERRERO);
         } else {
@@ -39,7 +39,7 @@ public class Armas extends Objeto {
 
 
     // Armas MAGO
-    public void bastonElemental(Personaje p) {
+    public static void bastonElemental(Personaje p) {
         if (p.getClase() != TiposClases.MAGO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.MAGO);
         } else {
@@ -47,7 +47,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void orbeArcano(Personaje p) {
+    public static void orbeArcano(Personaje p) {
         if (p.getClase() != TiposClases.MAGO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.MAGO);
         } else {
@@ -56,7 +56,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void tomoProhibido(Personaje p) {
+    public static void tomoProhibido(Personaje p) {
         if (p.getClase() != TiposClases.MAGO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.MAGO);
         } else {
@@ -67,7 +67,7 @@ public class Armas extends Objeto {
 
 
     // Armas ARQUERO
-    public void arcoLargoElfico(Personaje p) {
+    public static void arcoLargoElfico(Personaje p) {
         if (p.getClase() != TiposClases.ARQUERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ARQUERO);
         } else {
@@ -75,7 +75,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void ballestaPesada(Personaje p) {
+    public static void ballestaPesada(Personaje p) {
         if (p.getClase() != TiposClases.ARQUERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ARQUERO);
         } else {
@@ -84,7 +84,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void arcoCortoEncantado(Personaje p) {
+    public static void arcoCortoEncantado(Personaje p) {
         if (p.getClase() != TiposClases.ARQUERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ARQUERO);
         } else {
@@ -94,7 +94,7 @@ public class Armas extends Objeto {
 
 
     // Armas ASESINO
-    public void dagasEnvenenadas(Personaje p) {
+    public static void dagasEnvenenadas(Personaje p) {
         if (p.getClase() != TiposClases.ASESINO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ASESINO);
         } else {
@@ -102,7 +102,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void espadasGemelas(Personaje p) {
+    public static void espadasGemelas(Personaje p) {
         if (p.getClase() != TiposClases.ASESINO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ASESINO);
         } else {
@@ -110,7 +110,7 @@ public class Armas extends Objeto {
         }
     }
 
-    public void cuchillaSombra(Personaje p) {
+    public static void cuchillaSombra(Personaje p) {
         if (p.getClase() != TiposClases.ASESINO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ASESINO);
         } else {

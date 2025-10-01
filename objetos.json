@@ -1,10 +1,1 @@
-[
-  {
-    "nombre": "Pocion de mana",
-    "descripcion": "Restaura 30 puntos de mana"
-  },
-  {
-    "nombre": "Elixir de poder",
-    "descripcion": "Aumenta el ataque en 10 puntos"
-  }
-]
+[]
