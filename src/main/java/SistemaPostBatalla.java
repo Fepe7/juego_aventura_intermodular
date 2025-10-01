@@ -85,7 +85,7 @@ public class SistemaPostBatalla {
     }
 
     private static void eventoAlmacen(ArrayList<Objeto> inventarioGlobal) {
-        System.out.println("\n📦 ALMACÉN ABANDONADO");
+        System.out.println("\nALMACÉN ABANDONADO");
         System.out.println("Encuentras un viejo almacén con cajas polvorientas...");
 
         int tipoPocion = random.nextInt(3);
@@ -141,7 +141,7 @@ public class SistemaPostBatalla {
     }
 
     private static void eventoCampamentoViajeros(ArrayList<Objeto> inventarioGlobal) {
-        System.out.println("\n🏕️ CAMPAMENTO DE VIAJEROS");
+        System.out.println("\n CAMPAMENTO DE VIAJEROS");
         System.out.println("Encuentras un grupo de viajeros amistosos...");
         System.out.println("Un viajero veterano se acerca: '¡Hola aventurero! Tengo algo que podría serte útil.'");
 
@@ -152,7 +152,7 @@ public class SistemaPostBatalla {
     }
 
     private static void eventoBosque(Personaje[] personajes, ArrayList<Objeto> inventarioGlobal) {
-        System.out.println("\n🌲 BOSQUE ENCANTADO");
+        System.out.println("\n BOSQUE ENCANTADO");
         System.out.println("El bosque brilla con una luz mágica...");
 
         if (random.nextBoolean()) {
@@ -186,7 +186,7 @@ public class SistemaPostBatalla {
     }
 
     private static void eventoLago(ArrayList<Objeto> inventarioGlobal) {
-        System.out.println("\n💎 LAGO SECRETO");
+        System.out.println("\n LAGO SECRETO");
         System.out.println("Descubres un hermoso lago cristalino...");
         System.out.println("En el fondo brilla algo... ¡Es un tesoro!");
 
