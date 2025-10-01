@@ -4,17 +4,13 @@ import java.util.Scanner;
 
 public class Personaje extends Entidad {
 
-
     private TiposClases idClase;
     private static List<Objeto> objetosEquipados = new ArrayList<>();
     private int vidaMaxima;
 
-
     Personaje(String nombre) {
         super(nombre);
     }
-
-
     //Esto es un metodo estatico que crea un personaje segun la clase que se le pase por parametro
     //El codigo de la clase es el identificador de la clase
     //El metodo devuelve un objeto de la clase Personaje con los atributos iniciales
@@ -23,20 +19,38 @@ public class Personaje extends Entidad {
         Scanner sc = new Scanner(System.in);
 
         //Le pide al usuario el nombre del personaje por consola
-        System.out.println("Pon el nombre de tu personaje:");
-        String nombre = sc.nextLine();
+        String nombre;
 
+        do {
+            System.out.println("Pon el nombre de tu personaje:");
+            nombre = sc.nextLine().trim();
 
-        //Menu de clases de personaje
-        System.out.println("Elige una clase de personaje:");
-        System.out.println("1. Guerrero");
-        System.out.println("2. Mago");
-        System.out.println("3. Arquero");
-        System.out.println("4. Asesino");
+            if (nombre.isEmpty()) {
+                System.out.println("El nombre no puede estar vacío. Inténtalo de nuevo.");
+            }
+        } while (nombre.isEmpty());
 
-        //Eliges la clase del personaje por consola
-        int idClase = sc.nextInt();
+        int idClase;
 
+        do {
+            //Menu de clases de personaje
+            System.out.println("Elige una clase de personaje:");
+            System.out.println("1. Guerrero");
+            System.out.println("2. Mago");
+            System.out.println("3. Arquero");
+            System.out.println("4. Asesino");
+
+            while (!sc.hasNextInt()) {
+                System.out.println("Por favor, introduce un número válido.");
+                sc.next();
+            }
+
+            idClase = sc.nextInt();
+
+            if (idClase < 1 || idClase > 4) {
+                System.out.println("Clase inválida. Elige un número entre 1 y 4.");
+            }
+        } while (idClase < 1 || idClase > 4);
 
         //Creas el objeto de personaje con los atributos segun la clase elegida
         Personaje personaje = new Personaje(nombre);
@@ -97,7 +111,7 @@ public class Personaje extends Entidad {
 
     @Override
     public String toString() {
-        return "El personaje " + nombre + " de la clase " + idClase + " tiene " + vida +" de vida, " + ataque + " de ataque y " + velocidad + " de velocidad.";
+        return "El personaje " + nombre + " de la clase " + idClase + " tiene " + vida + " de vida, " + ataque + " de ataque y " + velocidad + " de velocidad.";
     }
 
 

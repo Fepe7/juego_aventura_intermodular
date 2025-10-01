@@ -58,6 +58,9 @@ public class Juego {
                 if (p.isVivo()) {
                     accionPersonaje(p, enemigo);
                 }
+                if (!enemigo.isVivo()) {
+                    break;
+                }
             } else if (combatiente instanceof Enemigos) {
                 Enemigos e = (Enemigos) combatiente;
                 if (e.isVivo()) {
@@ -149,10 +152,20 @@ public class Juego {
                             Habilidad habilidad = habilidades.get(i);
                             System.out.println((i + 1) + " - " + habilidad.getNombre() + " (Coste de maná: " + habilidad.getCosteMana() + ")");
                         }
+                        System.out.println("0 - Cancelar y volver al menú principal");
 
                         Scanner sc = new Scanner(System.in);
                         if (sc.hasNextInt()) {
-                            habilidad_decision = sc.nextInt() - 1;
+                            habilidad_decision = sc.nextInt();
+                            if (habilidad_decision == 0){
+                                System.out.println("Has cancelado la seleccion de habilidad");
+                                habilidadValida = true;
+                                continuar = 0;
+                                break;
+                            }
+                            habilidad_decision -= 1;
+
+
                             if (habilidad_decision >= 0 && habilidad_decision < habilidades.size()) {
                                 Habilidad habilidadSeleccionada = habilidades.get(habilidad_decision);
                                 //Comprueba si tienes mana suficiente para usar la habilidad
@@ -202,6 +215,8 @@ public class Juego {
                                     }
                                 } else {
                                     System.out.println("No tienes suficiente maná para usar esa habilidad. Elige otra.");
+                                    System.out.println("Maná actual: " + p.getMana() + ", Maná necesario: " + habilidadSeleccionada.getCosteMana());
+
                                 }
                             } else {
                                 System.out.println("Selección inválida. Intenta de nuevo.");
@@ -211,7 +226,11 @@ public class Juego {
                             sc.next(); // Limpia entrada incorrecta
                         }
                     } while (!habilidadValida);
-                    continuar = 1;
+
+                    if (continuar == 0){
+                    } else {
+                        continuar = 1;
+                    }
                     break;
 
 

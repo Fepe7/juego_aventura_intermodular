@@ -111,7 +111,7 @@ public class Armas extends Objeto {
     }
 
     public void cuchillaSombra(Personaje p) {
-        if (p.getClase() != TiposClases.ARQUERO) {
+        if (p.getClase() != TiposClases.ASESINO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ASESINO);
         } else {
             p.setAtaque(p.getAtaque() + 25);

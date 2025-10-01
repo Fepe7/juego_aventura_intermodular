@@ -24,38 +24,33 @@ public class Main {
 
 
 
+        int ronda = 0;
+
         //Este bucle hay que cambiarlo entero para que cuando se gane cambies de habitacion ytodo eso
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
-            Enemigos enemigo = new Enemigos("Goblin", 100, 15, 10, "Un goblin salvaje");
-            System.out.println("Un " + enemigo.getNombre() + " ha aparecido!");
+            Enemigos enemigo = Combates.combate(ronda);
+            System.out.println("¡Un " + enemigo.getNombre() + " ha aparecido! Prepárate para la batalla.");
             while (enemigo.isVivo() && (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo())) {
                 Juego.turnoActual(personajesPartida, enemigo);
             }
+
             if (!enemigo.isVivo()) {
                 System.out.println("Has derrotado al " + enemigo.getNombre() + "!");
                 //Aqui iria lo de pasar de habitacion y toda la pesca
+                ronda++;
 
                 SistemaPostBatalla.opcionesPostBatalla(personajesPartida, inventarioGlobal);
-                break;
             } else {
                 System.out.println("Todos tus personajes han muerto. Fin del juego.");
                 break;
             }
         }
 
-
-        for (
-                int i = 0;
-                i < personajesPartida.length; i++) {
-            System.out.println(personajesPartida[i]);
-        }
-
+        //Guardar datos al salir del juego
         GuardarDatos guardarDatos = new GuardarDatos();
         GuardarDatos.guardarPersonajes(personajesPartida);
         InventarioGlobal inventarioGlobal1 =  new InventarioGlobal();
         GuardarDatos.guardarObjetos(inventarioGlobal1);
-
-
     }
 }
 
