@@ -15,4 +15,12 @@ public class InventarioGlobal {
     public static List<Objeto> getInventarioGlobal() {
         return inventarioGlobal;
     }
+
+    public static void setInventarioGlobal(List<Objeto> nuevosObjetos) {
+        if (nuevosObjetos == null) {
+            inventarioGlobal = new ArrayList<>();
+        } else {
+            inventarioGlobal = new ArrayList<>(nuevosObjetos);
+        }
+    }
 }

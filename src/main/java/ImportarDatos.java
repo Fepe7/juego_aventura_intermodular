@@ -1,9 +1,13 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class ImportarDatos {
 
@@ -18,8 +22,22 @@ public class ImportarDatos {
         }
     }
 
-    // Comprova si existeix el fitxer de partida guardada.
+    public static List<Objeto> cargarObjetos() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Type listType = new TypeToken<List<Objeto>>() {}.getType();
+        try (FileReader reader = new FileReader("objetos.json")) {
+            return gson.fromJson(reader, listType);
+        } catch (IOException e) {
+            System.out.println("Error al leer objetos.json: " + e.getMessage());
+            return null;
+        }
+    }
+
     public static boolean existePartidaGuardada() {
         return Files.exists(Paths.get("partida.json"));
+    }
+
+    public static boolean existeObjetosGuardados() {
+        return Files.exists(Paths.get("objetos.json"));
     }
 }
