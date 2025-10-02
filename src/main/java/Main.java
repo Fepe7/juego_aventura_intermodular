@@ -2,6 +2,31 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    public class PantallasJuego {
+
+        public static void mostrarVictoria() {
+            System.out.println("\n==============================");
+            System.out.println("        ¡VICTORIA! 🏆");
+            System.out.println("==============================");
+            System.out.println("¡Has derrotado al jefe final!");
+            System.out.println("¡Felicidades, has ganado la partida!");
+            System.out.println("==============================\n");
+        }
+
+        public static void mostrarDerrota() {
+            System.out.println("\n==============================");
+            System.out.println("        DERROTA ☠️");
+            System.out.println("==============================");
+            System.out.println("Todos tus personajes han caído.");
+            System.out.println("Fin del juego. ¡Inténtalo de nuevo!");
+            System.out.println("==============================\n");
+        }
+    }
+
+
+
+
+
     public static void main(String[] args) {
         TextConsoleWindow.install("RPG - Consola", true);
         Scanner scanner = new Scanner(System.in);
@@ -56,6 +81,9 @@ public class Main {
 
         int ronda = 0;
 
+
+        final int rondaFinal = 5; // o el número de la última ronda/jefe
+
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
             Enemigos enemigo = Combates.combate(ronda);
             System.out.println("¡Un " + enemigo.getNombre() + " ha aparecido! Prepárate para la batalla.");
@@ -64,19 +92,19 @@ public class Main {
             }
 
             if (!enemigo.isVivo()) {
-                //Aqui iria lo de pasar de habitacion y toda la pesca
-                System.out.println("\n=== VICTORIA! ===");
+                if (ronda == rondaFinal - 1) {
+                    PantallasJuego.mostrarVictoria();
+                    break;
+                }
                 System.out.println("\n¿Quieres guardar partida (S/N) ?\n");
                 String respuesta = scanner.next();
                 if ("s".equalsIgnoreCase(respuesta)) {
                     guardadPartida(personajesPartida, inventarioGlobal);
                 }
-
                 ronda++;
-
                 SistemaPostBatalla.opcionesPostBatalla(personajesPartida, inventarioGlobal);
             } else {
-                System.out.println("Todos tus personajes han muerto. Fin del juego.");
+                PantallasJuego.mostrarDerrota();
                 break;
             }
         }

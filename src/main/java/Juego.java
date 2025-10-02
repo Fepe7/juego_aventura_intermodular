@@ -253,61 +253,58 @@ public class Juego {
                     break;
 
 
-                case 3:
-                    System.out.println("Menu de objetos");
+                // Dentro de Juego.java, en el método accionPersonaje, reemplaza el case 3 por esto:
+                    case 3:
+                        System.out.println("Menu de objetos");
 
-                    List<Objeto> inventario = InventarioGlobal.getInventarioGlobal();
-                    if (inventario.isEmpty()) {
-                        System.out.println("El inventario esta vacio");
-                        break;
-                    } else {
-                        System.out.println("Elige un objeto para usar");
-                        //Lista los objetos con el numero con el que debes de apretar par usarlo
-                        for (int i = 0; i < inventario.size(); i++) {
-                            //Pilla el objeto
-                            Objeto objeto = inventario.get(i);
-                            System.out.println(i + 1 + "- " + objeto.toString());
-                        }
-                        Scanner sc = new Scanner(System.in);
-                        int decisionObjeto = sc.hasNextInt() ? sc.nextInt() - 1 : -1;
-                        if (decisionObjeto >= 0 && decisionObjeto < inventario.size()) {
-
-                            //Se pilla el objeto seleccionado
-                            Objeto objetoSeleccionado = inventario.get(decisionObjeto);
-
-                            //Se pilla el nombre del objeto y se pasa a minusculas
-                            String nombreMetodo = getString(objetoSeleccionado);
-
-                            //Pilla el nombre del metodo que hemos recogido arriba
-                            if (!nombreMetodo.isEmpty()) {
-                                try {
-                                    //Obtiene un metodo de la clase objeto por el nombre
-                                    //Esto para usar el metodo corrspondiente al objeto
-                                    java.lang.reflect.Method metodo;
-
-                                    // Usa la clase correcta según el tipo de objeto
-                                    if (objetoSeleccionado instanceof Armaduras) {
-                                        metodo = Armaduras.class.getMethod(nombreMetodo, Personaje.class);
-                                    } else if (objetoSeleccionado instanceof Armas) {
-                                        metodo = Armas.class.getMethod(nombreMetodo, Personaje.class);
-                                    } else {
-                                        metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
+                        List<Objeto> inventario = InventarioGlobal.getInventarioGlobal();
+                        if (inventario.isEmpty()) {
+                            System.out.println("El inventario esta vacio");
+                            break;
+                        } else {
+                            System.out.println("Elige un objeto para usar");
+                            for (int i = 0; i < inventario.size(); i++) {
+                                Objeto objeto = inventario.get(i);
+                                System.out.println((i + 1) + "- " + objeto.toString());
+                            }
+                            System.out.println("0 - Volver al menú anterior");
+                            Scanner sc = new Scanner(System.in);
+                            int decisionObjeto = sc.hasNextInt() ? sc.nextInt() : -1;
+                            if (decisionObjeto == 0) {
+                                System.out.println("Has vuelto al menú anterior.");
+                                break; // Sale del menu de objetos y vuelve al menu principal del turno
+                            }
+                            decisionObjeto -= 1;
+                            if (decisionObjeto >= 0 && decisionObjeto < inventario.size()) {
+                                Objeto objetoSeleccionado = inventario.get(decisionObjeto);
+                                String nombreMetodo = getString(objetoSeleccionado);
+                                if (!nombreMetodo.isEmpty()) {
+                                    try {
+                                        java.lang.reflect.Method metodo;
+                                        if (objetoSeleccionado instanceof Armaduras) {
+                                            metodo = Armaduras.class.getMethod(nombreMetodo, Personaje.class);
+                                        } else if (objetoSeleccionado instanceof Armas) {
+                                            metodo = Armas.class.getMethod(nombreMetodo, Personaje.class);
+                                        } else {
+                                            metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
+                                        }
+                                        metodo.invoke(objetoSeleccionado, p);
+                                        System.out.println("Has usado el objeto: " + objetoSeleccionado.getNombre());
+                                        inventario.remove(decisionObjeto);
+                                    } catch (Exception e) {
+                                        System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
+                                        System.out.println(e);
                                     }
-                                    metodo.invoke(objetoSeleccionado, p);
-                                    System.out.println("Has usado el objeto: " + objetoSeleccionado.getNombre());
-                                    inventario.remove(decisionObjeto);
-                                } catch (Exception e) {
-                                    System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
-                                    System.out.println(e);
+                                } else {
+                                    System.out.println("No se reconoce el objeto.");
                                 }
+                                continuar = 1;
+                                break;
                             } else {
-                                //Aqui es imposible que llege el programa, lo dejo para pruebas
-                                System.out.println("No se reconoce el objeto.");
+                                System.out.println("Selección inválida.");
+                                break;
                             }
                         }
-                        continuar = 1;
-                        break;
-                    }
 
                 case 4:
                     System.out.println(p);

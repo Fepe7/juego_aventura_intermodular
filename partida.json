@@ -2,12 +2,12 @@
   {
     "idClase": "ASESINO",
     "vidaMaxima": 60,
-    "vida": 60,
+    "vida": 10,
     "ataque": 25,
     "velocidad": 65,
     "nombre": "Asesino",
     "vivo": true,
-    "mana": 10,
+    "mana": 15,
     "habilidades": [
       {
         "nombre": "Ataque furtivo",
@@ -26,40 +26,14 @@
     ]
   },
   {
-    "idClase": "MAGO",
-    "vidaMaxima": 70,
-    "vida": 70,
-    "ataque": 25,
-    "velocidad": 35,
-    "nombre": "Mago",
-    "vivo": true,
-    "mana": 80,
-    "habilidades": [
-      {
-        "nombre": "Bola de fuego",
-        "costeMana": 20,
-        "danyo": 35,
-        "descripcion": "Consume 20 de maná e inflinge +35 de daño",
-        "tipoHabilidad": "DANYO"
-      },
-      {
-        "nombre": "Palabra curativa",
-        "costeMana": 15,
-        "danyo": 0,
-        "descripcion": "Consume 15 de maná y se cura 20 de vida",
-        "tipoHabilidad": "APOYO"
-      }
-    ]
-  },
-  {
     "idClase": "GUERRERO",
     "vidaMaxima": 120,
-    "vida": 90,
-    "ataque": 40,
+    "vida": 120,
+    "ataque": 50,
     "velocidad": 25,
     "nombre": "Guerrero",
     "vivo": true,
-    "mana": 50,
+    "mana": 55,
     "habilidades": [
       {
         "nombre": "Golpe Poderoso",
@@ -78,14 +52,40 @@
     ]
   },
   {
+    "idClase": "MAGO",
+    "vidaMaxima": 70,
+    "vida": 70,
+    "ataque": 25,
+    "velocidad": 35,
+    "nombre": "Mago",
+    "vivo": true,
+    "mana": 40,
+    "habilidades": [
+      {
+        "nombre": "Bola de fuego",
+        "costeMana": 20,
+        "danyo": 35,
+        "descripcion": "Consume 20 de maná e inflinge +35 de daño",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Palabra curativa",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y se cura 20 de vida",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
     "idClase": "ARQUERO",
     "vidaMaxima": 90,
-    "vida": 55,
+    "vida": 90,
     "ataque": 30,
     "velocidad": 45,
     "nombre": "Arquero",
     "vivo": true,
-    "mana": 80,
+    "mana": 55,
     "habilidades": [
       {
         "nombre": "Flecha precisa",
