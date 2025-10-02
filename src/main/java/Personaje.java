@@ -111,7 +111,7 @@ public class Personaje extends Entidad {
 
     @Override
     public String toString() {
-        return "El personaje " + nombre + " de la clase " + idClase + " tiene " + vida + " de vida, " + ataque + " de ataque y " + velocidad + " de velocidad.";
+        return "El personaje " + nombre + " de la clase " + idClase + " tiene " + vida + " de vida, " + getMana() + " de mana, "  + ataque + " de ataque y " + velocidad + " de velocidad.";
     }
 
 

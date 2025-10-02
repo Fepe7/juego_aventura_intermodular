@@ -52,6 +52,7 @@ public class Habilidad {
     // Palabra curativa: cura al personaje
     public void palabraCurativa(Personaje p) {
         p.setVida(p.getVida() + 20);
+        Objeto.comprobarVidaMaxima(p);
         System.out.println("Has usado " + nombre);
         System.out.println("Te has curado 20 puntos de vida");
     }
@@ -68,6 +69,7 @@ public class Habilidad {
     // Trozo de carne: cura al personaje
     public void trozoDeCarne(Personaje p) {
         p.setVida(p.getVida() + 20);
+        Objeto.comprobarVidaMaxima(p);
         System.out.println("Has usado " + nombre);
         System.out.println("Te has curado 20 puntos de vida");
     }

@@ -174,7 +174,9 @@ public class Juego {
                         System.out.println("Elige una habilidad:");
                         for (int i = 0; i < habilidades.size(); i++) {
                             Habilidad habilidad = habilidades.get(i);
-                            System.out.println((i + 1) + " - " + habilidad.getNombre() + " (Coste de maná: " + habilidad.getCosteMana() + ")");
+                            System.out.println((i + 1) + " - " + habilidad.getNombre() + " (Coste de maná: " + habilidad.getCosteMana() + ")" + "(Daño al enemigo: " + (habilidad.getDanyo() + p.getAtaque()) + ")");
+
+
                         }
                         System.out.println("0 - Cancelar y volver al menú principal");
 
