@@ -37,13 +37,19 @@ public class Juego {
                 nombreMetodo = "escudoBendito";
             }
         } else if (objetoSeleccionado instanceof Armas) {
-            // Aquí puedes agregar la lógica para armas si es necesario
             if (nombreObjeto.contains("espada de hierro") || nombreObjeto.contains("espada hierro")) {
                 nombreMetodo = "espadaHierroPerfeccionada";
             } else if (nombreObjeto.contains("bastón elemental") || nombreObjeto.contains("baston elemental")) {
                 nombreMetodo = "bastonElemental";
+            } else if (nombreObjeto.contains("arco largo")) {
+                nombreMetodo = "arcoLargo";
+            } else if (nombreObjeto.contains("daga venenosa")) {
+                nombreMetodo = "dagaVenenosa";
+            } else if (nombreObjeto.contains("martillo de guerra") || nombreObjeto.contains("martillo guerra")) {
+                nombreMetodo = "martilloGuerra";
+            } else if (nombreObjeto.contains("lanza sagrada")) {
+                nombreMetodo = "lanzaSagrada";
             }
-            // Agregar más casos según sea necesario
         } else {
             // Objetos consumibles normales
             if (nombreObjeto.contains("vida")) {
