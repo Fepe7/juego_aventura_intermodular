@@ -2,12 +2,12 @@
   {
     "idClase": "ASESINO",
     "vidaMaxima": 60,
-    "vida": 30,
+    "vida": 60,
     "ataque": 25,
     "velocidad": 65,
     "nombre": "Asesino",
     "vivo": true,
-    "mana": 0,
+    "mana": 10,
     "habilidades": [
       {
         "nombre": "Ataque furtivo",
@@ -26,40 +26,14 @@
     ]
   },
   {
-    "idClase": "ARQUERO",
-    "vidaMaxima": 90,
-    "vida": 60,
-    "ataque": 30,
-    "velocidad": 45,
-    "nombre": "Arquero",
-    "vivo": true,
-    "mana": 70,
-    "habilidades": [
-      {
-        "nombre": "Flecha precisa",
-        "costeMana": 15,
-        "danyo": 20,
-        "descripcion": "Consume 15 de maná y lanza una flecha e inflinge +20 de daño",
-        "tipoHabilidad": "DANYO"
-      },
-      {
-        "nombre": "Trozo de carne",
-        "costeMana": 0,
-        "danyo": 0,
-        "descripcion": "Consume 10 de maná y restaura 20 de vida",
-        "tipoHabilidad": "APOYO"
-      }
-    ]
-  },
-  {
     "idClase": "MAGO",
     "vidaMaxima": 70,
-    "vida": 45,
-    "ataque": 35,
+    "vida": 70,
+    "ataque": 25,
     "velocidad": 35,
     "nombre": "Mago",
     "vivo": true,
-    "mana": 40,
+    "mana": 80,
     "habilidades": [
       {
         "nombre": "Bola de fuego",
@@ -79,13 +53,13 @@
   },
   {
     "idClase": "GUERRERO",
-    "vidaMaxima": 150,
-    "vida": 95,
+    "vidaMaxima": 120,
+    "vida": 90,
     "ataque": 40,
-    "velocidad": 15,
+    "velocidad": 25,
     "nombre": "Guerrero",
     "vivo": true,
-    "mana": 10,
+    "mana": 50,
     "habilidades": [
       {
         "nombre": "Golpe Poderoso",
@@ -95,10 +69,36 @@
         "tipoHabilidad": "DANYO"
       },
       {
-        "nombre": "Rugido Batalla",
+        "nombre": "Rugido de Batalla",
         "costeMana": 15,
         "danyo": 0,
         "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "ARQUERO",
+    "vidaMaxima": 90,
+    "vida": 55,
+    "ataque": 30,
+    "velocidad": 45,
+    "nombre": "Arquero",
+    "vivo": true,
+    "mana": 80,
+    "habilidades": [
+      {
+        "nombre": "Flecha precisa",
+        "costeMana": 15,
+        "danyo": 20,
+        "descripcion": "Consume 15 de maná y lanza una flecha e inflinge +20 de daño",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Trozo de carne",
+        "costeMana": 0,
+        "danyo": 0,
+        "descripcion": "Consume 10 de maná y restaura 20 de vida",
         "tipoHabilidad": "APOYO"
       }
     ]
