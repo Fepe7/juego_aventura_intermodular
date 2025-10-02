@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        TextConsoleWindow.install("RPG - Consola", true);
         Scanner scanner = new Scanner(System.in);
 
         Personaje[] personajesPartida;
