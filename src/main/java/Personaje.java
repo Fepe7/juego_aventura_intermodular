@@ -133,18 +133,35 @@ public class Personaje extends Entidad {
 
 
     // Métodos para el inventario individual
-    public void equiparObjeto(Objeto objeto) {
-        objetosEquipados.add(objeto);
+public void equiparObjeto(Objeto objeto) {
+    String nombreObjetoMetodo = Juego.getString(objeto);
 
-        InventarioGlobal.eliminarDelInventarioGlobal(objeto);
-
-        String nombreObjetoMetodo = Juego.getString(objeto);
-        try {
-            Objeto.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(objeto, this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    // Verificar si se encontró un método válido
+    if (nombreObjetoMetodo.isEmpty()) {
+        System.out.println("No se reconoce el objeto: " + objeto.getNombre());
+        return;
     }
+
+    objetosEquipados.add(objeto);
+    InventarioGlobal.eliminarDelInventarioGlobal(objeto);
+
+    try {
+        if (objeto instanceof Armaduras) {
+            // Los métodos en Armaduras son métodos de instancia
+            Armaduras.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(objeto, this);
+        } else if (objeto instanceof Armas) {
+            // Los métodos en Armas son estáticos
+            Armas.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(null, this);
+        } else {
+            // Otros objetos consumibles
+            Objeto.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(objeto, this);
+        }
+        System.out.println("Has equipado: " + objeto.getNombre());
+    } catch (Exception e) {
+        System.out.println("Error al equipar: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
 
 
     public static void desequiparObjeto(Objeto objeto, Personaje p) {

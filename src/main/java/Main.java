@@ -82,7 +82,7 @@ public class Main {
         int ronda = 0;
 
 
-        final int rondaFinal = 5; // o el número de la última ronda/jefe
+        final int rondaFinal = 5; // o el numero de la ultima ronda/jefe
 
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
             Enemigos enemigo = Combates.combate(ronda);

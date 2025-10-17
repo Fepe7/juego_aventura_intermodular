@@ -37,20 +37,35 @@ public class Juego {
                 nombreMetodo = "escudoBendito";
             }
         } else if (objetoSeleccionado instanceof Armas) {
-            if (nombreObjeto.contains("espada de hierro") || nombreObjeto.contains("espada hierro")) {
+            if (nombreObjeto.contains("espada de hierro") || nombreObjeto.contains("espada hierro") ||
+                    nombreObjeto.contains("espada hierro perfeccionada")) {
                 nombreMetodo = "espadaHierroPerfeccionada";
+            } else if (nombreObjeto.contains("espada dragon") || nombreObjeto.contains("espada de dragon")) {
+                nombreMetodo = "espadaDragon";
+            } else if (nombreObjeto.contains("hacha guerra") || nombreObjeto.contains("hacha de guerra")) {
+                nombreMetodo = "hachaGuerra";
+            } else if (nombreObjeto.contains("martillo runico") || nombreObjeto.contains("martillo de guerra")) {
+                nombreMetodo = "martilloRunico";
             } else if (nombreObjeto.contains("bastón elemental") || nombreObjeto.contains("baston elemental")) {
                 nombreMetodo = "bastonElemental";
-            } else if (nombreObjeto.contains("arco largo")) {
-                nombreMetodo = "arcoLargo";
-            } else if (nombreObjeto.contains("daga venenosa")) {
-                nombreMetodo = "dagaVenenosa";
-            } else if (nombreObjeto.contains("martillo de guerra") || nombreObjeto.contains("martillo guerra")) {
-                nombreMetodo = "martilloGuerra";
-            } else if (nombreObjeto.contains("lanza sagrada")) {
-                nombreMetodo = "lanzaSagrada";
+            } else if (nombreObjeto.contains("orbe arcano")) {
+                nombreMetodo = "orbeArcano";
+            } else if (nombreObjeto.contains("tomo prohibido")) {
+                nombreMetodo = "tomoProhibido";
+            } else if (nombreObjeto.contains("arco largo") || nombreObjeto.contains("arco largo elfico")) {
+                nombreMetodo = "arcoLargoElfico";
+            } else if (nombreObjeto.contains("ballesta pesada")) {
+                nombreMetodo = "ballestaPesada";
+            } else if (nombreObjeto.contains("arco corto")) {
+                nombreMetodo = "arcoCortoEncantado";
+            } else if (nombreObjeto.contains("dagas") || nombreObjeto.contains("dagas envenenadas")) {
+                nombreMetodo = "dagasEnvenenadas";
+            } else if (nombreObjeto.contains("espadas gemelas")) {
+                nombreMetodo = "espadasGemelas";
+            } else if (nombreObjeto.contains("cuchilla sombra")) {
+                nombreMetodo = "cuchillaSombra";
             }
-        } else {
+        }else {
             // Objetos consumibles normales
             if (nombreObjeto.contains("vida")) {
                 nombreMetodo = "pocionVida";
@@ -303,8 +318,6 @@ public class Juego {
                                         System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
                                         System.out.println(e);
                                     }
-                                } else {
-                                    System.out.println("No se reconoce el objeto.");
                                 }
                                 continuar = 1;
                                 break;
