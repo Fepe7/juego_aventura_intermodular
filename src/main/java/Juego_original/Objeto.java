@@ -1,3 +1,5 @@
+package Juego_original;
+
 public class Objeto {
     private String nombre;
     private String descripcion;

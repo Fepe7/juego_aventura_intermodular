@@ -1,3 +1,5 @@
+package Juego_original;
+
 public enum TiposClases {
 
     //Defino las clases de los personajes

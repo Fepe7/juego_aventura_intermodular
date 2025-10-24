@@ -1,4 +1,8 @@
-import java.util.*;
+package Juego_nuevo;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class SistemaPostBatalla {
 

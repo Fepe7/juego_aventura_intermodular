@@ -1,3 +1,5 @@
+package Juego_original;
+
 import java.util.*;
 
 public class Juego {
@@ -276,7 +278,7 @@ public class Juego {
                     break;
 
 
-                // Dentro de Juego.java, en el método accionPersonaje, reemplaza el case 3 por esto:
+                // Dentro de JUego_originak.Juego.java, en el método accionPersonaje, reemplaza el case 3 por esto:
                     case 3:
                         System.out.println("Menu de objetos");
 

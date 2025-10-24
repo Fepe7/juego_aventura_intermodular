@@ -1,3 +1,5 @@
+package Juego_original;
+
 public class Habilidad {
     private String nombre;
     private int costeMana;

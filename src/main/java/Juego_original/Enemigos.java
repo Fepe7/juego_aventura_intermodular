@@ -1,3 +1,5 @@
+package Juego_original;
+
 public class Enemigos extends Entidad {
 
     private String descripcion;

@@ -1,3 +1,5 @@
+package Juego_nuevo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +15,7 @@ public class Personaje extends Entidad {
     }
     //Esto es un metodo estatico que crea un personaje segun la clase que se le pase por parametro
     //El codigo de la clase es el identificador de la clase
-    //El metodo devuelve un objeto de la clase Personaje con los atributos iniciales
+    //El metodo devuelve un objeto de la clase JUego_originak.Personaje con los atributos iniciales
     //Tambien crea las habilidades que tiene cada clase
     public static Personaje CrearPersonaje() {
         Scanner sc = new Scanner(System.in);
@@ -147,10 +149,10 @@ public void equiparObjeto(Objeto objeto) {
 
     try {
         if (objeto instanceof Armaduras) {
-            // Los métodos en Armaduras son métodos de instancia
+            // Los métodos en JUego_originak.Armaduras son métodos de instancia
             Armaduras.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(objeto, this);
         } else if (objeto instanceof Armas) {
-            // Los métodos en Armas son estáticos
+            // Los métodos en JUego_originak.Armas son estáticos
             Armas.class.getMethod(nombreObjetoMetodo, Personaje.class).invoke(null, this);
         } else {
             // Otros objetos consumibles

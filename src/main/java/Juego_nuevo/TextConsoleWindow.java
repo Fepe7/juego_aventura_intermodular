@@ -1,3 +1,5 @@
+package Juego_nuevo;
+
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;

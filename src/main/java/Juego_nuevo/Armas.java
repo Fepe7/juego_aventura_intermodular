@@ -1,9 +1,11 @@
+package Juego_nuevo;
+
 public class Armas extends Objeto {
     public Armas(String nombre, String descripcion) {
         super(nombre, descripcion);
     }
 
-    // Armas GUERRERO
+    // JUego_originak.Armas GUERRERO
     public static void espadaHierroPerfeccionada(Personaje p) {
         if (p.getClase() != TiposClases.GUERRERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.GUERRERO);
@@ -38,7 +40,7 @@ public class Armas extends Objeto {
     }
 
 
-    // Armas MAGO
+    // JUego_originak.Armas MAGO
     public static void bastonElemental(Personaje p) {
         if (p.getClase() != TiposClases.MAGO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.MAGO);
@@ -66,7 +68,7 @@ public class Armas extends Objeto {
     }
 
 
-    // Armas ARQUERO
+    // JUego_originak.Armas ARQUERO
     public static void arcoLargoElfico(Personaje p) {
         if (p.getClase() != TiposClases.ARQUERO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ARQUERO);
@@ -93,7 +95,7 @@ public class Armas extends Objeto {
     }
 
 
-    // Armas ASESINO
+    // JUego_originak.Armas ASESINO
     public static void dagasEnvenenadas(Personaje p) {
         if (p.getClase() != TiposClases.ASESINO) {
             System.out.println("No puedes llevar este arma con una clase distinta a " + TiposClases.ASESINO);

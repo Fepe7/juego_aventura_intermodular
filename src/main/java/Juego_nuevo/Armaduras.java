@@ -1,3 +1,5 @@
+package Juego_nuevo;
+
 public class Armaduras extends Objeto {
     public Armaduras(String nombre, String descripcion) {
         super(nombre, descripcion);
