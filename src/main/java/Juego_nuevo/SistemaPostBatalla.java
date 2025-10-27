@@ -16,6 +16,8 @@ public class SistemaPostBatalla {
             System.out.println("Todo parece despejado, hacia donde quieres ir ahora");
 
         }
+
+
     }
 
     private static void irAHoguera(Personaje[] personajes) {
@@ -84,4 +86,8 @@ public class SistemaPostBatalla {
         }
         return false;
     }
+
+
+
+
 }
