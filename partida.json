@@ -2,11 +2,11 @@
   {
     "idClase": "ASESINO",
     "vidaMaxima": 80,
-    "vida": 25,
+    "vida": 0,
     "ataque": 25,
     "velocidad": 65,
     "nombre": "Asesino",
-    "vivo": true,
+    "vivo": false,
     "mana": 5,
     "habilidades": [
       {
