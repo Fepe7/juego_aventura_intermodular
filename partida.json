@@ -1,0 +1,106 @@
+[
+  {
+    "idClase": "GUERRERO",
+    "vidaMaxima": 120,
+    "vida": 120,
+    "ataque": 40,
+    "velocidad": 25,
+    "nombre": "1",
+    "vivo": true,
+    "mana": 30,
+    "habilidades": [
+      {
+        "nombre": "Golpe Poderoso",
+        "costeMana": 10,
+        "danyo": 50,
+        "descripcion": "Consume 10 de maná y hace un golpe que hace +15 de daño ",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Rugido de Batalla",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "GUERRERO",
+    "vidaMaxima": 120,
+    "vida": 120,
+    "ataque": 40,
+    "velocidad": 25,
+    "nombre": "1",
+    "vivo": true,
+    "mana": 30,
+    "habilidades": [
+      {
+        "nombre": "Golpe Poderoso",
+        "costeMana": 10,
+        "danyo": 50,
+        "descripcion": "Consume 10 de maná y hace un golpe que hace +15 de daño ",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Rugido de Batalla",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "GUERRERO",
+    "vidaMaxima": 120,
+    "vida": 120,
+    "ataque": 40,
+    "velocidad": 25,
+    "nombre": "11",
+    "vivo": true,
+    "mana": 30,
+    "habilidades": [
+      {
+        "nombre": "Golpe Poderoso",
+        "costeMana": 10,
+        "danyo": 50,
+        "descripcion": "Consume 10 de maná y hace un golpe que hace +15 de daño ",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Rugido de Batalla",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  },
+  {
+    "idClase": "GUERRERO",
+    "vidaMaxima": 120,
+    "vida": 120,
+    "ataque": 40,
+    "velocidad": 25,
+    "nombre": "1",
+    "vivo": true,
+    "mana": 30,
+    "habilidades": [
+      {
+        "nombre": "Golpe Poderoso",
+        "costeMana": 10,
+        "danyo": 50,
+        "descripcion": "Consume 10 de maná y hace un golpe que hace +15 de daño ",
+        "tipoHabilidad": "DANYO"
+      },
+      {
+        "nombre": "Rugido de Batalla",
+        "costeMana": 15,
+        "danyo": 0,
+        "descripcion": "Consume 15 de maná y obtiene +10 de ataque durante el combate",
+        "tipoHabilidad": "APOYO"
+      }
+    ]
+  }
+]
