@@ -24,14 +24,6 @@ public class Entidad {
         this.vivo = true;
     }
 
-
-
-       
-
-
-
-
-
     //Constructor para los personajes jugables
     Entidad(String nombre) {
         this.nombre = nombre;

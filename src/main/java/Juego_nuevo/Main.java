@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
-
-    public static void mostrarVictoria() {
+        public static void mostrarVictoria() {
         System.out.println("\n==============================");
         System.out.println("        ¡VICTORIA! 🏆");
         System.out.println("==============================");
@@ -29,6 +27,9 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+
+        //Pa la consola en otra ventana
         TextConsoleWindow.install("RPG - Consola", true);
         Scanner scanner = new Scanner(System.in);
 
@@ -36,7 +37,6 @@ public class Main {
 
         if (ImportarDatos.existePartidaGuardada()) {
             int opcion = 0;
-
             try {
                 do {
                     System.out.println("""
@@ -44,9 +44,7 @@ public class Main {
                             1) Importar partida guardada
                             2) Crear una nueva partida
                             Escoge una opción (1-2): """);
-
                     opcion = scanner.nextInt();
-
                     if (opcion < 1 || opcion > 2) {
                         System.out.println("Introduce uno de los números indicados.");
                     }
@@ -78,20 +76,29 @@ public class Main {
             personajesPartida = crearPartidaNueva();
         }
 
+
         ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
-
         int ronda = 0;
-
-
-        final int rondaFinal = 5; // o el numero de la ultima ronda/jefe
-
+        final int rondaFinal = 5;
 
         System.out.println("Estas solo. Rodeado de puertas, hacia que habitacion quieres ir?");
 
-        while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
+        while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo()
+                || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
+
+            // Genera la descripción de la habitación con la API (sin variable 'descripcion')
+            try {
+                System.out.println("\n----- HABITACION -----");
+                System.out.println("----------------------\n");
+            } catch (Exception ex) {
+                System.out.println("[Narrador IA no disponible] " + ex.getMessage());
+            }
+
             Enemigos enemigo = Combates.combate(ronda);
             System.out.println("¡Un " + enemigo.getNombre() + " ha aparecido! Prepárate para la batalla.");
-            while (enemigo.isVivo() && (personajesPartida[0].isVivo() || personajesPartida[1].isVivo() || personajesPartida[2].isVivo() || personajesPartida[3].isVivo())) {
+
+            while (enemigo.isVivo() && (personajesPartida[0].isVivo() || personajesPartida[1].isVivo()
+                    || personajesPartida[2].isVivo() || personajesPartida[3].isVivo())) {
                 Juego.turnoActual(personajesPartida, enemigo);
             }
 
@@ -124,14 +131,10 @@ public class Main {
 
     private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal) {
         System.out.println("Guardando partida...");
-
         GuardarDatos guardarDatos = new GuardarDatos();
         GuardarDatos.guardarPersonajes(personajesPartida);
         GuardarDatos.guardarObjetos(InventarioGlobal.getInventarioGlobal());
-
         System.out.println("Partida guardada correctamente.");
     }
+
 }
-
-
-

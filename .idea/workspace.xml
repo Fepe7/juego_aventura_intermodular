@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9fd3c61-8f8a-4bd3-ac7c-3d6b6327ba47" name="Changes" comment="">
+    <list default="true" id="d9fd3c61-8f8a-4bd3-ac7c-3d6b6327ba47" name="Changes" comment="Correccion packaje de mapas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Entidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Entidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Objeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Objeto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/GeneradorTextoIA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/estadoJugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/estadoJugador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +42,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.prueba.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -51,14 +56,15 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -70,10 +76,24 @@
       <option name="presentableId" value="Default" />
       <updated>1761638833863</updated>
       <workItem from="1761638835417" duration="527000" />
+      <workItem from="1761758854379" duration="5555000" />
     </task>
+    <task id="LOCAL-00001" summary="Correccion packaje de mapas">
+      <option name="closed" value="true" />
+      <created>1761758933038</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761758933038</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Correccion packaje de mapas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correccion packaje de mapas" />
   </component>
 </project>
