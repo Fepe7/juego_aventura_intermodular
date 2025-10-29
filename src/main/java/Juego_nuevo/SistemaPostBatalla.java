@@ -14,6 +14,17 @@ public class SistemaPostBatalla {
 
         while (!opcionValida) {
             System.out.println("Todo parece despejado, hacia donde quieres ir ahora");
+            System.out.println("1. Derecha");
+            System.out.println("2. Izquierda");
+            System.out.println("3. Arriba");
+            System.out.println("4. Abajo");
+            System.out.println("5. Ir a la HOGUERA");
+            System.out.println("6. Salir");
+
+            int eleccion = scanner.nextInt();
+
+
+
 
         }
 
