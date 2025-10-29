@@ -1,4 +1,4 @@
-package mapa;
+package Juego_nuevo.mapa;
 
 import java.util.ArrayList;
 

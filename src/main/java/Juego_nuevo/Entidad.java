@@ -25,10 +25,16 @@ public class Entidad {
     }
 
 
+
+       
+
+
+
+
+
     //Constructor para los personajes jugables
     Entidad(String nombre) {
         this.nombre = nombre;
-
     }
 
 

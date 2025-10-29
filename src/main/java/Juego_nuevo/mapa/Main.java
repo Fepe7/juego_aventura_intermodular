@@ -1,4 +1,4 @@
-package mapa;
+package Juego_nuevo.mapa;
 
 public class Main {
     public static void main(String[] args) {

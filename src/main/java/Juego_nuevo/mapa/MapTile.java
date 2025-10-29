@@ -1,4 +1,4 @@
-package mapa;
+package Juego_nuevo.mapa;
 
 public class MapTile {
     private final String tileSymbol;
