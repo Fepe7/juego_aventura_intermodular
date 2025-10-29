@@ -1,5 +1,7 @@
-package Juego_nuevo;
+package Juego_nuevo.persistencia_datos_JSON;
 
+import Juego_nuevo.Objeto;
+import Juego_nuevo.Personaje;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
