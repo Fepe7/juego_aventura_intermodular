@@ -7,7 +7,6 @@ import com.google.gson.GsonBuilder;
 
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.List;
 
 public class EstadoPartida {
     /**
@@ -18,46 +17,40 @@ public class EstadoPartida {
     private static Gson createGson() { return new GsonBuilder().setPrettyPrinting().create(); }
 
     /**
-     * La función <strong>guardarPartida()</strong> guarda la partida actual, contando los personajes, objetos y la
+     * La función <strong>{@code guardarPartida()}</strong> guarda la partida actual, contando los personajes, objetos y la
      * ubicación del mapa
      * <p>
-     * Esta función usa el objeto {@link Gson}. Dentro del {@code try-catch-with-resources} declaramos {@link FileWriter}
-     * con fichero de <strong>partida.json</strong>, y guardamos las listas pasadas. Si no, lanza una excepción de tipo {@link Exception}
-     * el cual saca del programa de forma fatal.
+     * Esta función usa el objeto {@link Gson} y el objeto contenedor {@link Partida}, con las listas pasadas como
+     * atributos de la clase. Dentro del {@code try-catch-with-resources} declaramos el {@link FileWriter}
+     * con archivo en <strong>partida.json</strong> y ahí serializa el contenedor {@link Partida} que tiene ambas listas.
+     * Si no, lanza una excepción dando un error.
      * @param personajes La lista de personajes que hay
      * @param objeto La lista de objetos que tienen globalmente todos
      */
     public static void guardarPartida(Personaje[] personajes, Objeto[] objeto) {
         final var gson = createGson();
+        final var partida = new Partida(personajes, objeto);
         try (final var fw = new FileWriter("partida.json")) {
-            gson.toJson(personajes, fw);
-            gson.toJson(objeto, fw);
+            gson.toJson(partida, fw);
         } catch (Exception e) {
             System.out.println("Error al guardar partida");
         }
     }
 
     /**
-     * La función <strong>{@code cargarPersonajes()}</strong> carga los personajes
+     * La función <strong>{@code cargarPartida()}</strong> carga la partida y la devuelve.
      * <p>
-     * Esta función usa el objeto {@link Gson}. Dentro del {@code try-catch-with-resources} declaramos {@link FileWriter}
-     * y le pasamos el archivo de origen, el cual es <strong>partida.json</strong> y devuelve el resultado de
-     * la función {@code gson.fromJson(FileWriter, Personaje[].class)}, lo cual lee la línea y mete el objeto en
-     * el array de Personaje. Si no, lanza una excepción de tipo {@link Exception}, devolviendo null
-     * @return La lista de personajes en forma de array | null
+     * Esta función está dentro de un {@code try-catch-with-resources} donde declaramos {@link FileReader} con fichero
+     * de <strong>partida.json</strong> y cargamos partidas, devolviendo el contenedor con los datos. Si no, lanza una
+     * excepción de tipo {@link Exception}, el cual devolverá null si eso pasara
+     * @return  El contenedor Partida que contiene personajes y objetos | null
      */
-    public static Personaje[] cargarPersonajes() {
-        final var gson = createGson();
+    public static Partida cargarPartida() {
         try (final var fr = new FileReader("partida.json")) {
-            return gson.fromJson(fr, Personaje[].class);
+            return new Gson().fromJson(fr, Partida.class);
         } catch (Exception e) {
-            System.out.println("Error al cargar los personajes");
+            System.out.println("Error al cargar partida");
             return null;
         }
-    }
-
-
-    public static List<Objeto> cargarObjetos() {
-        return null;
     }
 }
