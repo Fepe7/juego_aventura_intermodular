@@ -4,6 +4,8 @@ package Juego_nuevo.mapa;
  * @author Marcos
  */
 
+import java.util.Random;
+
 public class Map {
 
     // tamaño del mapa. Siempre es cuadrado
@@ -12,7 +14,7 @@ public class Map {
     // matriz
     private final MapTile[][] map = new MapTile[mapSize][mapSize];
 
-    // número final de habitaciones que tendrá el mapa
+    // número final de habitaciones que tendrá el Juego_nuevo.mapa
     private int finalRoomN;
 
     // seed para generar las cosas de forma chula
@@ -59,7 +61,7 @@ public class Map {
 
         int positions[][] = {{0, halfSize}, {halfSize, mapSize-1}, {mapSize-1, halfSize}, {halfSize, 0}};
 
-        int startPosition = (int) (Math.random()*4);
+        int startPosition = (int) (seed%positions.length);
 
         map[positions[startPosition][0]]
                 [positions[startPosition][1]] = new Room();
@@ -89,9 +91,11 @@ public class Map {
      * Función principal para generar las habitaciones.
      */
     public void generateLayout() {
+        Random rng = new Random(seed);
+
         int maxRooms = 10;
         int minRooms = 7;
-        finalRoomN = (seed%(maxRooms+1-minRooms))+ minRooms;
+        finalRoomN = (rng.nextInt()%(maxRooms+1-minRooms))+ minRooms;
 
         layoutStart();
 
@@ -116,7 +120,7 @@ public class Map {
                 int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
                 // Directions: 0 ^, 1 >, 2 v, 3 <
-                int random = (int) (Math.random() * directions.length);
+                int random = rng.nextInt(directions.length);
 
                 //adds a random set to the coords to get the next coords
                 int newRow = lastGeneratedCoords[0] + directions[random][0];

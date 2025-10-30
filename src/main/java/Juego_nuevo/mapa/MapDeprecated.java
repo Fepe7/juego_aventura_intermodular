@@ -10,10 +10,10 @@ public class MapDeprecated {
     // matriz
     private final ArrayList<ArrayList<MapTile>> map = new ArrayList<>();
 
-    // tamaño del mapa. Siempre es cuadrado
+    // tamaño del Juego_nuevo.mapa. Siempre es cuadrado
     private final int mapSize = 7;
 
-    // número final de habitaciones que tendrá el mapa
+    // número final de habitaciones que tendrá el Juego_nuevo.mapa
     private int finalRoomN;
 
     // seed para generar las cosas de forma chula
@@ -37,7 +37,7 @@ public class MapDeprecated {
 
     /*
      * Constructores
-     * Uno para generar el mapa con una seed aleatoria y otro para darle una seed predefinida
+     * Uno para generar el Juego_nuevo.mapa con una seed aleatoria y otro para darle una seed predefinida
      */
     public MapDeprecated() {
         fillArray();
@@ -54,7 +54,7 @@ public class MapDeprecated {
      * Solo se usa al principio de la función de generateLayout
      * Comienza la creación de las habitaciones.
      * Elige una posición random entre 4 y pone la primera habitación (habitación 0) en esa posición.
-     * Las 4 posiciones son los bordes del mapa (esto es solo para que el mapa se genere de forma un poco más interesante)
+     * Las 4 posiciones son los bordes del Juego_nuevo.mapa (esto es solo para que el Juego_nuevo.mapa se genere de forma un poco más interesante)
      */
     private void layoutStart() { //chooses a random number between 4 and sets the room 0 at a specific location
         int halfSize = mapSize/2;
