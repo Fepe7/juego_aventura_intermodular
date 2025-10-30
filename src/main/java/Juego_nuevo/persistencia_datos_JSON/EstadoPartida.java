@@ -8,6 +8,11 @@ import com.google.gson.GsonBuilder;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+/**
+ * La clase <strong>{@code EstadoPartida}</strong> es la clase que alberga los métodos de <strong>guardado y carga</strong>
+ * de partida, esencialmente hay 2 métodos, homónimos a los antes mencionados que hacen lo homónimo a sus títulos bastante
+ * descriptivo.
+ */
 public class EstadoPartida {
     /**
      * La función <strong>{@code createGson()}</strong> crea el objeto {@link Gson} con {@link GsonBuilder} para obtener su
@@ -43,7 +48,7 @@ public class EstadoPartida {
      * Esta función está dentro de un {@code try-catch-with-resources} donde declaramos {@link FileReader} con fichero
      * de <strong>partida.json</strong> y cargamos partidas, devolviendo el contenedor con los datos. Si no, lanza una
      * excepción de tipo {@link Exception}, el cual devolverá null si eso pasara
-     * @return  El contenedor Partida que contiene personajes y objetos | null
+     * @return  El contenedor {@link Partida} que contiene personajes y objetos | null
      */
     public static Partida cargarPartida() {
         try (final var fr = new FileReader("partida.json")) {
