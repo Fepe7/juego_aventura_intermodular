@@ -9,6 +9,7 @@ public class Main {
         String seed = sc.nextLine();
         Map map;
         if (seed.isEmpty()) {
+
             map = new Map();
         } else {
             map = new Map(Integer.parseInt(seed));

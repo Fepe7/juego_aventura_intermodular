@@ -48,8 +48,9 @@ public class estadoJugador {
         }
     }
 
-    public static List<Objeto> cargarObjetos() {
 
-    }
+//    public static List<Objeto> cargarObjetos() {
+//
+//    }
 
 }

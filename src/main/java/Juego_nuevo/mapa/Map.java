@@ -183,6 +183,7 @@ public class Map {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 outputMap.append(map[i][j]);
+                //IF la posicion de jugador == i & j se cambia color  a rojo
             }
             outputMap.append('\n');
         }

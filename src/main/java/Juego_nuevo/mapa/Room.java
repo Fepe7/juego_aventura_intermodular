@@ -19,7 +19,7 @@ public class Room extends MapTile{
 
     @Override
     public String toString() {
-        return "["+this.getGeneratedOrder()+"]";
+        return "["+this.getTileSymbol()+"]";
     }
 
 //    @Override
