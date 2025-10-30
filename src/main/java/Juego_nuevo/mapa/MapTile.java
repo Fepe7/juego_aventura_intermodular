@@ -5,12 +5,12 @@ public class MapTile {
 
     final private int generatedOrder;
 
-    public MapTile() {
-        tileSymbol = "   ";
+    public MapTile() { //empty tile constructor
+        tileSymbol = " · ";
         this.generatedOrder = -1;
     }
 
-    public MapTile(String tileSymbol, int generatedOrder) {
+    public MapTile(String tileSymbol, int generatedOrder) { //room constructor
         this.tileSymbol = tileSymbol;
         this.generatedOrder = generatedOrder;
     }

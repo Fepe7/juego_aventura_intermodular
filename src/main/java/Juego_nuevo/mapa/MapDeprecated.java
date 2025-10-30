@@ -1,16 +1,17 @@
 package Juego_nuevo.mapa;
 
+import java.util.ArrayList;
+
 /*
  * @author Marcos
  */
 
-public class Map {
+public class MapDeprecated {
+    // matriz
+    private final ArrayList<ArrayList<MapTile>> map = new ArrayList<>();
 
     // tamaño del mapa. Siempre es cuadrado
     private final int mapSize = 7;
-
-    // matriz
-    private final MapTile[][] map = new MapTile[mapSize][mapSize];
 
     // número final de habitaciones que tendrá el mapa
     private int finalRoomN;
@@ -24,10 +25,12 @@ public class Map {
      * Rellena la matriz con MapTiles.
      */
     private void fillArray() {
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                map[i][j] = new MapTile();
+        for (int i = 0; i< mapSize; i++){
+            ArrayList<MapTile> file = new ArrayList<>();
+            for (int j=0;j<mapSize;j++){
+                file.add(new MapTile());
             }
+            map.add(file);
         }
     }
 
@@ -36,17 +39,16 @@ public class Map {
      * Constructores
      * Uno para generar el mapa con una seed aleatoria y otro para darle una seed predefinida
      */
-    public Map() {
+    public MapDeprecated() {
         fillArray();
         seed = (int)(Math.random()*99999999);
     }
-
-    public Map(int seed) { //creates an array of MapTiles
+    
+    public MapDeprecated(int seed) { //creates an array of MapTiles
         fillArray();
         this.seed = seed;
     }
 
-    //######################## ---- Generar mapa ---- ########################\\
 
     /*
      * Solo se usa al principio de la función de generateLayout
@@ -61,8 +63,8 @@ public class Map {
 
         int startPosition = (int) (Math.random()*4);
 
-        map[positions[startPosition][0]]
-                [positions[startPosition][1]] = new Room();
+        map.get(positions[startPosition][0])
+                .set(positions[startPosition][1], new Room());
     }
 
 
@@ -75,7 +77,7 @@ public class Map {
 
         for (int i = 0; i<mapSize; i++) {
             for (int j=0;j<mapSize;j++) {
-                if (map[i][j] instanceof Room && map[i][j].getGeneratedOrder() == generatedOrder) {
+                if (map.get(i).get(j) instanceof Room && map.get(i).get(j).getGeneratedOrder() == generatedOrder) {
                     coords[0] = i;
                     coords[1] = j;
                 }
@@ -89,9 +91,10 @@ public class Map {
      * Función principal para generar las habitaciones.
      */
     public void generateLayout() {
+        System.out.println(seed);
         int maxRooms = 10;
         int minRooms = 7;
-        finalRoomN = (seed%(maxRooms+1-minRooms))+ minRooms;
+        finalRoomN = (seed%(maxRooms +1)- minRooms)+ minRooms;
 
         layoutStart();
 
@@ -123,11 +126,11 @@ public class Map {
                 int newCol = lastGeneratedCoords[1] + directions[random][1];
 
                 // Check límit of array
-                if (newRow >= 0 && newRow < map.length &&
-                        newCol >= 0 && newCol < map[newRow].length &&
-                        !(map[newRow][newCol] instanceof Room)) {
+                if (newRow >= 0 && newRow < map.size() &&
+                        newCol >= 0 && newCol < map.get(newRow).size() &&
+                        !(map.get(newRow).get(newCol) instanceof Room)) {
 
-                    map[newRow][newCol] = new Room();
+                    map.get(newRow).set(newCol, new Room());
                     roomGenerated = 1;
                 }
 
@@ -165,24 +168,19 @@ public class Map {
         System.out.println("generation of rooms ended");
     }
 
-
     public int getFinalRoomN() {
         return finalRoomN;
     }
 
-
     @Override
     public String toString() {
-        System.out.println("\n\nSeed: "+seed+"\nRooms: "+finalRoomN);
-        StringBuilder outputMap = new StringBuilder();
-
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                outputMap.append(map[i][j]);
+        String outputMap = "";
+        for (int i=0;i<mapSize;i++){
+            for (int j=0;j<mapSize;j++){
+                outputMap = outputMap+map.get(i).get(j);
             }
-            outputMap.append('\n');
+            outputMap = outputMap+"\n";
         }
-
-        return outputMap.toString();
+        return outputMap;
     }
 }
