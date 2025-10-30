@@ -24,10 +24,18 @@ public class Entidad {
         this.vivo = true;
     }
 
-    //Constructor para los personajes jugables
-    Entidad(String nombre) {
+    //Para los personajes
+    Entidad (String nombre, int vida, int ataque, int velocidad, int mana, List<Habilidad> habilidades) {
         this.nombre = nombre;
+        this.vida = vida;
+        this.ataque = ataque;
+        this.velocidad = velocidad;
+        this.vivo = true;
+        this.mana = mana;
+        this.habilidades = habilidades;
     }
+
+
 
 
     //MEte la habilidad en la lista de habilidades del personaje

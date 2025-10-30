@@ -4,17 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9fd3c61-8f8a-4bd3-ac7c-3d6b6327ba47" name="Changes" comment="Correccion packaje de mapas">
+    <list default="true" id="d9fd3c61-8f8a-4bd3-ac7c-3d6b6327ba47" name="Changes" comment="sin API">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Eventos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armaduras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armaduras.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Entidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Entidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/GeneradorTextoIA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Juego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Personaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Personaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/SistemaPostBatalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/SistemaPostBatalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/TipoHabilidad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/TiposClases.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/mapa/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/mapa/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/estadoJugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/estadoJugador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,26 +54,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.prueba.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.prueba.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,7 +90,9 @@
       <option name="presentableId" value="Default" />
       <updated>1761638833863</updated>
       <workItem from="1761638835417" duration="527000" />
-      <workItem from="1761758854379" duration="5555000" />
+      <workItem from="1761758854379" duration="6054000" />
+      <workItem from="1761768719432" duration="209000" />
+      <workItem from="1761836186880" duration="1698000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion packaje de mapas">
       <option name="closed" value="true" />
@@ -86,7 +102,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761758933038</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sin API">
+      <option name="closed" value="true" />
+      <created>1761764528482</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761764528482</updated>
+    </task>
+    <task id="LOCAL-00003" summary="sin API">
+      <option name="closed" value="true" />
+      <created>1761764924285</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761764924285</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +126,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Correccion packaje de mapas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correccion packaje de mapas" />
+    <MESSAGE value="sin API" />
+    <option name="LAST_COMMIT_MESSAGE" value="sin API" />
   </component>
 </project>

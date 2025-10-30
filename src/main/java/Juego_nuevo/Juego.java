@@ -67,7 +67,7 @@ public class Juego {
             } else if (nombreObjeto.contains("cuchilla sombra")) {
                 nombreMetodo = "cuchillaSombra";
             }
-        }else {
+        } else {
             // Objetos consumibles normales
             if (nombreObjeto.contains("vida")) {
                 nombreMetodo = "pocionVida";
@@ -150,9 +150,8 @@ public class Juego {
             e.setVivo(false);
             System.out.println(e.getNombre() + " ha muerto!");
             return true;
-        }else return false;
+        } else return false;
     }
-
 
 
     public static void accionPersonaje(Personaje p, Enemigos enemigo) {
@@ -177,7 +176,7 @@ public class Juego {
                     TextConsoleWindow.printDivider();
                     //Quita la vida del enemigo
                     enemigo.setVida(enemigo.getVida() - vida_quitar);
-                    if (comporbarMuerte(enemigo)){
+                    if (comporbarMuerte(enemigo)) {
                         continuar = 1;
                         break;
                     }
@@ -206,7 +205,7 @@ public class Juego {
                         Scanner sc = new Scanner(System.in);
                         if (sc.hasNextInt()) {
                             habilidad_decision = sc.nextInt();
-                            if (habilidad_decision == 0){
+                            if (habilidad_decision == 0) {
                                 System.out.println("Has cancelado la seleccion de habilidad");
                                 habilidadValida = true;
                                 continuar = 0;
@@ -228,36 +227,27 @@ public class Juego {
                                     for (int i = 1; i < palabras.length; i++) {
                                         //Coge cada palabra y la pone en mayuscula la primera letra, menos la primera palabra
                                         nombreMetodoBuilder.append(Character.toUpperCase(palabras[i].charAt(0)))
-                                                          .append(palabras[i].substring(1));
+                                                .append(palabras[i].substring(1));
                                     }
 
                                     String nombreMetodo = nombreMetodoBuilder.toString();
                                     try {
                                         //Obtiene un metodo de la clase habilidad por el nombre
                                         java.lang.reflect.Method metodo;
-                                        if (habilidadSeleccionada.getTipoHabilidad() == TipoHabilidad.DANYO) {
-                                            metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class, Enemigos.class);
-                                            //Se ejecuta el metodo que queriamos sobre el personaje y enemigo
-                                            metodo.invoke(habilidadSeleccionada, p, enemigo);
-                                            //Se resta el mana del personaje
-                                            p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
-                                            continuar = 1;
-                                            habilidadValida = true;
-                                            if (comporbarMuerte(enemigo)){
-                                                continuar = 1;
-                                                break;
-                                            }
 
-                                            System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
-                                        } else if (habilidadSeleccionada.getTipoHabilidad() == TipoHabilidad.APOYO) {
-                                            metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class);
-                                            //Se ejecuta el metodo que queriamos sobre el personaje
-                                            metodo.invoke(habilidadSeleccionada, p);
-                                            //Se resta el mana del personaje
-                                            p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
+                                        metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class, Enemigos.class);
+                                        //Se ejecuta el metodo que queriamos sobre el personaje y enemigo
+                                        metodo.invoke(habilidadSeleccionada, p, enemigo);
+                                        //Se resta el mana del personaje
+                                        p.setMana(p.getMana() - habilidadSeleccionada.getCosteMana());
+                                        continuar = 1;
+                                        habilidadValida = true;
+                                        if (comporbarMuerte(enemigo)) {
                                             continuar = 1;
-                                            habilidadValida = true;
+                                            break;
+
                                         }
+                                        System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
                                     } catch (Exception e) {
                                         System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
                                         System.out.println(e);
@@ -279,55 +269,55 @@ public class Juego {
 
 
                 // Dentro de JUego_originak.Juego.java, en el método accionPersonaje, reemplaza el case 3 por esto:
-                    case 3:
-                        System.out.println("Menu de objetos");
+                case 3:
+                    System.out.println("Menu de objetos");
 
-                        List<Objeto> inventario = InventarioGlobal.getInventarioGlobal();
-                        if (inventario.isEmpty()) {
-                            System.out.println("El inventario esta vacio");
+                    List<Objeto> inventario = InventarioGlobal.getInventarioGlobal();
+                    if (inventario.isEmpty()) {
+                        System.out.println("El inventario esta vacio");
+                        break;
+                    } else {
+                        System.out.println("Elige un objeto para usar");
+                        for (int i = 0; i < inventario.size(); i++) {
+                            Objeto objeto = inventario.get(i);
+                            System.out.println((i + 1) + "- " + objeto.toString());
+                        }
+                        System.out.println("0 - Volver al menú anterior");
+                        Scanner sc = new Scanner(System.in);
+                        int decisionObjeto = sc.hasNextInt() ? sc.nextInt() : -1;
+                        if (decisionObjeto == 0) {
+                            System.out.println("Has vuelto al menú anterior.");
+                            break; // Sale del menu de objetos y vuelve al menu principal del turno
+                        }
+                        decisionObjeto -= 1;
+                        if (decisionObjeto >= 0 && decisionObjeto < inventario.size()) {
+                            Objeto objetoSeleccionado = inventario.get(decisionObjeto);
+                            String nombreMetodo = getString(objetoSeleccionado);
+                            if (!nombreMetodo.isEmpty()) {
+                                try {
+                                    java.lang.reflect.Method metodo;
+                                    if (objetoSeleccionado instanceof Armaduras) {
+                                        metodo = Armaduras.class.getMethod(nombreMetodo, Personaje.class);
+                                    } else if (objetoSeleccionado instanceof Armas) {
+                                        metodo = Armas.class.getMethod(nombreMetodo, Personaje.class);
+                                    } else {
+                                        metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
+                                    }
+                                    metodo.invoke(objetoSeleccionado, p);
+                                    System.out.println("Has usado el objeto: " + objetoSeleccionado.getNombre());
+                                    inventario.remove(decisionObjeto);
+                                } catch (Exception e) {
+                                    System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
+                                    System.out.println(e);
+                                }
+                            }
+                            continuar = 1;
                             break;
                         } else {
-                            System.out.println("Elige un objeto para usar");
-                            for (int i = 0; i < inventario.size(); i++) {
-                                Objeto objeto = inventario.get(i);
-                                System.out.println((i + 1) + "- " + objeto.toString());
-                            }
-                            System.out.println("0 - Volver al menú anterior");
-                            Scanner sc = new Scanner(System.in);
-                            int decisionObjeto = sc.hasNextInt() ? sc.nextInt() : -1;
-                            if (decisionObjeto == 0) {
-                                System.out.println("Has vuelto al menú anterior.");
-                                break; // Sale del menu de objetos y vuelve al menu principal del turno
-                            }
-                            decisionObjeto -= 1;
-                            if (decisionObjeto >= 0 && decisionObjeto < inventario.size()) {
-                                Objeto objetoSeleccionado = inventario.get(decisionObjeto);
-                                String nombreMetodo = getString(objetoSeleccionado);
-                                if (!nombreMetodo.isEmpty()) {
-                                    try {
-                                        java.lang.reflect.Method metodo;
-                                        if (objetoSeleccionado instanceof Armaduras) {
-                                            metodo = Armaduras.class.getMethod(nombreMetodo, Personaje.class);
-                                        } else if (objetoSeleccionado instanceof Armas) {
-                                            metodo = Armas.class.getMethod(nombreMetodo, Personaje.class);
-                                        } else {
-                                            metodo = Objeto.class.getMethod(nombreMetodo, Personaje.class);
-                                        }
-                                        metodo.invoke(objetoSeleccionado, p);
-                                        System.out.println("Has usado el objeto: " + objetoSeleccionado.getNombre());
-                                        inventario.remove(decisionObjeto);
-                                    } catch (Exception e) {
-                                        System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
-                                        System.out.println(e);
-                                    }
-                                }
-                                continuar = 1;
-                                break;
-                            } else {
-                                System.out.println("Selección inválida.");
-                                break;
-                            }
+                            System.out.println("Selección inválida.");
+                            break;
                         }
+                    }
 
                 case 4:
                     System.out.println(p);

@@ -47,9 +47,9 @@ public class estadoJugador {
             return null;
         }
     }
-
-    public static List<Objeto> cargarObjetos() {
-
-    }
+//
+//    public static List<Objeto> cargarObjetos() {
+//
+//    }
 
 }

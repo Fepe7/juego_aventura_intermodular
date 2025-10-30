@@ -137,7 +137,7 @@ public class Map {
 //            try {
 //                Thread.sleep(500); // Espera 1 segundo
 //            } catch (InterruptedException e) {
-//                e.printStackTrace(); // Captura la excepción si el hilo es interrumpido
+//                e.printStackTrace(); as// Captura la excepción si el hilo es interrumpido
 //            }
 
             if (totalRooms == maxRooms) {
@@ -157,6 +157,8 @@ public class Map {
 //            map.get((int) (Math.random()*5)).set((int) (Math.random()*5) ,generateRoom(totalRooms));
 //            totalRooms++;
 //        }
+
+
     }
 
 
