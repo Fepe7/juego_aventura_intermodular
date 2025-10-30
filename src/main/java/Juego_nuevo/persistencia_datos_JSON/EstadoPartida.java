@@ -1,7 +1,3 @@
-/**
- * @author Xavier Gutiérrez Martínez
- */
-
 package Juego_nuevo.persistencia_datos_JSON;
 
 import Juego_nuevo.Objeto;
@@ -13,7 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.List;
 
-public class estadoJugador {
+public class EstadoPartida {
     /**
      * La función <strong>{@code createGson()}</strong> crea el objeto {@link Gson} con {@link GsonBuilder} para obtener su
      * función {@code setPrettyPrinting()} el cual permite mostrarlo de forma ordenada y bonita.
@@ -64,5 +60,4 @@ public class estadoJugador {
     public static List<Objeto> cargarObjetos() {
         return null;
     }
-
 }
