@@ -8,15 +8,18 @@ public class Room extends MapTile{
 
     ArrayList<Room> connections;
 
+    static int totalRooms = 0;
 
-    public Room(int generatedOrder) {
-        super("?", generatedOrder);
+
+    public Room() {
+        super("?", totalRooms);
+        totalRooms++;
     }
 
 
     @Override
     public String toString() {
-        return "["+this.getGeneratedOrder()+"]";
+        return "["+this.getTileSymbol()+"]";
     }
 
 //    @Override
@@ -30,6 +33,10 @@ public class Room extends MapTile{
 
     public void setConnections(ArrayList<Room> connections) {
         this.connections = connections;
+    }
+
+    static public int getTotalRooms() {
+        return totalRooms;
     }
 }
 

@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9fd3c61-8f8a-4bd3-ac7c-3d6b6327ba47" name="Changes" comment="sin API">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Eventos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armaduras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armaduras.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Armas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Entidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Entidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Juego.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Personaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/Personaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/SistemaPostBatalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/SistemaPostBatalla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/TipoHabilidad.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/TiposClases.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/mapa/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/mapa/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/estadoJugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/estadoJugador.java" afterDir="false" />
+    <list default="true" id="d9fd3c61-8f8a-4bd3-ac7c-3d6b6327ba47" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/EstadoPartida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Juego_nuevo/persistencia_datos_JSON/EstadoPartida.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +50,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -77,8 +67,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
       </set>
     </attachedChunks>
   </component>
@@ -90,43 +80,11 @@
       <option name="presentableId" value="Default" />
       <updated>1761638833863</updated>
       <workItem from="1761638835417" duration="527000" />
-      <workItem from="1761758854379" duration="6054000" />
-      <workItem from="1761768719432" duration="209000" />
-      <workItem from="1761836186880" duration="1698000" />
+      <workItem from="1761822201827" duration="1271000" />
     </task>
-    <task id="LOCAL-00001" summary="Correccion packaje de mapas">
-      <option name="closed" value="true" />
-      <created>1761758933038</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1761758933038</updated>
-    </task>
-    <task id="LOCAL-00002" summary="sin API">
-      <option name="closed" value="true" />
-      <created>1761764528482</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1761764528482</updated>
-    </task>
-    <task id="LOCAL-00003" summary="sin API">
-      <option name="closed" value="true" />
-      <created>1761764924285</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1761764924285</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Correccion packaje de mapas" />
-    <MESSAGE value="sin API" />
-    <option name="LAST_COMMIT_MESSAGE" value="sin API" />
   </component>
 </project>
