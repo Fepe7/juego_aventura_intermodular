@@ -1,5 +1,6 @@
 package Juego_nuevo.persistencia_datos_JSON;
 
+import Juego_nuevo.Enemigo;
 import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
 import com.google.gson.Gson;
@@ -59,10 +60,6 @@ public class EstadoPartida {
         }
     }
 
-    /* TODO
-    *   [ ] - Crear Enemigos mediante JSON
-    */
-
     public static Personaje crearPersonaje(String nombrePersonaje) {
         try (final var fr = new FileReader("Personajes.json")) {
             Personaje[] personajes = new Gson().fromJson(fr, Personaje[].class);
@@ -73,7 +70,22 @@ public class EstadoPartida {
             }
             return null;
         } catch (Exception e) {
-            System.out.println("Error al crear personaje");
+            System.out.println("Error al crear el personaje");
+            return null;
+        }
+    }
+
+    public static Enemigo crearEnemigo(String nombreEnemigo) {
+        try (final var fr = new FileReader("Enemigos.json")) {
+            Enemigo[] enemigos = new Gson().fromJson(fr, Enemigo[].class);
+            for (final var e : enemigos) {
+                if (e.getNombre().equals(nombreEnemigo)) {
+                    return e;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Error al crear el enemigo");
             return null;
         }
     }

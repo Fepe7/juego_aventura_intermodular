@@ -1,6 +1,5 @@
 package Juego_nuevo.persistencia_datos_JSON;
 
-import Juego_nuevo.Enemigos;
 import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
 
@@ -18,11 +17,11 @@ import Juego_nuevo.Personaje;
  * {@link java.util.ArrayList} se hace con {@code ArrayList<>(Arrays.asList(array))}, es decir, un parseo a ArrayList.
  */
 public class Partida {
-    static Personaje[] personajes;
+    Personaje[] personajes;
     Objeto[] objetos;
 
     public Partida(Personaje[] personajes, Objeto[] objetos){
-        Partida.personajes = personajes;
+        this.personajes = personajes;
         this.objetos = objetos;
     }
 

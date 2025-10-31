@@ -28,7 +28,7 @@ public void bendicionElfa(Personaje p) {
 
 
 
-    public void golpePoderoso(Personaje p, Enemigos e) {
+    public void golpePoderoso(Personaje p, Enemigo e) {
         int vidaQuitar = 15 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
         System.out.println("Has usado " + nombre);
@@ -45,7 +45,7 @@ public void bendicionElfa(Personaje p) {
 
 
     // Bola de fuego: daño fijo + ataque del personaje
-    public void bolaDeFuego(Personaje p, Enemigos e) {
+    public void bolaDeFuego(Personaje p, Enemigo e) {
         int vidaQuitar = 35 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
         System.out.println("Has usado " + nombre);
@@ -62,7 +62,7 @@ public void bendicionElfa(Personaje p) {
     }
 
     // Flecha precisa: daño fijo + ataque del personaje
-    public void flechaPrecisa(Personaje p, Enemigos e) {
+    public void flechaPrecisa(Personaje p, Enemigo e) {
         int vidaQuitar = 20 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
         System.out.println("Has usado " + nombre);
@@ -79,7 +79,7 @@ public void bendicionElfa(Personaje p) {
     }
 
     // Ataque furtivo: daño fijo + ataque del personaje
-    public void ataqueFurtivo(Personaje p, Enemigos e) {
+    public void ataqueFurtivo(Personaje p, Enemigo e) {
         int vidaQuitar = 25 + p.getAtaque();
         e.setVida(e.getVida() - vidaQuitar);
         System.out.println("Has usado " + nombre);
@@ -87,7 +87,7 @@ public void bendicionElfa(Personaje p) {
 
     }
 
-    public void golpeVenenoso(Personaje p, Enemigos e) {
+    public void golpeVenenoso(Personaje p, Enemigo e) {
         int vidaQuitar = p.getAtaque() + 15; // Daño base
         e.setVida(e.getVida() - vidaQuitar - 15);
         System.out.println("Has usado " + nombre);

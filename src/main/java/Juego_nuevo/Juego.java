@@ -8,14 +8,14 @@ public class Juego {
     //Esto devuelve un array list con el orden de los turnos segun la velocidad de los personajes y enemigos
     //El el orden en el que estan en el array es el orden de los turnos
     //El primero ataca el primero etc...
-    public static ArrayList obtenerOrdenTurnos(Personaje[] personajes, Enemigos enemigo) {
+    public static ArrayList obtenerOrdenTurnos(Personaje[] personajes, Enemigo enemigo) {
 
         ArrayList<Entidad> ordenTurnos = new ArrayList<>();
 
         ordenTurnos.addAll(Arrays.asList(personajes));
         ordenTurnos.addAll(Arrays.asList(enemigo));
 
-        ordenTurnos.sort(Comparator.comparing(p -> Integer.valueOf(p instanceof Personaje ? ((Personaje) p).getVelocidad() : ((Enemigos) p).getVelocidad())).reversed());
+        ordenTurnos.sort(Comparator.comparing(p -> Integer.valueOf(p instanceof Personaje ? ((Personaje) p).getVelocidad() : ((Enemigo) p).getVelocidad())).reversed());
         return ordenTurnos;
     }
 
@@ -91,7 +91,7 @@ public class Juego {
     //Recibe como parametros los arrays de personajes y enemigos
     //El metodo recorre el array list del orden de los turnos y ejecuta la accion correspondiente
     //Si el personaje o enemigo esta vivo, va a atacar a un personaje random
-    public static void turnoActual(Personaje[] personajes, Enemigos enemigo) {
+    public static void turnoActual(Personaje[] personajes, Enemigo enemigo) {
         ArrayList<Object> ordenTurnos = obtenerOrdenTurnos(personajes, enemigo);
 
         //Recorre el array list
@@ -106,8 +106,8 @@ public class Juego {
                 if (!enemigo.isVivo()) {
                     break;
                 }
-            } else if (combatiente instanceof Enemigos) {
-                Enemigos e = (Enemigos) combatiente;
+            } else if (combatiente instanceof Enemigo) {
+                Enemigo e = (Enemigo) combatiente;
                 if (e.isVivo()) {
                     //Accion del enemigo
                     accionEnemigo(e, personajes);
@@ -124,7 +124,7 @@ public class Juego {
 
 
     //Accion del enemigo, ataca a un personaje random, si el personaje muere se pone su estado a muerto
-    public static void accionEnemigo(Enemigos e, Personaje[] personajes) {
+    public static void accionEnemigo(Enemigo e, Personaje[] personajes) {
         System.out.println("Es el turno del enemigo " + e.getNombre() + ", ataca a un personaje!");
         //Elige un personaje random para atacar, si no esta vivo vuelve a elegir otro personaje
         Random rand = new Random();
@@ -145,7 +145,7 @@ public class Juego {
     }
 
 
-    public static boolean comporbarMuerte(Enemigos e) {
+    public static boolean comporbarMuerte(Enemigo e) {
         if (e.getVida() <= 0) {
             e.setVivo(false);
             System.out.println(e.getNombre() + " ha muerto!");
@@ -154,7 +154,7 @@ public class Juego {
     }
 
 
-    public static void accionPersonaje(Personaje p, Enemigos enemigo) {
+    public static void accionPersonaje(Personaje p, Enemigo enemigo) {
 
 
         int continuar = 0;
@@ -231,7 +231,7 @@ public class Juego {
                                         //Obtiene un metodo de la clase habilidad por el nombre
                                         java.lang.reflect.Method metodo;
 
-                                        metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class, Enemigos.class);
+                                        metodo = Habilidad.class.getMethod(nombreMetodo, Personaje.class, Enemigo.class);
                                         //Se ejecuta el metodo que queriamos sobre el personaje y enemigo
                                         metodo.invoke(habilidadSeleccionada, p, enemigo);
                                         //Se resta el mana del personaje

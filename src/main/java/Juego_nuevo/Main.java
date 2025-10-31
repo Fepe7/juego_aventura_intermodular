@@ -96,7 +96,7 @@ public class Main {
                 System.out.println("[Narrador IA no disponible] " + ex.getMessage());
             }
 
-            Enemigos enemigo = Combates.combate(ronda);
+            Enemigo enemigo = Combates.combate(ronda);
             System.out.println("¡Un " + enemigo.getNombre() + " ha aparecido! Prepárate para la batalla.");
 
             while (enemigo.isVivo() && (personajesPartida[0].isVivo() || personajesPartida[1].isVivo()

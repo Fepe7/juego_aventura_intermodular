@@ -1,6 +1,5 @@
 package Juego_nuevo;
 
-import java.util.Scanner;
 import java.util.Random;
 
 public class Eventos {
@@ -29,7 +28,7 @@ public class Eventos {
 
 
 
-    public static Enemigos combateAleatorio()
+    public static Enemigo combateAleatorio()
 
 
 

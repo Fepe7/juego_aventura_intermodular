@@ -1,6 +1,6 @@
 [
   {
-    "nombre": "Protagonistas",
+    "nombre": "Player",
     "vida": 100,
     "vidaMaxima": 100,
     "ataque": 15,

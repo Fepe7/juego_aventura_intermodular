@@ -1,11 +1,11 @@
 package Juego_nuevo;
 
-public class Enemigos extends Entidad {
+public class Enemigo extends Entidad {
 
     private String descripcion;
 
 
-    public Enemigos(String nombre, int vida, int ataque, int velocidad, String descripcion) {
+    public Enemigo(String nombre, int vida, int ataque, int velocidad, String descripcion) {
         super(nombre, vida, ataque, velocidad);
         this.descripcion = descripcion;
         setVivo(true);
