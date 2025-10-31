@@ -59,5 +59,7 @@ public class EstadoPartida {
         }
     }
 
-
+    /* TODO
+    *   [ ] - Crear Enemigos mediante JSON
+    */
 }

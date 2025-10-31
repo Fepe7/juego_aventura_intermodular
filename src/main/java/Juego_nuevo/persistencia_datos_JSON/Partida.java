@@ -1,11 +1,12 @@
 package Juego_nuevo.persistencia_datos_JSON;
 
+import Juego_nuevo.Enemigos;
 import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
 
 /**
- * La clase <strong>Partida</strong> es un <strong>contenedor</strong> a la hora de la persistencia de datos, para centralizar el guardado y carga del
- * archivo JSON.
+ * La clase <strong>Partida</strong> es un <strong>contenedor</strong> a la hora de la persistencia de datos, para
+ * centralizar el guardado y carga del archivo JSON.
  * <p>
  * Esta tiene como atributos 2 arrays uno de Personaje y otro de Objeto, donde estarán los personajes y
  * los objetos respectivamente.
@@ -17,11 +18,11 @@ import Juego_nuevo.Personaje;
  * {@link java.util.ArrayList} se hace con {@code ArrayList<>(Arrays.asList(array))}, es decir, un parseo a ArrayList.
  */
 public class Partida {
-    Personaje[] personajes;
+    static Personaje[] personajes;
     Objeto[] objetos;
 
     public Partida(Personaje[] personajes, Objeto[] objetos){
-        this.personajes = personajes;
+        Partida.personajes = personajes;
         this.objetos = objetos;
     }
 
@@ -31,5 +32,22 @@ public class Partida {
 
     public Objeto[] getObjetos() {
         return objetos;
+    }
+
+    /**
+     * La función crear <strong>{@code crearPersonajes()}</strong> crea el personaje mediante el nombre.
+     * <p>
+     * La función itera sobre el array de {@code personajes} y, si el nombre coincide, envia ese personaje solo, no el array
+     * entero. Si no existiese, devolverá {@code null}.
+     * @param nombrePersonaje   El nombre del personaje deseado
+     * @return Si encuentra el {@link Personaje} devuelve el personaje, si no, <strong>NULL</strong>
+     */
+    public static Personaje crearPersonaje(String nombrePersonaje) {
+        for (final var p : personajes) {
+            if (p.getNombre().equals(nombrePersonaje)) {
+                return p;
+            }
+        }
+        return null;
     }
 }
