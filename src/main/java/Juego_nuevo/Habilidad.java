@@ -9,21 +9,14 @@ public class Habilidad {
 
 
     //Constructor para las habilidades, por defecto son las de daño
-    public Habilidad(String nombre, int costeMana, int danio, String descripcion) {
+    public Habilidad(String nombre, int costeMana, int danio, String descripcion, TipoHabilidad tipo) {
         this.nombre = nombre;
         this.costeMana = costeMana;
         this.danyo = danio;
-        this.tipoHabilidad = TipoHabilidad.DANYO;
         this.descripcion = descripcion;
-    }
-
-
-    public Habilidad(String nombre, int costeMana, TipoHabilidad tipo, String descripcion) {
-        this.nombre = nombre;
-        this.costeMana = costeMana;
         this.tipoHabilidad = tipo;
-        this.descripcion = descripcion;
     }
+
 
 
     public void golpePoderoso(Personaje p, Enemigos e) {

@@ -11,6 +11,7 @@ public class Personaje extends Entidad {
     private List<String> dialogos = new ArrayList<>();
 
 
+    //Constructor de los personajes
     Personaje (String nombre, int vida, int ataque, int velocidad, int mana, List<Habilidad> habilidades, List<String> dialogos) {
         super(nombre, vida, ataque, velocidad, mana, habilidades);
     }

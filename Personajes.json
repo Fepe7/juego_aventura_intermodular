@@ -1,0 +1,137 @@
+[
+      {
+        "nombre": "Aragorn",
+        "vida": 100,
+        "vidaMaxima": 100,
+        "ataque": 18,
+        "velocidad": 12,
+        "mana": 20,
+        "habilidades": [
+          {
+            "nombre": "Ataque Rápido",
+            "costeMana": 5,
+            "danyo": 15,
+            "descripcion": "Ataque veloz",
+            "tipoHabilidad": "ATAQUE",
+            "metodo": "golpePoderoso"
+          },
+          {
+            "nombre": "Golpe Mortal",
+            "costeMana": 10,
+            "danyo": 30,
+            "descripcion": "Un ataque devastador",
+            "tipoHabilidad": "ATAQUE",
+            "metodo": "golpePoderoso"
+          }
+        ],
+        "dialogos": ["¡Prepárate para la batalla!", "Un ranger nunca se rinde"]
+      },
+      {
+        "nombre": "Merlin",
+        "vida": 70,
+        "vidaMaxima": 70,
+        "ataque": 10,
+        "velocidad": 14,
+        "mana": 80,
+        "habilidades": [
+          {
+            "nombre": "Bola de Fuego",
+            "costeMana": 20,
+            "danyo": 35,
+            "descripcion": "Hechizo de fuego",
+            "tipoHabilidad": "ATAQUE",
+            "metodo": "bolaDeFuego"
+          },
+          {
+            "nombre": "Escudo Mágico",
+            "costeMana": 15,
+            "danyo": 0,
+            "descripcion": "Protección mágica",
+            "tipoHabilidad": "APOYO",
+            "metodo": "rugidoDeBatalla"
+          }
+        ],
+        "dialogos": ["La magia fluye por mis venas", "¡Que la arcana te proteja!"]
+      },
+      {
+        "nombre": "Thorin",
+        "vida": 120,
+        "vidaMaxima": 120,
+        "ataque": 20,
+        "velocidad": 8,
+        "mana": 10,
+        "habilidades": [
+          {
+            "nombre": "Golpe de Hacha",
+            "costeMana": 10,
+            "danyo": 25,
+            "descripcion": "Golpe con hacha",
+            "tipoHabilidad": "ATAQUE",
+            "metodo": "golpePoderoso"
+          },
+          {
+            "nombre": "Grito de Guerra",
+            "costeMana": 8,
+            "danyo": 0,
+            "descripcion": "Aumenta el ataque",
+            "tipoHabilidad": "APOYO",
+            "metodo": "rugidoDeBatalla"
+          }
+        ],
+        "dialogos": ["¡Por la montaña!", "No hay enemigo que me derrote"]
+      },
+      {
+        "nombre": "Elara",
+        "vida": 85,
+        "vidaMaxima": 85,
+        "ataque": 14,
+        "velocidad": 16,
+        "mana": 50,
+        "habilidades": [
+          {
+            "nombre": "Flecha Precisa",
+            "costeMana": 12,
+            "danyo": 20,
+            "descripcion": "Flecha precisa",
+            "tipoHabilidad": "ATAQUE",
+            "metodo": "flechaPrecisa"
+          },
+          {
+            "nombre": "Bendición Elfa",
+            "costeMana": 10,
+            "danyo": 0,
+            "descripcion": "Bendición defensiva",
+            "tipoHabilidad": "APOYO",
+            "metodo": "rugidoDeBatalla"
+          }
+        ],
+        "dialogos": ["La naturaleza está de nuestro lado", "¡Flecha al blanco!"]
+      },
+      {
+        "nombre": "Kael",
+        "vida": 90,
+        "vidaMaxima": 90,
+        "ataque": 16,
+        "velocidad": 10,
+        "mana": 60,
+        "habilidades": [
+          {
+            "nombre": "Curación",
+            "costeMana": 15,
+            "danyo": 0,
+            "descripcion": "Sana aliados",
+            "tipoHabilidad": "APOYO",
+            "metodo": "palabraCurativa"
+          },
+          {
+            "nombre": "Ataque Furtivo",
+            "costeMana": 12,
+            "danyo": 25,
+            "descripcion": "Ataque por sorpresa",
+            "tipoHabilidad": "ATAQUE",
+            "metodo": "ataqueFurtivo"
+          }
+        ],
+        "dialogos": ["La luz te sanará", "¡Que los dioses nos protejan!"]
+      }
+    ]
