@@ -6,6 +6,7 @@ import Juego_original.Enemigos;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Eventos {
 
@@ -75,6 +76,106 @@ public class Eventos {
     public static void meterParty(){
         Personaje p = generarPersonajeAleatorio();
         Main.agregarPersonajeParty(p);
+    }
+
+
+    //Te ofrece un objeto gratis
+    public static void encuentroMercader(Personaje[] personajes) {
+        System.out.println("\n=== MERCADER AMBULANTE ===");
+        System.out.println("Te encuentras con un tio random misterioso en el camino...");
+        System.out.println("Ofrece:");
+        Armas arma = generarArmaAleatoria();
+        Armaduras armadura = generarArmaduraAleatoria();
+        Objeto objeto = generarObjetoAleatorio();
+
+        System.out.println("1. Arma: " + arma.getNombre());
+        System.out.println("2. Armadura: " + armadura.getNombre());
+        System.out.println("3. Objeto: " + objeto.getNombre());
+
+        int decision;
+
+        do {
+            System.out.println("¿Qué deseas coger? (1-3)");
+            Scanner scanner = new Scanner(System.in);
+            decision = scanner.nextInt();
+
+            switch (decision) {
+                case 1:
+                    System.out.println("Has cogifo: " + arma.getNombre());
+                    InventarioGlobal.agregarAlInventarioGlobal(arma);
+                    break;
+                case 2:
+                    System.out.println("Has cogido: " + armadura.getNombre());
+                    InventarioGlobal.agregarAlInventarioGlobal(armadura);
+                    break;
+                case 3:
+                    System.out.println("Has cogido: " + objeto.getNombre());
+                    InventarioGlobal.agregarAlInventarioGlobal(objeto);
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intenta de nuevo.");
+            }
+        }while (decision < 0 || decision > 3);
+
+
+
+    }
+
+    //Te quita daño
+    public static void trampaEnCamino(Personaje[] personajes) {
+        System.out.println("\n=== ¡TRAMPA! ===");
+        Personaje afectado = personajes[random.nextInt(personajes.length)];
+        int danyo = 10 + random.nextInt(20);
+        afectado.setVida(afectado.getVida() - danyo);
+        System.out.println(afectado.getNombre() + " ha caído en una trampa y recibe " + danyo + " de daño!");
+    }
+
+
+    //Objeto random
+    public static void hallagoTesoro() {
+        System.out.println("\n=== TESORO ENCONTRADO ===");
+        int random = new Random().nextInt(3)+1;
+        switch (random) {
+            case 1:
+                Armas arma = generarArmaAleatoria();
+                System.out.println("Has encontrado un arma: " + arma.getNombre());
+                InventarioGlobal.agregarAlInventarioGlobal(arma);
+                break;
+            case 2:
+                Armaduras armadura = generarArmaduraAleatoria();
+                System.out.println("Has encontrado una armadura: " + armadura.getNombre());
+                InventarioGlobal.agregarAlInventarioGlobal(armadura);
+                break;
+            case 3:
+                Objeto objeto = generarObjetoAleatorio();
+                System.out.println("Has encontrado un objeto: " + objeto.getNombre());
+                InventarioGlobal.agregarAlInventarioGlobal(objeto);
+                break;
+        }
+    }
+
+
+    //Random si recibes daño o encuentras un objeto
+    public static void ruinasAntiguas(Personaje[] personajes) {
+        System.out.println("\n=== RUINAS ANTIGUAS ===");
+        System.out.println("Encuentras ruinas de una civilización olvidada...");
+        System.out.println("¿Investigas las ruinas? (1: Sí, 2: No)");
+
+        Scanner scanner = new Scanner(System.in);
+        int decision = scanner.nextInt();
+
+        if (decision == 1) {
+            int suerte = random.nextInt(2);
+            if (suerte == 0) {
+                System.out.println("¡Encuentras un artefacto antiguo!");
+                InventarioGlobal.agregarAlInventarioGlobal(generarObjetoAleatorio());
+            } else {
+                System.out.println("¡Una trampa antigua se activa!");
+                Personaje afectado = personajes[random.nextInt(personajes.length)];
+                afectado.setVida(afectado.getVida() - 25);
+                System.out.println(afectado.getNombre() + " recibe 25 de daño!");
+            }
+        }
     }
 
 
