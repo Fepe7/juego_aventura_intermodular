@@ -62,4 +62,19 @@ public class EstadoPartida {
     /* TODO
     *   [ ] - Crear Enemigos mediante JSON
     */
+
+    public static Personaje crearPersonaje(String nombrePersonaje) {
+        try (final var fr = new FileReader("Personajes.json")) {
+            Personaje[] personajes = new Gson().fromJson(fr, Personaje[].class);
+            for (final var p : personajes) {
+                if (p.getNombre().equals(nombrePersonaje)) {
+                    return p;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Error al crear personaje");
+            return null;
+        }
+    }
 }

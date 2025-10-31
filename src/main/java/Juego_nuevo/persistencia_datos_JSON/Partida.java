@@ -33,21 +33,4 @@ public class Partida {
     public Objeto[] getObjetos() {
         return objetos;
     }
-
-    /**
-     * La función crear <strong>{@code crearPersonajes()}</strong> crea el personaje mediante el nombre.
-     * <p>
-     * La función itera sobre el array de {@code personajes} y, si el nombre coincide, envia ese personaje solo, no el array
-     * entero. Si no existiese, devolverá {@code null}.
-     * @param nombrePersonaje   El nombre del personaje deseado
-     * @return Si encuentra el {@link Personaje} devuelve el personaje, si no, <strong>NULL</strong>
-     */
-    public static Personaje crearPersonaje(String nombrePersonaje) {
-        for (final var p : personajes) {
-            if (p.getNombre().equals(nombrePersonaje)) {
-                return p;
-            }
-        }
-        return null;
-    }
 }
