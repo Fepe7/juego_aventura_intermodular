@@ -12,7 +12,6 @@ public class Entidad {
     protected String nombre;
     private boolean vivo;
     private int mana;
-    private List<Habilidad> habilidades = new ArrayList<>();
 
 
     //Constructor para los enemigos
@@ -32,16 +31,10 @@ public class Entidad {
         this.velocidad = velocidad;
         this.vivo = true;
         this.mana = mana;
-        this.habilidades = habilidades;
     }
 
 
 
-
-    //MEte la habilidad en la lista de habilidades del personaje
-    public void agregarHabilidad(Habilidad h) {
-        habilidades.add(h);
-    }
 
     public  int getVida() {
         return vida;
@@ -91,8 +84,6 @@ public class Entidad {
         this.ataque = ataque;
     }
 
-    public List<Habilidad> getHabilidades() {
-        return habilidades;
-    }
+
 
 }

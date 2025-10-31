@@ -197,8 +197,6 @@ public class Juego {
                         for (int i = 0; i < habilidades.size(); i++) {
                             Habilidad habilidad = habilidades.get(i);
                             System.out.println((i + 1) + " - " + habilidad.getNombre() + " (Coste de maná: " + habilidad.getCosteMana() + ")" + "(Daño al enemigo: " + (habilidad.getDanyo() + p.getAtaque()) + ")");
-
-
                         }
                         System.out.println("0 - Cancelar y volver al menú principal");
 
@@ -207,8 +205,6 @@ public class Juego {
                             habilidad_decision = sc.nextInt();
                             if (habilidad_decision == 0) {
                                 System.out.println("Has cancelado la seleccion de habilidad");
-                                habilidadValida = true;
-                                continuar = 0;
                                 break;
                             }
                             habilidad_decision -= 1;
@@ -268,7 +264,6 @@ public class Juego {
                     break;
 
 
-                // Dentro de JUego_originak.Juego.java, en el método accionPersonaje, reemplaza el case 3 por esto:
                 case 3:
                     System.out.println("Menu de objetos");
 

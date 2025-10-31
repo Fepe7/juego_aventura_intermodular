@@ -1,0 +1,98 @@
+[
+  {
+    "nombre": "Orco Guerrero",
+    "vida": 80,
+    "vidaMaxima": 80,
+    "ataque": 16,
+    "velocidad": 10,
+    "descripcion": "Un feroz orco armado con una maza"
+  },
+  {
+    "nombre": "Goblin Pícaro",
+    "vida": 50,
+    "vidaMaxima": 50,
+    "ataque": 12,
+    "velocidad": 15,
+    "descripcion": "Un pequeño goblin ágil y astuto"
+  },
+  {
+    "nombre": "Mago Oscuro",
+    "vida": 60,
+    "vidaMaxima": 60,
+    "ataque": 14,
+    "velocidad": 12,
+    "descripcion": "Un poderoso mago que domina la magia negra"
+  },
+  {
+    "nombre": "Dragón Menor",
+    "vida": 150,
+    "vidaMaxima": 150,
+    "ataque": 25,
+    "velocidad": 8,
+    "descripcion": "Un joven dragón de fuego devastador"
+  },
+  {
+    "nombre": "Esbirro Esqueleto",
+    "vida": 45,
+    "vidaMaxima": 45,
+    "ataque": 11,
+    "velocidad": 9,
+    "descripcion": "Un esqueleto reanimado por magia negra"
+  },
+  {
+    "nombre": "Troll de Montaña",
+    "vida": 120,
+    "vidaMaxima": 120,
+    "ataque": 22,
+    "velocidad": 6,
+    "descripcion": "Una bestia colosal de gran fuerza"
+  },
+  {
+    "nombre": "Bandido Mercenario",
+    "vida": 55,
+    "vidaMaxima": 55,
+    "ataque": 13,
+    "velocidad": 14,
+    "descripcion": "Un criminal despiadado en busca de oro"
+  },
+  {
+    "nombre": "Bruja del Bosque",
+    "vida": 65,
+    "vidaMaxima": 65,
+    "ataque": 15,
+    "velocidad": 11,
+    "descripcion": "Una bruja antigua con conocimiento de maleficios"
+  },
+  {
+    "nombre": "Guardia de Hierro",
+    "vida": 100,
+    "vidaMaxima": 100,
+    "ataque": 18,
+    "velocidad": 7,
+    "descripcion": "Un caballero blindado de la fortaleza"
+  },
+  {
+    "nombre": "Cazador Vampiro",
+    "vida": 75,
+    "vidaMaxima": 75,
+    "ataque": 17,
+    "velocidad": 13,
+    "descripcion": "Un cazador maldito sediento de sangre"
+  },
+  {
+    "nombre": "Golem de Piedra",
+    "vida": 140,
+    "vidaMaxima": 140,
+    "ataque": 20,
+    "velocidad": 5,
+    "descripcion": "Una creación de magia antigua indestructible"
+  },
+  {
+    "nombre": "Demonio Menor",
+    "vida": 85,
+    "vidaMaxima": 85,
+    "ataque": 19,
+    "velocidad": 11,
+    "descripcion": "Una criatura infernal del abismo"
+  }
+]

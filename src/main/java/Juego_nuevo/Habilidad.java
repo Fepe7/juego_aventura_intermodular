@@ -17,6 +17,15 @@ public class Habilidad {
         this.tipoHabilidad = tipo;
     }
 
+public void bendicionElfa(Personaje p) {
+    p.setVida(p.getVida() + 15);
+    p.setAtaque(p.getAtaque() + 5);
+    Objeto.comprobarVidaMaxima(p);
+    System.out.println("Has usado " + nombre);
+    System.out.println("Has sido bendecido: +15 vida y +5 ataque");
+}
+
+
 
 
     public void golpePoderoso(Personaje p, Enemigos e) {

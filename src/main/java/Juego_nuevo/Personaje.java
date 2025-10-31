@@ -9,6 +9,8 @@ public class Personaje extends Entidad {
     private static List<Objeto> objetosEquipados = new ArrayList<>();
     private int vidaMaxima;
     private List<String> dialogos = new ArrayList<>();
+    private List<Habilidad> habilidades = new ArrayList<>();
+
 
 
     //Constructor de los personajes
@@ -111,6 +113,14 @@ public void equiparObjeto(Objeto objeto) {
 
 
 
+    public List<Habilidad> getHabilidades() {
+        return habilidades;
+    }
+
+        //MEte la habilidad en la lista de habilidades del personaje
+    public void agregarHabilidad(Habilidad h) {
+        habilidades.add(h);
+    }
 
     public List<String> getDialogos() {
         return dialogos;

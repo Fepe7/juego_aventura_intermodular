@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-        public static void mostrarVictoria() {
+
+
+    public static void mostrarVictoria() {
         System.out.println("\n==============================");
         System.out.println("        ¡VICTORIA! 🏆");
         System.out.println("==============================");
@@ -26,14 +28,16 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    //Array estatico de persoanjes
+    private static Personaje[] personajesPartida;
 
+
+    public static void main(String[] args) {
 
         //Pa la consola en otra ventana
         TextConsoleWindow.install("RPG - Consola", true);
         Scanner scanner = new Scanner(System.in);
 
-        Personaje[] personajesPartida;
 
         if (ImportarDatos.existePartidaGuardada()) {
             int opcion = 0;
@@ -57,7 +61,6 @@ public class Main {
                 personajesPartida = ImportarDatos.cargarPersonajes();
                 if (personajesPartida == null || personajesPartida.length == 0) {
                     System.out.println("No se ha podido importar la partida. Se creará una nueva partida.");
-                    personajesPartida = crearPartidaNueva();
                 } else {
                     System.out.println("Partida importada correctamente.");
                     var objetos = ImportarDatos.cargarObjetos();
@@ -69,11 +72,10 @@ public class Main {
                     }
                 }
             } else {
-                personajesPartida = crearPartidaNueva();
+
             }
         } else {
             System.out.println("No se ha encontrado ninguna partida guardada. Se creará una nueva partida.");
-            personajesPartida = crearPartidaNueva();
         }
 
 
@@ -121,13 +123,6 @@ public class Main {
         }
     }
 
-    private static Personaje[] crearPartidaNueva() {
-        Personaje personaje1 = Personaje.CrearPersonaje();
-        Personaje personaje2 = Personaje.CrearPersonaje();
-        Personaje personaje3 = Personaje.CrearPersonaje();
-        Personaje personaje4 = Personaje.CrearPersonaje();
-        return new Personaje[]{personaje1, personaje2, personaje3, personaje4};
-    }
 
     private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal) {
         System.out.println("Guardando partida...");

@@ -29,6 +29,11 @@ public class Eventos {
 
 
 
+    public static Enemigos combateAleatorio()
+
+
+
+
 
     private static Armas generarArmaAleatoria() {
         String[][] armas = {
