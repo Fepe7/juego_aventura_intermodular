@@ -29,7 +29,21 @@ public class Main {
 
 
     //Array estatico de persoanjes
-    private static Personaje[] personajesPartida;
+    private static ArrayList<Personaje> personajesPartida;
+
+
+    //Coger los personajes de la party
+    public static ArrayList<Personaje> personajesPartida() {
+        return personajesPartida;
+    }
+
+    public static void agregarPersonajeParty(Personaje p) {
+        if (personajesPartida.size() < 4) {
+            personajesPartida.add(p);
+        }else {
+            System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
+        }
+    }
 
 
     public static void main(String[] args) {

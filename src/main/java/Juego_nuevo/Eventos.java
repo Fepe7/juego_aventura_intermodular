@@ -1,5 +1,10 @@
 package Juego_nuevo;
 
+import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
+import Juego_original.Enemigos;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Eventos {
@@ -22,24 +27,64 @@ public class Eventos {
                 System.out.println(p.getNombre() + " ha recuperado toda su vida! [" + p.getVida() + "/" + p.getVida_maxima() + "]");
             }
         }
-
         System.out.println("\nTu equipo está completamente recuperado y listo para continuar.");
     }
 
 
 
-    public static Enemigo combateAleatorio()
+    //Devuelve un enemigo aleatorio
+    public static Enemigo generarEnemigoAleatorio(){
+
+        ArrayList<String> nombresEnemigos = new ArrayList<>();
+        Collections.addAll(nombresEnemigos,
+        "Orco Guerrero", "Goblin Pícaro", "Mago Oscuro", "Dragón Menor",
+        "Esbirro Esqueleto", "Troll de Montaña", "Bandido Mercenario", "Bruja del Bosque",
+        "Guardia de Hierro", "Cazador Vampiro", "Golem de Piedra", "Demonio Menor");
+
+        String nombre = nombresEnemigos.get(random.nextInt(nombresEnemigos.size()));
+
+        return EstadoPartida.crearEnemigo(nombre);
+
+    }
 
 
+    //Genera un personaje aleatorio
+    public static Personaje generarPersonajeAleatorio(){
+
+        //Recoge los personajes de la party
+        ArrayList<Personaje> personajesParty = Main.personajesPartida();
+
+        //Todos los personajes de posibles
+        ArrayList<String> nombresPersonajes = new ArrayList<>();
+        Collections.addAll(nombresPersonajes, "Aragorn", "Merlin", "Thorin", "Elara", "Kael");
+
+        //Crea arraylist de personajes disponibles para meter en un party
+        ArrayList<String> personajesDisponibles = new ArrayList<>(nombresPersonajes);
+
+        //Elimina los personajes que ya estan en la party
+        personajesDisponibles.removeAll(personajesParty);
+
+        //Saca un personaje aleatorio de los disponibles
+        String nombre = personajesDisponibles.get(random.nextInt(nombresPersonajes.size()));
+
+        return EstadoPartida.crearPersonaje(nombre);
+    }
+
+
+    //Mete un personaje aleatorio en la party
+    public static void meterParty(){
+        Personaje p = generarPersonajeAleatorio();
+        Main.agregarPersonajeParty(p);
+    }
 
 
 
     private static Armas generarArmaAleatoria() {
         String[][] armas = {
-                {"Espada de Hierro Perfeccionada", "Aumenta el ataque en 10 puntos (Solo Guerrero)"},
-                {"Bastón Elemental", "Aumenta el ataque en 20 puntos (Solo Mago)"},
-                {"Arco Largo Élfico", "Aumenta el ataque en 20 puntos (Solo Arquero)"},
-                {"Dagas Envenenadas", "Aumenta el ataque en 10 puntos (Solo Asesino)"}
+                {"Espada de Hierro Perfeccionada", "Aumenta el ataque en 10 puntos "},
+                {"Bastón Elemental", "Aumenta el ataque en 20 puntos "},
+                {"Arco Largo Élfico", "Aumenta el ataque en 20 puntos "},
+                {"Dagas Envenenadas", "Aumenta el ataque en 10 puntos "}
         };
 
         int indice = random.nextInt(armas.length);
@@ -49,9 +94,9 @@ public class Eventos {
     private static Armaduras generarArmaduraAleatoria() {
         String[][] armaduras = {
                 {"Escudo Perfeccionado", "Aumenta la vida máxima en 10 puntos"},
-                {"Armadura de Placas", "Aumenta la vida máxima en 30 (Solo Guerrero)"},
+                {"Armadura de Placas", "Aumenta la vida máxima en 30 "},
                 {"Túnica Mágica", "Aumenta la vida maxíma en 15 puntos"},
-                {"Armadura Ligera", "Aumenta vida y velocidad en 10 (Arquero/Asesino)"},
+                {"Armadura Ligera", "Aumenta vida y velocidad en 10 "},
                 {"Escudo Bendito", "Aumenta la vida máxima en 20 puntos"}
         };
 
