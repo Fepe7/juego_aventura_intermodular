@@ -94,4 +94,5 @@ public class Entidad {
     public List<Habilidad> getHabilidades() {
         return habilidades;
     }
+
 }

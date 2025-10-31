@@ -8,8 +8,10 @@ public class Personaje extends Entidad {
 
     private static List<Objeto> objetosEquipados = new ArrayList<>();
     private int vidaMaxima;
+    private List<String> dialogos = new ArrayList<>();
 
-    Personaje (String nombre, int vida, int ataque, int velocidad, int mana, List<Habilidad> habilidades) {
+
+    Personaje (String nombre, int vida, int ataque, int velocidad, int mana, List<Habilidad> habilidades, List<String> dialogos) {
         super(nombre, vida, ataque, velocidad, mana, habilidades);
     }
 
@@ -107,24 +109,15 @@ public void equiparObjeto(Objeto objeto) {
 
 
 
-    //En este metodo se serializa un JSON con el nombre, el nombre es el identificador del personaje y asi accedes a todos sus atributos
-    public static Personaje crearPersonaje(String nombre) {
-
-        /*
-        *
-        * Deserializar atributos del JSON y meterlos en el objeto Personaje y devuelves el personaje
-        *
-        *
-        * */
 
 
-        Personaje personaje = new Personaje()
-
-
-
-        return Personaje;
+    public List<String> getDialogos() {
+        return dialogos;
     }
 
+    public void setDialogos(List<String> dialogos) {
+        this.dialogos = dialogos;
+    }
 
     public List<Objeto> getObjetosEquipados() {
         return objetosEquipados;
