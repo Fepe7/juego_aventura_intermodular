@@ -2,6 +2,7 @@ package Juego_nuevo;
 
 import Juego_nuevo.persistencia_datos_JSON.GuardarDatos;
 import Juego_nuevo.persistencia_datos_JSON.ImportarDatos;
+import Juego_nuevo.persistencia_datos_JSON.Partida;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,17 +30,18 @@ public class Main {
 
 
     //Array estatico de persoanjes
-    private static ArrayList<Personaje> personajesPartida;
+    private static Personaje[] personajesPartida;
 
 
     //Coger los personajes de la party
-    public static ArrayList<Personaje> personajesPartida() {
+    public static Personaje[] personajesPartida() {
         return personajesPartida;
     }
 
     public static void agregarPersonajeParty(Personaje p) {
-        if (personajesPartida.size() < 4) {
-            personajesPartida.add(p);
+        if (personajesPartida.length < 4) {
+            personajesPartida[personajesPartida.length] = p;
+            System.out.println("Personaje " + p.getNombre() + " agregado a la party.");
         }else {
             System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
         }
@@ -86,6 +88,12 @@ public class Main {
                     }
                 }
             } else {
+                System.out.println("Creando una nueva partida...");
+                personajesPartida = new Personaje[4];
+                // Aquí podrías agregar lógica para crear nuevos personajes
+                System.out.println("Nueva partida creada.");
+                //Genera el protagonista y lo mete en la party
+                personajesPartida[0] = Eventos.generarProragonista();
 
             }
         } else {
@@ -94,46 +102,13 @@ public class Main {
 
 
         ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
-        int ronda = 0;
-        final int rondaFinal = 5;
 
         System.out.println("Estas solo. Rodeado de puertas, hacia que habitacion quieres ir?");
 
         while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo()
                 || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
 
-            // Genera la descripción de la habitación con la API (sin variable 'descripcion')
-            try {
-                System.out.println("\n----- HABITACION -----");
-                System.out.println("----------------------\n");
-            } catch (Exception ex) {
-                System.out.println("[Narrador IA no disponible] " + ex.getMessage());
-            }
 
-            Enemigo enemigo = Combates.combate(ronda);
-            System.out.println("¡Un " + enemigo.getNombre() + " ha aparecido! Prepárate para la batalla.");
-
-            while (enemigo.isVivo() && (personajesPartida[0].isVivo() || personajesPartida[1].isVivo()
-                    || personajesPartida[2].isVivo() || personajesPartida[3].isVivo())) {
-                Juego.turnoActual(personajesPartida, enemigo);
-            }
-
-            if (!enemigo.isVivo()) {
-                if (ronda == rondaFinal - 1) {
-                    mostrarVictoria();
-                    break;
-                }
-                System.out.println("\n¿Quieres guardar partida (S/N) ?\n");
-                String respuesta = scanner.next();
-                if ("s".equalsIgnoreCase(respuesta)) {
-                    guardadPartida(personajesPartida, inventarioGlobal);
-                }
-                ronda++;
-                SistemaPostBatalla.opcionesPostBatalla(personajesPartida, inventarioGlobal);
-            } else {
-                mostrarDerrota();
-                break;
-            }
         }
     }
 

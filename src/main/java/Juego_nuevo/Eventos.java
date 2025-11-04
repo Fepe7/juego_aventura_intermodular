@@ -3,10 +3,9 @@ package Juego_nuevo;
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 import Juego_original.Enemigos;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileReader;
+import java.util.*;
 
 public class Eventos {
 
@@ -53,7 +52,7 @@ public class Eventos {
     public static Personaje generarPersonajeAleatorio(){
 
         //Recoge los personajes de la party
-        ArrayList<Personaje> personajesParty = Main.personajesPartida();
+        Personaje[] personajesParty = Main.personajesPartida();
 
         //Todos los personajes de posibles
         ArrayList<String> nombresPersonajes = new ArrayList<>();
@@ -63,12 +62,27 @@ public class Eventos {
         ArrayList<String> personajesDisponibles = new ArrayList<>(nombresPersonajes);
 
         //Elimina los personajes que ya estan en la party
-        personajesDisponibles.removeAll(personajesParty);
+        personajesDisponibles.removeAll(Arrays.stream(personajesParty).toList());
 
         //Saca un personaje aleatorio de los disponibles
         String nombre = personajesDisponibles.get(random.nextInt(nombresPersonajes.size()));
 
         return EstadoPartida.crearPersonaje(nombre);
+    }
+
+
+    public static Personaje generarProragonista(){
+
+        try(FileReader leer = new FileReader("Personajes.json")) {
+            //Leer el primer objeto del JSON (el protagonista)
+            Personaje[] personajes = new com.google.gson.Gson().fromJson(leer, Personaje[].class);
+            return personajes[0];
+
+        }catch (Exception e) {
+            System.out.println("Error al crear el personaje");
+            return null;
+        }
+
     }
 
 
@@ -80,9 +94,9 @@ public class Eventos {
 
 
     //Te ofrece un objeto gratis
-    public static void encuentroMercader(Personaje[] personajes) {
+    public static void encuentroMercader() {
         System.out.println("\n=== MERCADER AMBULANTE ===");
-        System.out.println("Te encuentras con un tio random misterioso en el camino...");
+        System.out.println("Te encuentras con un hombre misterioso en el camino...");
         System.out.println("Ofrece:");
         Armas arma = generarArmaAleatoria();
         Armaduras armadura = generarArmaduraAleatoria();
@@ -101,7 +115,7 @@ public class Eventos {
 
             switch (decision) {
                 case 1:
-                    System.out.println("Has cogifo: " + arma.getNombre());
+                    System.out.println("Has cogido: " + arma.getNombre());
                     InventarioGlobal.agregarAlInventarioGlobal(arma);
                     break;
                 case 2:
@@ -127,12 +141,12 @@ public class Eventos {
         Personaje afectado = personajes[random.nextInt(personajes.length)];
         int danyo = 10 + random.nextInt(20);
         afectado.setVida(afectado.getVida() - danyo);
-        System.out.println(afectado.getNombre() + " ha caído en una trampa y recibe " + danyo + " de daño!");
+        System.out.println(afectado.getNombre() + " ha caído en una trampa y recibe " + danyo + " de daño");
     }
 
 
     //Objeto random
-    public static void hallagoTesoro() {
+    public static void hallazgoTesoro() {
         System.out.println("\n=== TESORO ENCONTRADO ===");
         int random = new Random().nextInt(3)+1;
         switch (random) {
