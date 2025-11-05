@@ -1,5 +1,7 @@
 package Juego_nuevo;
 
+import Juego_nuevo.mapa.Map;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +12,7 @@ public class Personaje extends Entidad {
     private int vidaMaxima;
     private List<String> dialogos = new ArrayList<>();
     private List<Habilidad> habilidades = new ArrayList<>();
+    private int ubicacion = 0;
 
 
 
@@ -111,7 +114,10 @@ public void equiparObjeto(Objeto objeto) {
     }
 
 
-
+    // Directions: 0 ^, 1 >, 2 v, 3 <
+    public void mover(Map mapa, int direccion) {
+        ubicacion = mapa.moveRoomN(this.ubicacion, direccion);
+    }
 
     public List<Habilidad> getHabilidades() {
         return habilidades;
@@ -134,6 +140,9 @@ public void equiparObjeto(Objeto objeto) {
         return objetosEquipados;
     }
 
+    public int getUbicacion() {
+        return ubicacion;
+    }
 }
 
 

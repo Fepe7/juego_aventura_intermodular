@@ -4,6 +4,8 @@ package Juego_nuevo.mapa;
  * @author Marcos
  */
 
+import Juego_nuevo.Personaje;
+
 import java.util.Random;
 
 public class Map {
@@ -61,7 +63,7 @@ public class Map {
 
         int positions[][] = {{0, halfSize}, {halfSize, mapSize-1}, {mapSize-1, halfSize}, {halfSize, 0}};
 
-        int startPosition = (int) (seed%positions.length);
+        int startPosition = (seed%positions.length);
 
         map[positions[startPosition][0]]
                 [positions[startPosition][1]] = new Room();
@@ -86,6 +88,16 @@ public class Map {
         return coords;
     }
 
+    public int moveRoomN(int currentLocation, int direction) {
+        int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+        int currentLocationCoord[] = getRoomCoords(currentLocation);
+
+        int newRow = currentLocationCoord[0] + directions[direction][0];
+        int newCol = currentLocationCoord[1] + directions[direction][1];
+
+        return map[newRow][newCol].getGeneratedOrder();
+    }
+
 
     /*
      * Función principal para generar las habitaciones.
@@ -103,7 +115,7 @@ public class Map {
         int[] lastGeneratedCoords = getRoomCoords(lastRoomGenerated);
 
         boolean generationEnded = false;
-        int roomGenerated = 0;
+        boolean roomGenerated = false;
         int tries;
 
 
@@ -132,24 +144,22 @@ public class Map {
                         !(map[newRow][newCol] instanceof Room)) {
 
                     map[newRow][newCol] = new Room();
-                    roomGenerated = 1;
+                    roomGenerated = true;
                 }
 
-                if (tries>100) {
-                    roomGenerated=-1;
+                if (tries>100) { // si no se puede mover tira para atrás
+                    lastRoomGenerated--;
+                    lastGeneratedCoords = getRoomCoords(lastRoomGenerated);
+                    tries=0;
                 }
 
-            } while (roomGenerated==0);
+            } while (!roomGenerated);
 
-            if (Room.getTotalRooms() == finalRoomN || roomGenerated==-1) {
+            if (Room.getTotalRooms() == finalRoomN) {
                 generationEnded = true;
             }
 
-            if (roomGenerated==-1) {
-                System.out.println("Generation ended prematurely");
-            }
-
-            roomGenerated = 0; // set to false again to repeat loop
+            roomGenerated = false; // set to false again to repeat loop
 //            System.out.println("room generated");
 
             lastRoomGenerated++;
@@ -175,14 +185,19 @@ public class Map {
     }
 
 
-    @Override
-    public String toString() {
+    public String toString(Personaje player) {
         System.out.println("\n\nSeed: "+seed+"\nRooms: "+finalRoomN);
         StringBuilder outputMap = new StringBuilder();
 
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
-                outputMap.append(map[i][j]);
+
+                if (player.getUbicacion() == map[i][j].getGeneratedOrder()){
+                    outputMap.append("\033[0;33m").append(map[i][j]).append("\033[0;0m");
+                } else {
+                    outputMap.append(map[i][j]);
+                }
+
                 //IF la posicion de jugador == i & j se cambia color  a rojo
             }
             outputMap.append('\n');
