@@ -16,6 +16,9 @@ import Juego_nuevo.Personaje;
  * listas y, si se quiere pasar a {@link java.util.List} se hace con {@code Arrays.asList(array)} o si se quiere un
  * {@link java.util.ArrayList} se hace con {@code ArrayList<>(Arrays.asList(array))}, es decir, un parseo a ArrayList.
  */
+
+
+
 public class Partida {
     Personaje[] personajes;
     Objeto[] objetos;
