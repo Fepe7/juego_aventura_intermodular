@@ -60,6 +60,15 @@ public class EstadoPartida {
         }
     }
 
+    /**
+     * La función <strong>{@code crearPersonaje()}</strong> crea un personaje mediante su nombre pasado, que está serializado
+     * <p>
+     * Esta función lee {@code Personajes.json} y desestructura el contenido en un array y después evalua ese array con
+     * un {@code for-each} el cual compara nombres, si el nombre es el pasado por argumentos de la función, lo devuelve.
+     * Si no, devuelve {@code null}.
+     * @param nombrePersonaje Es el nombre del personaje que se desea.
+     * @return El {@link Personaje} si se encuentra | {@code null} si no se ha encontrado | {@code null} debido a una excepción
+     */
     public static Personaje crearPersonaje(String nombrePersonaje) {
         try (final var fr = new FileReader("Personajes.json")) {
             Personaje[] personajes = new Gson().fromJson(fr, Personaje[].class);
@@ -75,6 +84,15 @@ public class EstadoPartida {
         }
     }
 
+    /**
+     * La función <strong>{@code crearEnemigo()}</strong> crea un enemigo a partir del nombre pasado, que está serializado
+     * <p>
+     * Esta función lee {@code Enemigos.json} y lo destructura en un array de {@link Enemigo}. Después evalua el array
+     * con un {@code for-each} y, si el nombre del {@link Enemigo} coincide con el nombre pasado, devuelve el
+     * {@link Enemigo}. Si no, devuelve {@code null}.
+     * @param nombreEnemigo El nombre del {@link Enemigo} que se desea crear del JSON
+     * @return El {@link Enemigo} con el nombre | {@code null} si no lo encuentra | {@code null} si hay una excepción
+     */
     public static Enemigo crearEnemigo(String nombreEnemigo) {
         try (final var fr = new FileReader("Enemigos.json")) {
             Enemigo[] enemigos = new Gson().fromJson(fr, Enemigo[].class);
