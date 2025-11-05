@@ -18,7 +18,10 @@ public class Main {
 
         map.generateLayout();
 
-        System.out.println(map);
+        System.out.println(map.toString());
+
+
+
     }
 }
 

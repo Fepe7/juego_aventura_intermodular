@@ -49,10 +49,8 @@ public class Eventos {
 
 
     //Genera un personaje aleatorio
-    public static Personaje generarPersonajeAleatorio(){
+    public static Personaje generarPersonajeAleatorio(Personaje[] personajesParty) {
 
-        //Recoge los personajes de la party
-        Personaje[] personajesParty = Main.personajesPartida();
 
         //Todos los personajes de posibles
         ArrayList<String> nombresPersonajes = new ArrayList<>();
@@ -87,9 +85,9 @@ public class Eventos {
 
 
     //Mete un personaje aleatorio en la party
-    public static void meterParty(){
-        Personaje p = generarPersonajeAleatorio();
-        Main.agregarPersonajeParty(p);
+    public static void meterParty(Personaje[] personajesParty){
+        Personaje p = generarPersonajeAleatorio(personajesParty);
+        Main.agregarPersonajeParty(p, personajesParty);
     }
 
 

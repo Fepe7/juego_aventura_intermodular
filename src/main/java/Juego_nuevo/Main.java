@@ -2,8 +2,10 @@ package Juego_nuevo;
 
 import Juego_nuevo.persistencia_datos_JSON.GuardarDatos;
 import Juego_nuevo.persistencia_datos_JSON.ImportarDatos;
+import Juego_nuevo.persistencia_datos_JSON.PersistenciaSeed;
 
 import java.util.ArrayList;
+import Juego_nuevo.mapa.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -29,19 +31,21 @@ public class Main {
 
 
     //Array estatico de persoanjes
-    private static Personaje[] personajesPartida;
+    private Personaje[] personajesPartida = new Personaje[4];
+
+    private int seed;
 
 
     //Coger los personajes de la party
-    public static Personaje[] personajesPartida() {
+    public static Personaje[] personajesPartida(Personaje[] personajesPartida) {
         return personajesPartida;
     }
 
-    public static void agregarPersonajeParty(Personaje p) {
+    public static void agregarPersonajeParty(Personaje p, Personaje[] personajesPartida) {
         if (personajesPartida.length < 4) {
             personajesPartida[personajesPartida.length] = p;
             System.out.println("Personaje " + p.getNombre() + " agregado a la party.");
-        }else {
+        } else {
             System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
         }
     }
@@ -52,6 +56,8 @@ public class Main {
         //Pa la consola en otra ventana
         TextConsoleWindow.install("RPG - Consola", true);
         Scanner scanner = new Scanner(System.in);
+
+        Personaje[] personajesPartida = new Personaje[4];
 
 
         if (ImportarDatos.existePartidaGuardada()) {
@@ -85,6 +91,13 @@ public class Main {
                     } else {
                         System.out.println("No se han podido importar los objetos. Se usarán los objetos iniciales.");
                     }
+                    int seed = PersistenciaSeed.cargarSeed();
+                    if (seed != 0) {
+                        System.out.println("Seed importada correctamente: " + seed);
+                    } else {
+                        System.out.println("No se ha podido importar la seed. Se usará una seed aleatoria.");
+                    }
+
                 }
             } else {
                 System.out.println("Creando una nueva partida...");
@@ -93,6 +106,12 @@ public class Main {
                 System.out.println("Nueva partida creada.");
                 //Genera el protagonista y lo mete en la party
                 personajesPartida[0] = Eventos.generarProragonista();
+
+                //Genera el mapa y guarda la seed
+                Map mapa = new Map();
+                int seed = mapa.getSeed();
+                PersistenciaSeed.guardarSeed(seed);
+
 
             }
         } else {
@@ -104,12 +123,24 @@ public class Main {
 
         System.out.println("Estas solo. Rodeado de puertas, hacia que habitacion quieres ir?");
 
-        while (personajesPartida[0].isVivo() || personajesPartida[1].isVivo()
-                || personajesPartida[2].isVivo() || personajesPartida[3].isVivo()) {
+        while (algunPersonajeVivo(personajesPartida)) {
+
+
 
 
         }
     }
+
+
+    //Comprueba si algun personaje esta vivo, si no hay ninguno vivo devuelve false
+    private static boolean algunPersonajeVivo(Personaje[] personajesPartida) {
+    for (Personaje p : personajesPartida) {
+        if (p != null && p.isVivo()) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
     private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal) {
@@ -120,4 +151,8 @@ public class Main {
         System.out.println("Partida guardada correctamente.");
     }
 
+
+    public void setSeed(int seed) {
+        this.seed = seed;
+    }
 }

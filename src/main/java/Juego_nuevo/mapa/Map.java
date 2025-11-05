@@ -185,6 +185,10 @@ public class Map {
     }
 
 
+    public int getSeed() {
+        return seed;
+    }
+
     public String toString(Personaje player) {
         System.out.println("\n\nSeed: "+seed+"\nRooms: "+finalRoomN);
         StringBuilder outputMap = new StringBuilder();

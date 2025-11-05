@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class PersistenciaSeed {
-    public static void guardarSeed(String seed) {
+    public static void guardarSeed(int seed) {
         try (final var bw = new BufferedWriter(new FileWriter("seed.txt"))) {
             bw.write(seed);
         } catch (Exception e) {
@@ -14,12 +14,12 @@ public class PersistenciaSeed {
         }
     }
 
-    public static String cargarSeed() {
+    public static int cargarSeed() {
         try (final var br = new BufferedReader(new FileReader("seed.txt"))) {
-            return br.readLine();
+            return Integer.parseInt(br.readLine());
         } catch (Exception e) {
             System.out.println("Error al cargar la seed");
-            return null;
+            return 0;
         }
     }
 }
