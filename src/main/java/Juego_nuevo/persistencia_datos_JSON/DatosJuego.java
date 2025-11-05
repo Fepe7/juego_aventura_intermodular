@@ -19,11 +19,11 @@ import Juego_nuevo.Personaje;
 
 
 
-public class Partida {
+public class DatosJuego {
     Personaje[] personajes;
     Objeto[] objetos;
 
-    public Partida(Personaje[] personajes, Objeto[] objetos){
+    public DatosJuego(Personaje[] personajes, Objeto[] objetos){
         this.personajes = personajes;
         this.objetos = objetos;
     }
