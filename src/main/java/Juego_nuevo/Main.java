@@ -1,10 +1,10 @@
 package Juego_nuevo;
 
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
-import Juego_nuevo.persistencia_datos_JSON.GuardarDatos;
-import Juego_nuevo.persistencia_datos_JSON.ImportarDatos;
+
 import Juego_nuevo.mapa.Map;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -62,8 +62,11 @@ public class Main {
         Personaje[] personajesPartida = new Personaje[4];
         ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
 
+        //Fichero de guardado
+        File partidaGuardada = new File("Partida.json");
 
-        if (ImportarDatos.existePartidaGuardada()) {
+
+        if (partidaGuardada.exists()) {
             int opcion = 0;
             try {
                 do {
@@ -82,7 +85,7 @@ public class Main {
             }
 
             if (opcion == 1) {
-                personajesPartida = ImportarDatos.cargarPersonajes();
+                personajesPartida = EstadoPartida.cargarPartida().getPersonajes();
                 if (personajesPartida == null || personajesPartida.length == 0) {
                     System.out.println("No se ha podido importar la partida. Se creará una nueva partida.");
                     // Crear nueva partida aquí
@@ -92,7 +95,7 @@ public class Main {
                     EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, mapa.getSeed());
                 } else {
                     System.out.println("Partida importada correctamente.");
-                    var objetos = ImportarDatos.cargarObjetos();
+                    var objetos = EstadoPartida.cargarPartida().getObjetos();
                     if (objetos != null) {
                         InventarioGlobal.setInventarioGlobal(objetos);
                         System.out.println("Objetos importados correctamente.");
@@ -160,16 +163,11 @@ public class Main {
     }
 
 
-    private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal) {
+    private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal, int seed) {
         System.out.println("Guardando partida...");
-        GuardarDatos guardarDatos = new GuardarDatos();
-        GuardarDatos.guardarPersonajes(personajesPartida);
-        GuardarDatos.guardarObjetos(InventarioGlobal.getInventarioGlobal());
+        EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed);
         System.out.println("Partida guardada correctamente.");
     }
 
 
-    public void setSeed(int seed) {
-        this.seed = seed;
-    }
 }
