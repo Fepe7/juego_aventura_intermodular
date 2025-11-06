@@ -190,8 +190,9 @@ public class Map {
     }
 
     public String toString(Personaje player) {
-        System.out.println("\n\nSeed: "+seed+"\nRooms: "+finalRoomN);
         StringBuilder outputMap = new StringBuilder();
+
+        outputMap.append("Seed: ").append(seed).append("\nRooms: ").append(finalRoomN).append("\n\n");
 
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -201,12 +202,14 @@ public class Map {
                 } else {
                     outputMap.append(map[i][j]);
                 }
-
-                //IF la posicion de jugador == i & j se cambia color  a rojo
             }
             outputMap.append('\n');
+            //IF la posicion de jugador == i & j se cambia color  a rojo
+
+
         }
 
         return outputMap.toString();
     }
+
 }

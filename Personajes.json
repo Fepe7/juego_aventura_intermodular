@@ -6,6 +6,7 @@
     "ataque": 15,
     "velocidad": 10,
     "mana": 50,
+    "vivo": true,
     "habilidades": [
       {
         "nombre": "Golpe Poderoso",
