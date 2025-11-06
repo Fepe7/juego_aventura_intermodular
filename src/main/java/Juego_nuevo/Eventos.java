@@ -85,9 +85,21 @@ public class Eventos {
 
 
     //Mete un personaje aleatorio en la party
-    public static void meterParty(Personaje[] personajesParty){
-        Personaje p = generarPersonajeAleatorio(personajesParty);
-        Main.agregarPersonajeParty(p, personajesParty);
+    public static Personaje[] meterParty(Personaje[] personajesParty){
+
+        int tamanyoParty = personajesParty.length;
+
+        if (tamanyoParty < 4){
+            Personaje[] personajes_nuevo = new Personaje[tamanyoParty+1];
+            Personaje p = generarPersonajeAleatorio(personajesParty);
+            Main.agregarPersonajeParty(p, personajes_nuevo);
+            return personajes_nuevo;
+        }else {
+            System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
+            return personajesParty;
+        }
+
+
     }
 
 

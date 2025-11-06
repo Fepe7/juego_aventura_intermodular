@@ -39,6 +39,7 @@ public class EstadoPartida {
         final var partida = new DatosJuego(personajes, objeto, seed);
         try (final var fw = new FileWriter("Partida.json")) {
             gson.toJson(partida, fw);
+            IO.println("Se ha creado el JSON partida");
         } catch (Exception e) {
             System.out.println("Error al guardar partida");
         }

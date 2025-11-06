@@ -42,7 +42,7 @@ public class ImportarDatos {
     }
 
     public static boolean existePartidaGuardada() {
-        return Files.exists(Paths.get("partida.json"));
+        return Files.exists(Paths.get("Partida.json"));
     }
 
     public static boolean existeObjetosGuardados() {
