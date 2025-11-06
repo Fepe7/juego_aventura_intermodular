@@ -9,8 +9,11 @@ import java.util.ArrayList;
  * La clase <strong>Partida</strong> es un <strong>contenedor</strong> a la hora de la persistencia de datos, para
  * centralizar el guardado y carga del archivo JSON.
  * <p>
- * Esta tiene como atributos 2 arrays uno de Personaje y otro de Objeto, donde estarán los personajes y
- * los objetos respectivamente.
+ * Esta tiene como atributos 2 arrays y un entero.
+ * <p>
+ * Los arrays son uno de Personaje y otro de Objeto, donde estarán los personajes y los objetos respectivamente.
+ * <p>
+ * El entero es la semilla que se usa para generar el mapa.
  * <p>
  * Al guardar, se guarda la partida, para centralizarlo.
  * <p>
@@ -18,9 +21,6 @@ import java.util.ArrayList;
  * listas y, si se quiere pasar a {@link java.util.List} se hace con {@code Arrays.asList(array)} o si se quiere un
  * {@link java.util.ArrayList} se hace con {@code ArrayList<>(Arrays.asList(array))}, es decir, un parseo a ArrayList.
  */
-
-
-
 public class DatosJuego {
     Personaje[] personajes;
     ArrayList<Objeto> objetos;
