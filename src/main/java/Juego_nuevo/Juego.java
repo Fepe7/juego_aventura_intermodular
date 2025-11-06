@@ -154,6 +154,8 @@ public class Juego {
     }
 
 
+
+    //Esto es el menu de acciones del personaje en  el combate contra enemigos
     public static void accionPersonaje(Personaje p, Enemigo enemigo) {
 
 

@@ -20,7 +20,7 @@ public class Map {
     private int finalRoomN;
 
     // seed para generar las cosas de forma chula
-    private final int seed;
+    private int seed;
 
 
     /*

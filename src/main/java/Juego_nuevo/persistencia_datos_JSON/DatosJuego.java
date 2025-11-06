@@ -3,6 +3,8 @@ package Juego_nuevo.persistencia_datos_JSON;
 import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
 
+import java.util.ArrayList;
+
 /**
  * La clase <strong>Partida</strong> es un <strong>contenedor</strong> a la hora de la persistencia de datos, para
  * centralizar el guardado y carga del archivo JSON.
@@ -21,18 +23,24 @@ import Juego_nuevo.Personaje;
 
 public class DatosJuego {
     Personaje[] personajes;
-    Objeto[] objetos;
+    ArrayList<Objeto> objetos;
+    int seed;
 
-    public DatosJuego(Personaje[] personajes, Objeto[] objetos){
+    public DatosJuego(Personaje[] personajes, ArrayList<Objeto> objetos, int seed){
         this.personajes = personajes;
         this.objetos = objetos;
+        this.seed = seed;
     }
 
     public Personaje[] getPersonajes() {
         return personajes;
     }
 
-    public Objeto[] getObjetos() {
+    public ArrayList<Objeto> getObjetos() {
         return objetos;
+    }
+
+    public int getSeed() {
+        return seed;
     }
 }

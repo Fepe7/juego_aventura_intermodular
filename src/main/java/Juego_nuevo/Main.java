@@ -1,8 +1,8 @@
 package Juego_nuevo;
 
+import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 import Juego_nuevo.persistencia_datos_JSON.GuardarDatos;
 import Juego_nuevo.persistencia_datos_JSON.ImportarDatos;
-import Juego_nuevo.persistencia_datos_JSON.PersistenciaSeed;
 
 import java.util.ArrayList;
 import Juego_nuevo.mapa.Map;
@@ -58,6 +58,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         Personaje[] personajesPartida = new Personaje[4];
+        ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
 
 
         if (ImportarDatos.existePartidaGuardada()) {
@@ -91,7 +92,7 @@ public class Main {
                     } else {
                         System.out.println("No se han podido importar los objetos. Se usarán los objetos iniciales.");
                     }
-                    int seed = PersistenciaSeed.cargarSeed();
+                    int seed = EstadoPartida.cargarPartida().getSeed();
                     if (seed != 0) {
                         System.out.println("Seed importada correctamente: " + seed);
                     } else {
@@ -101,8 +102,10 @@ public class Main {
                 }
             } else {
                 System.out.println("Creando una nueva partida...");
+
+                //Array de los personajes de la party
                 personajesPartida = new Personaje[4];
-                // Aquí podrías agregar lógica para crear nuevos personajes
+
                 System.out.println("Nueva partida creada.");
                 //Genera el protagonista y lo mete en la party
                 personajesPartida[0] = Eventos.generarProragonista();
@@ -110,16 +113,26 @@ public class Main {
                 //Genera el mapa y guarda la seed
                 Map mapa = new Map();
                 int seed = mapa.getSeed();
-                PersistenciaSeed.guardarSeed(seed);
+                EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed);
 
 
             }
         } else {
             System.out.println("No se ha encontrado ninguna partida guardada. Se creará una nueva partida.");
+            //Array de los personajes de la party
+            personajesPartida = new Personaje[4];
+
+            System.out.println("Nueva partida creada.");
+            //Genera el protagonista y lo mete en la party
+            personajesPartida[0] = Eventos.generarProragonista();
+
+            //Genera el mapa y guarda la seed
+            Map mapa = new Map();
+            int seed = mapa.getSeed();
+
         }
 
 
-        ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
 
         System.out.println("Estas solo. Rodeado de puertas, hacia que habitacion quieres ir?");
 

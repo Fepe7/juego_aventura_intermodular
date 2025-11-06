@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 /**
  * La clase <strong>{@code EstadoPartida}</strong> es la clase que alberga los métodos de <strong>guardado y carga</strong>
@@ -33,10 +34,10 @@ public class EstadoPartida {
      * @param personajes La lista de personajes que hay
      * @param objeto La lista de objetos que tienen globalmente todos
      */
-    public static void guardarPartida(Personaje[] personajes, Objeto[] objeto) {
+    public static void guardarPartida(Personaje[] personajes, ArrayList<Objeto> objeto, int seed) {
         final var gson = createGson();
-        final var partida = new DatosJuego(personajes, objeto);
-        try (final var fw = new FileWriter("partida.json")) {
+        final var partida = new DatosJuego(personajes, objeto, seed);
+        try (final var fw = new FileWriter("Partida.json")) {
             gson.toJson(partida, fw);
         } catch (Exception e) {
             System.out.println("Error al guardar partida");
@@ -52,7 +53,7 @@ public class EstadoPartida {
      * @return  El contenedor {@link DatosJuego} que contiene personajes y objetos | null
      */
     public static DatosJuego cargarPartida() {
-        try (final var fr = new FileReader("partida.json")) {
+        try (final var fr = new FileReader("Partida.json")) {
             return new Gson().fromJson(fr, DatosJuego.class);
         } catch (Exception e) {
             System.out.println("Error al cargar partida");

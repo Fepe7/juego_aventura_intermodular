@@ -128,9 +128,6 @@ public class Eventos {
                     System.out.println("Opción no válida. Intenta de nuevo.");
             }
         }while (decision < 0 || decision > 3);
-
-
-
     }
 
     //Te quita daño
