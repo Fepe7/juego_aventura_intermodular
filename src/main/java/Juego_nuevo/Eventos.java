@@ -32,6 +32,37 @@ public class Eventos {
 
 
 
+
+    public static Evento generarEventoAleatorio() {
+
+        int eventoRandom = random.nextInt(6);
+        String nombre = "";
+
+        switch (eventoRandom) {
+            case 0:
+                nombre = "generarEnemigoAleatorio";
+                break;
+            case 1:
+                nombre = "encuentroMercader";
+                break;
+            case 2:
+                nombre = "trampaEnCamino";
+                break;
+            case 3:
+                nombre = "hallazgoTesoro";
+                break;
+            case 4:
+                nombre = "ruinasAntiguas";
+                break;
+            case 5:
+                nombre = "meterParty";
+                break;
+        }
+
+        return new Evento(nombre);
+    }
+
+
     //Devuelve un enemigo aleatorio
     public static Enemigo generarEnemigoAleatorio(){
 
@@ -85,6 +116,7 @@ public class Eventos {
 
 
     //Mete un personaje aleatorio en la party
+    //ESTE ES EL QUE SE USA PARA METER PERSONAJES EN LA PARTY
     public static Personaje[] meterParty(Personaje[] personajesParty){
 
         int tamanyoParty = personajesParty.length;

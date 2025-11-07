@@ -1,8 +1,10 @@
 package Juego_nuevo.persistencia_datos_JSON;
 
 import Juego_nuevo.Enemigo;
+import Juego_nuevo.Evento;
 import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
+import Juego_nuevo.mapa.Map;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,9 +21,12 @@ public class EstadoPartida {
     /**
      * La función <strong>{@code createGson()}</strong> crea el objeto {@link Gson} con {@link GsonBuilder} para obtener su
      * función {@code setPrettyPrinting()} el cual permite mostrarlo de forma ordenada y bonita.
-     * @return  el objeto {@link Gson}
+     *
+     * @return el objeto {@link Gson}
      */
-    private static Gson createGson() { return new GsonBuilder().setPrettyPrinting().create(); }
+    private static Gson createGson() {
+        return new GsonBuilder().setPrettyPrinting().create();
+    }
 
     /**
      * La función <strong>{@code guardarPartida()}</strong> guarda la partida actual, contando los personajes, objetos
@@ -31,16 +36,20 @@ public class EstadoPartida {
      * atributos de la clase. Dentro del {@code try-catch-with-resources} declaramos el {@link FileWriter}
      * con archivo en <strong>Partida.json</strong> y ahí serializa el contenedor {@link DatosJuego} que tiene ambas
      * listas y la seed. Si no, lanza una excepción dando un error.
+     *
      * @param personajes La lista de personajes que hay
-     * @param objeto La lista de objetos que tienen globalmente todos
-     * @param seed La semilla que se usa para generar el mapa
+     * @param objeto     La lista de objetos que tienen globalmente todos
+     * @param seed       La semilla que se usa para generar el mapa
      */
-    public static void guardarPartida(Personaje[] personajes, ArrayList<Objeto> objeto, int seed) {
+    public static void guardarPartida(Personaje[] personajes, ArrayList<Objeto> objeto, int seed, Map mapa) {
         final var gson = createGson();
         final var partida = new DatosJuego(personajes, objeto, seed);
         try (final var fw = new FileWriter("Partida.json")) {
             gson.toJson(partida, fw);
             IO.println("Se ha creado el JSON partida");
+
+            //Guarda los eventos del mapa
+            guardarMapa(seed, mapa.extraerEventos());
         } catch (Exception e) {
             System.out.println("Error al guardar partida");
             System.out.println(e.getMessage());
@@ -53,10 +62,13 @@ public class EstadoPartida {
      * Esta función está dentro de un {@code try-catch-with-resources} donde declaramos {@link FileReader} con fichero
      * de <strong>partida.json</strong> y cargamos partidas, devolviendo el contenedor con los datos. Si no, lanza una
      * excepción de tipo {@link Exception}, el cual devolverá null si eso pasara
-     * @return  El contenedor {@link DatosJuego} que contiene personajes y objetos | {@code null} si hay un error
+     *
+     * @return El contenedor {@link DatosJuego} que contiene personajes y objetos | {@code null} si hay un error
      */
     public static DatosJuego cargarPartida() {
         try (final var fr = new FileReader("Partida.json")) {
+            //Carga el mapa y sus eventos
+            DatosMap datosMap = cargarMapa();
             return new Gson().fromJson(fr, DatosJuego.class);
         } catch (Exception e) {
             System.out.println("Error al cargar partida");
@@ -71,6 +83,7 @@ public class EstadoPartida {
      * Esta función lee {@code Personajes.json} y desestructura el contenido en un array y después evalua ese array con
      * un {@code for-each} el cual compara nombres, si el nombre es el pasado por argumentos de la función, lo devuelve.
      * Si no, devuelve {@code null}.
+     *
      * @param nombrePersonaje Es el nombre del personaje que se desea.
      * @return El {@link Personaje} si se encuentra | {@code null} si no se ha encontrado | {@code null} debido a una excepción
      */
@@ -96,6 +109,7 @@ public class EstadoPartida {
      * Esta función lee {@code Enemigos.json} y lo desestructura en un array de {@link Enemigo}. Después evalua el array
      * con un {@code for-each} y, si el nombre del {@link Enemigo} coincide con el nombre pasado, devuelve él
      * {@link Enemigo}. Si no, devuelve {@code null}.
+     *
      * @param nombreEnemigo El nombre del {@link Enemigo} que se desea crear del JSON
      * @return Él {@link Enemigo} con el nombre | {@code null} si no lo encuentra | {@code null} si hay una excepción
      */
@@ -114,4 +128,28 @@ public class EstadoPartida {
             return null;
         }
     }
+
+
+    public static void guardarMapa(int seed, Evento[][] eventos) {
+        var gson = createGson();
+        var datosMap = new DatosMap(seed, eventos);
+        try (var fw = new FileWriter("Mapa.json")) {
+            gson.toJson(datosMap, fw);
+        } catch (Exception e) {
+            System.out.println("Error al guardar mapa: " + e.getMessage());
+        }
+    }
+
+    public static DatosMap cargarMapa() {
+        try (var fr = new FileReader("Mapa.json")) {
+            return new Gson().fromJson(fr, DatosMap.class);
+        } catch (Exception e) {
+            System.out.println("Error al cargar mapa: " + e.getMessage());
+            return null;
+        }
+    }
+
+
 }
+
+

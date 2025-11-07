@@ -4,6 +4,7 @@ package Juego_nuevo.mapa;
  * @author Marcos
  */
 
+import Juego_nuevo.Evento;
 import Juego_nuevo.Personaje;
 
 import java.util.Random;
@@ -22,11 +23,15 @@ public class Map {
     // seed para generar las cosas de forma chula
     private int seed;
 
+    private final Random rng;
+
 
     /*
      * Esta función solo se usa en el constructor.
      * Rellena la matriz con MapTiles.
      */
+
+
     private void fillArray() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -42,12 +47,14 @@ public class Map {
      */
     public Map() {
         fillArray();
-        seed = (int)(Math.random()*99999999);
+        seed = (int) (Math.random() * 99999999);
+        rng = new Random(seed);
     }
 
     public Map(int seed) { //creates an array of MapTiles
         fillArray();
         this.seed = seed;
+        rng = new Random(seed);
     }
 
     //######################## ---- Generar mapa ---- ########################\\
@@ -59,11 +66,11 @@ public class Map {
      * Las 4 posiciones son los bordes del mapa (esto es solo para que el mapa se genere de forma un poco más interesante)
      */
     private void layoutStart() { //chooses a random number between 4 and sets the room 0 at a specific location
-        int halfSize = mapSize/2;
+        int halfSize = mapSize / 2;
 
-        int positions[][] = {{0, halfSize}, {halfSize, mapSize-1}, {mapSize-1, halfSize}, {halfSize, 0}};
+        int positions[][] = {{0, halfSize}, {halfSize, mapSize - 1}, {mapSize - 1, halfSize}, {halfSize, 0}};
 
-        int startPosition = (seed%positions.length);
+        int startPosition = (seed % positions.length);
 
         map[positions[startPosition][0]]
                 [positions[startPosition][1]] = new Room();
@@ -77,8 +84,8 @@ public class Map {
     private int[] getRoomCoords(int generatedOrder) {
         int[] coords = new int[]{0, 0};
 
-        for (int i = 0; i<mapSize; i++) {
-            for (int j=0;j<mapSize;j++) {
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
                 if (map[i][j] instanceof Room && map[i][j].getGeneratedOrder() == generatedOrder) {
                     coords[0] = i;
                     coords[1] = j;
@@ -102,12 +109,12 @@ public class Map {
     /*
      * Función principal para generar las habitaciones.
      */
+
     public void generateLayout() {
-        Random rng = new Random(seed);
 
         int maxRooms = 10;
         int minRooms = 7;
-        finalRoomN = (rng.nextInt()%(maxRooms+1-minRooms))+ minRooms;
+        finalRoomN = (rng.nextInt() % (maxRooms + 1 - minRooms)) + minRooms;
 
         layoutStart();
 
@@ -125,7 +132,7 @@ public class Map {
 //            System.out.println("Generating room "+ totalRooms);
 //            System.out.println("room "+totalRooms+". Last room generated: "+ lastGeneratedCoords[0]+", "+lastGeneratedCoords[1]);
 
-            tries=0;
+            tries = 0;
             do { //loop to generate a room
                 tries++;
                 //this array has the number that added to the current coords give the next coords to generate a room.
@@ -147,10 +154,10 @@ public class Map {
                     roomGenerated = true;
                 }
 
-                if (tries>100) { // si no se puede mover tira para atrás
+                if (tries > 100) { // si no se puede mover tira para atrás
                     lastRoomGenerated--;
                     lastGeneratedCoords = getRoomCoords(lastRoomGenerated);
-                    tries=0;
+                    tries = 0;
                 }
 
             } while (!roomGenerated);
@@ -204,7 +211,7 @@ public class Map {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
 
-                if (player.getUbicacion() == map[i][j].getGeneratedOrder()){
+                if (player.getUbicacion() == map[i][j].getGeneratedOrder()) {
                     outputMap.append(ANSI_RED)
                             .append(map[i][j])
                             .append(ANSI_RESET);
@@ -220,5 +227,34 @@ public class Map {
 
         return outputMap.toString();
     }
+
+
+    //Coge los eventso de cada sala y los devuelve en una matriz de eventos exactamente igual que el mapa
+    public Evento[][] extraerEventos() {
+        //Crea matriz con el tamaño del mapa
+        Evento[][] eventos = new Evento[mapSize][mapSize];
+
+        //Rellena la matriz con los eventos de cada sala
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
+                //Asigna el evento de la sala a la matriz de eventos
+                eventos[i][j] = ((Room) map[i][j]).getEvento();
+            }
+        }
+        return eventos;
+    }
+
+
+    //Restaura los eventos en cada sala a partir de una matriz de eventos
+    public void restaurarEventos(Evento[][] eventos) {
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
+
+                //Mete el evento de la matriz de eventos en la sala correspondiente del mapa
+                ((Room) map[i][j]).setEvento(eventos[i][j]);
+            }
+        }
+    }
+
 
 }

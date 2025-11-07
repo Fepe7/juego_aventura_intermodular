@@ -1,6 +1,10 @@
 package Juego_nuevo.mapa;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import Juego_nuevo.Evento;
+import Juego_nuevo.Eventos;
 
 public class Room extends MapTile{
 
@@ -10,11 +14,36 @@ public class Room extends MapTile{
 
     static int totalRooms = 0;
 
+    private Evento evento;
 
     public Room() {
         super("?", totalRooms);
         totalRooms++;
+        //Agregar un evento aleatorio a la sala
+        this.evento = Eventos.generarEventoAleatorio();
+
     }
+
+
+    //Activa el evento de la sala
+    public void activarEvento(){
+        if(evento != null){
+            //La comprobacion de si el evento ya ha sido completado se hace dentro del metodo ejecutarEvento
+            Evento.ejecutarEvento(evento);
+        }
+
+    }
+
+
+
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
 
 
     @Override
