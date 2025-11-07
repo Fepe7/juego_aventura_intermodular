@@ -5,6 +5,7 @@ import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * La clase <strong>Partida</strong> es un <strong>contenedor</strong> a la hora de la persistencia de datos, para
@@ -19,35 +20,11 @@ import java.util.ArrayList;
  * Al guardar, se guarda la partida, para centralizarlo.
  * <p>
  * A la hora de cargar, devolverá una partida, por eso he hecho getters de ambos atributos, para que se obtenga las
- * listas y, si se quiere pasar a {@link java.util.List} se hace con {@code Arrays.asList(array)} o si se quiere un
- * {@link java.util.ArrayList} se hace con {@code ArrayList<>(Arrays.asList(array))}, es decir, un parseo a ArrayList.
+ * listas y, si se quiere pasar a {@link List} se hace con {@code Arrays.asList(array)} o si se quiere un
+ * {@link ArrayList} se hace con {@code ArrayList<>(Arrays.asList(array))}, es decir, un parseo a ArrayList.
+ * <p>
+ * <strong>QUE ES {@link Record}</strong>
+ * <p>
+ * {@link Record} es una clase que te crea los getters y setters automáticamente para los atributos de la clase.
  */
-public class DatosJuego {
-    private Personaje[] personajes;
-    private ArrayList<Objeto> objetos;
-    private int seed;
-    private Evento[][] eventos;
-
-    public DatosJuego(Personaje[] personajes, ArrayList<Objeto> objetos, int seed, Evento[][] eventos) {
-        this.personajes = personajes;
-        this.objetos = objetos;
-        this.seed = seed;
-        this.eventos = eventos;
-    }
-
-    public Personaje[] getPersonajes() {
-        return personajes;
-    }
-
-    public ArrayList<Objeto> getObjetos() {
-        return objetos;
-    }
-
-    public int getSeed() {
-        return seed;
-    }
-
-    public Evento[][] getEventos() {
-        return eventos;
-    }
-}
+public record DatosJuego(Personaje[] personajes, ArrayList<Objeto> objetos, int seed, Evento[][] eventos) {}

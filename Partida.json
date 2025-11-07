@@ -1,0 +1,130 @@
+{
+  "personajes": [
+    {
+      "vidaMaxima": 100,
+      "dialogos": [
+        ""
+      ],
+      "habilidades": [
+        {
+          "nombre": "Golpe Poderoso",
+          "costeMana": 10,
+          "danyo": 25,
+          "descripcion": "Un ataque fuerte que inflige daño adicional",
+          "tipoHabilidad": "ATAQUE"
+        },
+        {
+          "nombre": "Rugido de Batalla",
+          "costeMana": 8,
+          "danyo": 0,
+          "descripcion": "Aumenta la moral del equipo, incrementando el ataque temporalmente",
+          "tipoHabilidad": "APOYO"
+        }
+      ],
+      "ubicacion": 0,
+      "vida": 100,
+      "ataque": 15,
+      "velocidad": 10,
+      "nombre": "Protagonistas",
+      "vivo": true,
+      "mana": 50
+    }
+  ],
+  "objetos": [],
+  "seed": 95922400,
+  "eventos": [
+    [
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

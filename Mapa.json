@@ -1,0 +1,98 @@
+{
+  "seed": 95922400,
+  "eventos": [
+    [
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

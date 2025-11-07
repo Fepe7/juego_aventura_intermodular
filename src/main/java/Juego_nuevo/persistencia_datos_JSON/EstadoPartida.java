@@ -4,7 +4,6 @@ import Juego_nuevo.Enemigo;
 import Juego_nuevo.Evento;
 import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
-import Juego_nuevo.mapa.Map;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -37,7 +36,7 @@ public class EstadoPartida {
      * @param objeto La lista de objetos que tienen globalmente todos
      * @param seed La semilla que se usa para generar el mapa
      */
-    public static void guardarPartida(Personaje[] personajes, ArrayList<Objeto> objeto, int seed, Evento [][] eventos) {
+    public static void guardarPartida(Personaje[] personajes, ArrayList<Objeto> objeto, int seed, Evento[][] eventos) {
         final var gson = createGson();
         final var partida = new DatosJuego(personajes, objeto, seed, eventos);
         try (final var fw = new FileWriter("Partida.json")) {
@@ -62,8 +61,6 @@ public class EstadoPartida {
      */
     public static DatosJuego cargarPartida() {
         try (final var fr = new FileReader("Partida.json")) {
-            //Carga también el mapa
-            DatosMap datosMap = cargarMapa();
             return new Gson().fromJson(fr, DatosJuego.class);
         } catch (Exception e) {
             System.out.println("Error al cargar partida");
@@ -83,7 +80,7 @@ public class EstadoPartida {
      */
     public static Personaje crearPersonaje(String nombrePersonaje) {
         try (final var fr = new FileReader("Personajes.json")) {
-            Personaje[] personajes = new Gson().fromJson(fr, Personaje[].class);
+            final var personajes = new Gson().fromJson(fr, Personaje[].class);
             for (final var p : personajes) {
                 if (p.getNombre().equals(nombrePersonaje)) {
                     return p;
@@ -108,7 +105,7 @@ public class EstadoPartida {
      */
     public static Enemigo crearEnemigo(String nombreEnemigo) {
         try (final var fr = new FileReader("Enemigos.json")) {
-            Enemigo[] enemigos = new Gson().fromJson(fr, Enemigo[].class);
+            final var enemigos = new Gson().fromJson(fr, Enemigo[].class);
             for (final var e : enemigos) {
                 if (e.getNombre().equals(nombreEnemigo)) {
                     return e;
@@ -124,25 +121,14 @@ public class EstadoPartida {
 
 
     public static void guardarMapa(int seed, Evento[][] eventos) {
-        var gson = createGson();
-        var datosMap = new DatosMap(seed, eventos);
-        try (var fw = new FileWriter("Mapa.json")) {
+        final var gson = createGson();
+        final var datosMap = new DatosMap(seed, eventos);
+        try (final var fw = new FileWriter("Mapa.json")) {
             gson.toJson(datosMap, fw);
         } catch (Exception e) {
             System.out.println("Error al guardar mapa: " + e.getMessage());
         }
     }
-
-    public static DatosMap cargarMapa() {
-        try (var fr = new FileReader("Mapa.json")) {
-            return new Gson().fromJson(fr, DatosMap.class);
-        } catch (Exception e) {
-            System.out.println("Error al cargar mapa: " + e.getMessage());
-            return null;
-        }
-    }
-
-
 }
 
 

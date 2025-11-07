@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 //Se crea la clase Evento para representar eventos en el juego, esto genera un objeto para ver si esta completado o no
 public class Evento {
-    private String eventoNombre;
+    private final String eventoNombre;
     private boolean completado;
 
 

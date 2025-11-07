@@ -87,7 +87,7 @@ public class Main {
 
             if (opcion == 1) {
                 var datosPartida = EstadoPartida.cargarPartida();
-                personajesPartida = datosPartida.getPersonajes();
+                personajesPartida = datosPartida.personajes();
 
                 if (personajesPartida == null || personajesPartida.length == 0) {
                     System.out.println("No se ha podido importar la partida. Se creará una nueva partida.");
@@ -102,13 +102,13 @@ public class Main {
                 } else {
                     System.out.println("Partida importada correctamente.");
 
-                    var objetos = datosPartida.getObjetos();
+                    var objetos = datosPartida.objetos();
                     if (objetos != null) {
                         InventarioGlobal.setInventarioGlobal(objetos);
                         System.out.println("Objetos importados correctamente.");
                     }
 
-                    int seedCargada = datosPartida.getSeed();
+                    int seedCargada = datosPartida.seed();
                     System.out.println("Seed importada correctamente: " + seedCargada);
 
                     // Generar el mapa con la seed guardada
@@ -116,7 +116,7 @@ public class Main {
                     mapa.generateLayout();
 
                     // Restaurar los eventos del mapa guardado
-                    var eventosGuardados = datosPartida.getEventos();
+                    var eventosGuardados = datosPartida.eventos();
                     if (eventosGuardados != null) {
                         mapa.restaurarEventos(eventosGuardados);
                     }
