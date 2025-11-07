@@ -238,7 +238,11 @@ public class Map {
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++) {
                 //Asigna el evento de la sala a la matriz de eventos
-                eventos[i][j] = ((Room) map[i][j]).getEvento();
+                if (map[i][j] instanceof Room) {
+                    eventos[i][j] = ((Room) map[i][j]).getEvento();
+                } else {
+                    eventos[i][j] = null;
+                }
             }
         }
         return eventos;
@@ -249,9 +253,10 @@ public class Map {
     public void restaurarEventos(Evento[][] eventos) {
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++) {
-
-                //Mete el evento de la matriz de eventos en la sala correspondiente del mapa
-                ((Room) map[i][j]).setEvento(eventos[i][j]);
+                //Verifica si es una Room antes de hacer el cast
+                if (map[i][j] instanceof Room) {
+                    ((Room) map[i][j]).setEvento(eventos[i][j]);
+                }
             }
         }
     }

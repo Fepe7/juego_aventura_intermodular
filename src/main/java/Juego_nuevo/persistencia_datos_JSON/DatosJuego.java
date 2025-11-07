@@ -1,5 +1,6 @@
 package Juego_nuevo.persistencia_datos_JSON;
 
+import Juego_nuevo.Evento;
 import Juego_nuevo.Objeto;
 import Juego_nuevo.Personaje;
 
@@ -22,14 +23,16 @@ import java.util.ArrayList;
  * {@link java.util.ArrayList} se hace con {@code ArrayList<>(Arrays.asList(array))}, es decir, un parseo a ArrayList.
  */
 public class DatosJuego {
-    Personaje[] personajes;
-    ArrayList<Objeto> objetos;
-    int seed;
+    private Personaje[] personajes;
+    private ArrayList<Objeto> objetos;
+    private int seed;
+    private Evento[][] eventos;
 
-    public DatosJuego(Personaje[] personajes, ArrayList<Objeto> objetos, int seed){
+    public DatosJuego(Personaje[] personajes, ArrayList<Objeto> objetos, int seed, Evento[][] eventos) {
         this.personajes = personajes;
         this.objetos = objetos;
         this.seed = seed;
+        this.eventos = eventos;
     }
 
     public Personaje[] getPersonajes() {
@@ -42,5 +45,9 @@ public class DatosJuego {
 
     public int getSeed() {
         return seed;
+    }
+
+    public Evento[][] getEventos() {
+        return eventos;
     }
 }

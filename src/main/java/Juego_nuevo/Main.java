@@ -98,7 +98,7 @@ public class Main {
                     mapa = new Map();
                     mapa.generateLayout();
 
-                    EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, mapa.getSeed());
+                    EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, mapa.getSeed(), mapa.extraerEventos());
                 } else {
                     System.out.println("Partida importada correctamente.");
 
@@ -114,6 +114,12 @@ public class Main {
                     // Generar el mapa con la seed guardada
                     mapa = new Map(seedCargada);
                     mapa.generateLayout();
+
+                    // Restaurar los eventos del mapa guardado
+                    var eventosGuardados = datosPartida.getEventos();
+                    if (eventosGuardados != null) {
+                        mapa.restaurarEventos(eventosGuardados);
+                    }
                 }
             } else {
                 System.out.println("Creando una nueva partida...");
@@ -129,7 +135,7 @@ public class Main {
                 mapa = new Map();
                 mapa.generateLayout();
                 int seed = mapa.getSeed();
-                EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed);
+                EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
 
 
             }
@@ -146,7 +152,7 @@ public class Main {
             mapa = new Map();
             mapa.generateLayout();
             int seed = mapa.getSeed();
-            EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed);
+            EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
 
 
         }
@@ -154,11 +160,11 @@ public class Main {
 
         System.out.println("Estas solo. Rodeado de puertas, hacia que habitacion quieres ir?");
 
-//        while (algunPersonajeVivo(personajesPartida)) {
-//
-//
-//
-//        }
+        //        while (algunPersonajeVivo(personajesPartida)) {
+        //
+        //
+        //
+        //        }
         System.out.println(mapa.toString(personajesPartida[0]));
     }
 
@@ -179,7 +185,7 @@ public class Main {
 
     private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal, int seed) {
         System.out.println("Guardando partida...");
-        EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed);
+        EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
         System.out.println("Partida guardada correctamente.");
     }
 
