@@ -58,7 +58,6 @@ public class Main {
     public static void main(String[] args) {
 
         //Pa la consola en otra ventana
-        TextConsoleWindow.install("RPG - Consola", true);
         Scanner scanner = new Scanner(System.in);
 
         Personaje[] personajesPartida = new Personaje[4];

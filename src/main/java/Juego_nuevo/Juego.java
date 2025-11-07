@@ -166,7 +166,7 @@ public class Juego {
             System.out.println("2. Habilidades");
             System.out.println("3. Objetos");
             System.out.println("4. Informacion");
-            TextConsoleWindow.printDivider();
+
             int decision = new Scanner(System.in).nextInt();
             switch (decision) {
 
@@ -175,7 +175,6 @@ public class Juego {
                     System.out.println(p.getNombre() + " ataca!");
                     int vida_quitar = p.getAtaque();
                     System.out.println("Has quitado " + vida_quitar + " de vida al enemigo");
-                    TextConsoleWindow.printDivider();
                     //Quita la vida del enemigo
                     enemigo.setVida(enemigo.getVida() - vida_quitar);
                     if (comporbarMuerte(enemigo)) {
