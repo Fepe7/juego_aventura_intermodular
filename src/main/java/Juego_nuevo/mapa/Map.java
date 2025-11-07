@@ -190,15 +190,24 @@ public class Map {
     }
 
     public String toString(Personaje player) {
+
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_YELLOW = "\u001B[33m";
+        final String ANSI_RED = "\u001B[31m";
+
         StringBuilder outputMap = new StringBuilder();
 
-        outputMap.append("Seed: ").append(seed).append("\nRooms: ").append(finalRoomN).append("\n\n");
+        outputMap.append("Seed: ").append(seed)
+                .append("\nRooms: ").append(finalRoomN)
+                .append("\n\n");
 
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
 
                 if (player.getUbicacion() == map[i][j].getGeneratedOrder()){
-                    outputMap.append("\033[0;33m").append(map[i][j]).append("\033[0;0m");
+                    outputMap.append(ANSI_RED)
+                            .append(map[i][j])
+                            .append(ANSI_RESET);
                 } else {
                     outputMap.append(map[i][j]);
                 }
