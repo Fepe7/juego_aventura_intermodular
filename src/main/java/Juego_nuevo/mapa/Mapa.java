@@ -9,7 +9,7 @@ import Juego_nuevo.Personaje;
 
 import java.util.Random;
 
-public class Map {
+public class Mapa {
 
     // tamaño del mapa. Siempre es cuadrado
     private final int mapSize = 7;
@@ -45,13 +45,13 @@ public class Map {
      * Constructores
      * Uno para generar el mapa con una seed aleatoria y otro para darle una seed predefinida
      */
-    public Map() {
+    public Mapa() {
         fillArray();
         seed = (int) (Math.random() * 99999999);
         rng = new Random(seed);
     }
 
-    public Map(int seed) { //creates an array of MapTiles
+    public Mapa(int seed) { //creates an array of MapTiles
         fillArray();
         this.seed = seed;
         rng = new Random(seed);
@@ -210,8 +210,8 @@ public class Map {
 
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
-
-                if (player.getUbicacion() == map[i][j].getGeneratedOrder()) {
+                int[] playerPos = player.getPosicion();
+                if (playerPos[0] == i && playerPos[1] == j) {
                     outputMap.append(ANSI_RED)
                             .append(map[i][j])
                             .append(ANSI_RESET);
@@ -248,6 +248,15 @@ public class Map {
         return eventos;
     }
 
+    //Calcula la nueva posicion del personaje, devuelve la posicion de la matriz del mapaa
+    public int[] calcularNuevaPosicion(int[] posicionActual, int direccion) {
+        int[][] movimientos = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+        return new int[]{
+                posicionActual[0] + movimientos[direccion][0],
+                posicionActual[1] + movimientos[direccion][1]
+        };
+    }
+
 
     //Restaura los eventos en cada sala a partir de una matriz de eventos
     public void restaurarEventos(Evento[][] eventos) {
@@ -259,6 +268,13 @@ public class Map {
                 }
             }
         }
+    }
+
+
+    public boolean esMovimientoValido(int fila, int columna) {
+        return fila >= 0 && fila < mapSize &&
+                columna >= 0 && columna < mapSize &&
+                map[fila][columna] instanceof Room;
     }
 
 

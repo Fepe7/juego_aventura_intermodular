@@ -7,18 +7,18 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Quieres insertar una seed?: (y/N)");
         String seed = sc.nextLine();
-        Map map;
+        Mapa mapa;
         if (seed.isEmpty()) {
 
-            map = new Map();
+            mapa = new Mapa();
         } else {
-            map = new Map(Integer.parseInt(seed));
+            mapa = new Mapa(Integer.parseInt(seed));
         }
 
 
-        map.generateLayout();
+        mapa.generateLayout();
 
-        System.out.println(map.toString());
+        System.out.println(mapa.toString());
 
 
 

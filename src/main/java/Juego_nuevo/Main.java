@@ -2,7 +2,7 @@ package Juego_nuevo;
 
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 
-import Juego_nuevo.mapa.Map;
+import Juego_nuevo.mapa.Mapa;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class Main {
 
     private int seed;
 
-    private static Map mapa = new Map();
+    private static Mapa mapa = new Mapa();
 
 
     //Coger los personajes de la party
@@ -95,7 +95,7 @@ public class Main {
                     personajesPartida = new Personaje[1];
                     personajesPartida[0] = Eventos.generarProragonista();
 
-                    mapa = new Map();
+                    mapa = new Mapa();
                     mapa.generateLayout();
 
                     EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, mapa.getSeed(), mapa.extraerEventos());
@@ -112,7 +112,7 @@ public class Main {
                     System.out.println("Seed importada correctamente: " + seedCargada);
 
                     // Generar el mapa con la seed guardada
-                    mapa = new Map(seedCargada);
+                    mapa = new Mapa(seedCargada);
                     mapa.generateLayout();
 
                     // Restaurar los eventos del mapa guardado
@@ -132,7 +132,7 @@ public class Main {
                 personajesPartida[0] = Eventos.generarProragonista();
 
                 //Genera el mapa y guarda la seed
-                mapa = new Map();
+                mapa = new Mapa();
                 mapa.generateLayout();
                 int seed = mapa.getSeed();
                 EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
@@ -149,7 +149,7 @@ public class Main {
             personajesPartida[0] = Eventos.generarProragonista();
 
             //Genera el mapa y guarda la seed
-            mapa = new Map();
+            mapa = new Mapa();
             mapa.generateLayout();
             int seed = mapa.getSeed();
             EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
