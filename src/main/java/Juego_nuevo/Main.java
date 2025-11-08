@@ -1,5 +1,6 @@
 package Juego_nuevo;
 
+import Juego_nuevo.mapa.Room;
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 
 import Juego_nuevo.mapa.Mapa;
@@ -160,17 +161,24 @@ public class Main {
 
         System.out.println("Estas solo. Rodeado de puertas, hacia que habitacion quieres ir?");
 
-        //        while (algunPersonajeVivo(personajesPartida)) {
-        //
-        //
-        //
-        //        }
-        System.out.println(mapa.toString(personajesPartida[0]));
+        // Posiciona al jugador en la primera hab generada
+        int[] coords = mapa.getRoomCoords(0);
+        personajesPartida[0].setPosicion(coords[0], coords[1]);
+
+        while (algunPersonajeVivo(personajesPartida)) {
+            System.out.println(mapa.toString(personajesPartida[0]));
+            pedirDireccionMover(personajesPartida[0], mapa, scanner);
+            procesarEventoHab(personajesPartida, mapa);
+
+
+        }
+
+
     }
 
 
     //Comprueba si algun personaje esta vivo, si no hay ninguno vivo devuelve false
-    private static boolean algunPersonajeVivo(Personaje[] personajesPartida) {
+    public static boolean algunPersonajeVivo(Personaje[] personajesPartida) {
         if (personajesPartida == null) {
             return false;
         }
@@ -183,7 +191,35 @@ public class Main {
     }
 
 
-    private static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal, int seed) {
+    public static void procesarEventoHab(Personaje[] personajesPartida, Mapa mapa) {
+        //Recoge la posicon actual del personaje
+        int[] posicion = personajesPartida[0].getPosicion();
+
+        //Coge la matriz del mapa y coge la posicion en la que esta el personaje
+        Room h = (Room) mapa.getMap()[posicion[0]][posicion[1]];
+
+        // Solo activa evento si no es la habitación inicial (generatedOrder != 0)
+        if (h.getGeneratedOrder() != 0) {
+            h.activarEvento();
+        }
+
+
+    }
+
+
+    //Para simplificar las direcciones en el bucle principal
+    public static void pedirDireccionMover(Personaje personaje, Mapa mapa, Scanner scanner) {
+        System.out.println("1 - Arriba");
+        System.out.println("2 - Derecha");
+        System.out.println("3 - Abajo");
+        System.out.println("4 - Izquierda");
+        int direccion = scanner.nextInt() - 1;
+        personaje.mover(mapa, direccion);
+        System.out.println(mapa.toString(personaje));
+    }
+
+
+    public static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal, int seed) {
         System.out.println("Guardando partida...");
         EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
         System.out.println("Partida guardada correctamente.");

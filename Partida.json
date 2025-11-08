@@ -21,7 +21,6 @@
           "tipoHabilidad": "APOYO"
         }
       ],
-      "ubicacion": 0,
       "vida": 100,
       "ataque": 15,
       "velocidad": 10,
@@ -31,20 +30,20 @@
     }
   ],
   "objetos": [],
-  "seed": 53921112,
+  "seed": 57086012,
   "eventos": [
     [
-      null,
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
       {
         "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      {
+        "eventoNombre": "trampaEnCamino",
         "completado": false
       },
       null,
@@ -52,16 +51,22 @@
       null
     ],
     [
-      null,
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "ruinasAntiguas",
         "completado": false
       },
       {
-        "eventoNombre": "hallazgoTesoro",
+        "eventoNombre": "ruinasAntiguas",
         "completado": false
       },
-      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
       null,
       null,
       null

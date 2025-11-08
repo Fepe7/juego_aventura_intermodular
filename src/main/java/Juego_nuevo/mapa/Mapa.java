@@ -81,7 +81,7 @@ public class Mapa {
      * Una función para coger las coordenadas de una habitación.
      * Se le pasa la id de la habitación.
      */
-    private int[] getRoomCoords(int generatedOrder) {
+    public int[] getRoomCoords(int generatedOrder) {
         int[] coords = new int[]{0, 0};
 
         for (int i = 0; i < mapSize; i++) {
@@ -208,10 +208,12 @@ public class Mapa {
                 .append("\nRooms: ").append(finalRoomN)
                 .append("\n\n");
 
+
+        //Esto lo he cambiado para que se aplique a la posicin de la matriz
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 int[] playerPos = player.getPosicion();
-                if (playerPos[0] == i && playerPos[1] == j) {
+                if (playerPos != null && playerPos[0] == i && playerPos[1] == j) {
                     outputMap.append(ANSI_RED)
                             .append(map[i][j])
                             .append(ANSI_RESET);
@@ -271,11 +273,18 @@ public class Mapa {
     }
 
 
+    //Verifica si el movimiento que se va a hhacer es valido o no
     public boolean esMovimientoValido(int fila, int columna) {
-        return fila >= 0 && fila < mapSize &&
-                columna >= 0 && columna < mapSize &&
-                map[fila][columna] instanceof Room;
+    return fila >= 0 && fila < mapSize && columna >= 0 && columna < mapSize &&
+           map[fila][columna] instanceof Room;
+}
+
+
+
+    public MapTile[][] getMap() {
+        return map;
     }
+
 
 
 }

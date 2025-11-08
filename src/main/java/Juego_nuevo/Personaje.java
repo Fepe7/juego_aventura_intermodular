@@ -2,9 +2,10 @@ package Juego_nuevo;
 
 import java.util.ArrayList;
 import java.util.List;
-import Juego_nuevo.mapa.Mapa;
-import java.util.Scanner;
 
+import Juego_nuevo.mapa.Mapa;
+
+import java.util.Scanner;
 
 
 public class Personaje extends Entidad {
@@ -113,15 +114,20 @@ public class Personaje extends Entidad {
 
 
     // Directions: 0 ^, 1 >, 2 v, 3 <
-        public void mover(Mapa mapa, int direccion) {
-            int[] nuevaPosicion = mapa.calcularNuevaPosicion(this.posicion, direccion);
-            if (mapa.esMovimientoValido(nuevaPosicion[0], nuevaPosicion[1])) {
-                this.posicion = nuevaPosicion;
-                mapa.moveRoomN(nuevaPosicion[0], nuevaPosicion[1]);
-            } else {
-                System.out.println("No puedes moverte en esa dirección.");
-            }
+    public void mover(Mapa mapa, int direccion) {
+        int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+
+        int nuevaFila = this.posicion[0] + directions[direccion][0];
+        int nuevaCol = this.posicion[1] + directions[direccion][1];
+
+        if (mapa.esMovimientoValido(nuevaFila, nuevaCol)) {
+            this.posicion[0] = nuevaFila;
+            this.posicion[1] = nuevaCol;
+            System.out.println("Te has movido a: [" + nuevaFila + ", " + nuevaCol + "]");
+        } else {
+            System.out.println("Movimiento inválido. No puedes ir hacia ese lado.");
         }
+    }
 
     public List<Habilidad> getHabilidades() {
         return habilidades;
