@@ -119,7 +119,14 @@ public class EstadoPartida {
         }
     }
 
-
+    /**
+     * La función <strong>{@code guardarMapa}</strong> guarda el mapa en el json <strong>Mapa.json</strong>
+     * <p>
+     * Esta función crea una clase (record) contenedor <strong>{@link DatosMap}</strong> y guarda los parámetros pasados
+     * <strong>(seed y eventos)</strong> después serializa ese contenedor al JSON antes mencionado. Si no genera un error.
+     * @param seed
+     * @param eventos
+     */
     public static void guardarMapa(int seed, Evento[][] eventos) {
         final var gson = createGson();
         final var datosMap = new DatosMap(seed, eventos);

@@ -30,33 +30,33 @@
     }
   ],
   "objetos": [],
-  "seed": 57086012,
+  "seed": 86081457,
   "eventos": [
     [
+      null,
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
       {
         "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
-      null,
-      {
         "eventoNombre": "trampaEnCamino",
         "completado": false
-      },
-      null,
-      null,
-      null
+      }
     ],
     [
+      null,
+      null,
+      null,
+      null,
       {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "encuentroMercader",
         "completado": false
       },
       {
@@ -66,10 +66,22 @@
       {
         "eventoNombre": "trampaEnCamino",
         "completado": false
+      }
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
       },
-      null,
-      null,
-      null
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      }
     ],
     [
       null,
@@ -78,16 +90,10 @@
       null,
       null,
       null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      }
     ],
     [
       null,
