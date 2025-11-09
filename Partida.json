@@ -24,21 +24,17 @@
       "vida": 100,
       "ataque": 15,
       "velocidad": 10,
-      "nombre": "Protagonistas",
+      "nombre": "Protagonista",
       "vivo": true,
       "mana": 50
     }
   ],
   "objetos": [],
-  "seed": 86081457,
+  "seed": 57083755,
   "eventos": [
     [
-      null,
-      null,
-      null,
-      null,
       {
-        "eventoNombre": "trampaEnCamino",
+        "eventoNombre": "meterParty",
         "completado": false
       },
       {
@@ -46,54 +42,58 @@
         "completado": false
       },
       {
-        "eventoNombre": "trampaEnCamino",
+        "eventoNombre": "ruinasAntiguas",
         "completado": false
-      }
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      null,
+      null
     ],
     [
-      null,
-      null,
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
       null,
       null,
       {
-        "eventoNombre": "encuentroMercader",
+        "eventoNombre": "meterParty",
         "completado": false
       },
       {
-        "eventoNombre": "encuentroMercader",
+        "eventoNombre": "hallazgoTesoro",
         "completado": false
       },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      }
+      null,
+      null
     ],
     [
-      null,
-      null,
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
       {
         "eventoNombre": "ruinasAntiguas",
         "completado": false
-      }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       {
-        "eventoNombre": "trampaEnCamino",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
-      }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     [
       null,

@@ -203,7 +203,7 @@ public class Main {
 
         // Solo activa evento si no es la habitación inicial (generatedOrder != 0)
         if (h.getGeneratedOrder() != 0) {
-            h.activarEvento();
+            h.activarEvento(personajesPartida);
         }
 
 
@@ -218,7 +218,6 @@ public class Main {
         System.out.println("4 - Izquierda");
         int direccion = scanner.nextInt() - 1;
         personaje.mover(mapa, direccion);
-        System.out.println(mapa.toString(personaje));
     }
 
 

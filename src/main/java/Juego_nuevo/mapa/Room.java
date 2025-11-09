@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Juego_nuevo.Eventos.Evento;
 import Juego_nuevo.Eventos.Eventos;
+import Juego_nuevo.Entidades.Personaje;
 
 public class Room extends MapTile{
 
@@ -25,10 +26,10 @@ public class Room extends MapTile{
 
 
     //Activa el evento de la sala
-    public void activarEvento(){
+    public void activarEvento(Personaje[] personajes){
         if(evento != null){
             //La comprobacion de si el evento ya ha sido completado se hace dentro del metodo ejecutarEvento
-            Evento.ejecutarEvento(evento);
+            Evento.ejecutarEvento(evento, personajes);
         }
 
     }

@@ -18,7 +18,7 @@ public class Eventos {
 
 
     //Evento hoguera donde se recupera la vida y el mana de los personajes
-    private static void irAHoguera(Personaje[] personajes) {
+    public static void irAHoguera(Personaje[] personajes) {
         System.out.println("\n=== HOGUERA ===");
         System.out.println("Te acercas a la hoguera reconfortante...");
         System.out.println("El calor de las llamas restaura tus fuerzas.");
@@ -63,6 +63,7 @@ public class Eventos {
                 break;
         }
 
+        //Genera un objeto Evento con el nombre del evento, para despues llamorlo por reflexion
         return new Evento(nombre);
     }
 
