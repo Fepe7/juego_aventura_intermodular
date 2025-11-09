@@ -72,7 +72,7 @@ public class EstadoPartida {
     /**
      * La función <strong>{@code crearPersonaje()}</strong> crea un personaje mediante su nombre pasado, que está serializado
      * <p>
-     * Esta función lee {@code Personajes.json} y desestructura el contenido en un array y después evalua ese array con
+     * Esta función lee {@code Personajes.json} y desestructura el contenido en un array y después evalúa ese array con
      * un {@code for-each} el cual compara nombres, si el nombre es el pasado por argumentos de la función, lo devuelve.
      * Si no, devuelve {@code null}.
      * @param nombrePersonaje Es el nombre del personaje que se desea.
@@ -97,7 +97,7 @@ public class EstadoPartida {
     /**
      * La función <strong>{@code crearEnemigo()}</strong> crea un enemigo a partir del nombre pasado, que está serializado
      * <p>
-     * Esta función lee {@code Enemigos.json} y lo desestructura en un array de {@link Enemigo}. Después evalua el array
+     * Esta función lee {@code Enemigos.json} y lo desestructura en un array de {@link Enemigo}. Después evalúa el array
      * con un {@code for-each} y, si el nombre del {@link Enemigo} coincide con el nombre pasado, devuelve él
      * {@link Enemigo}. Si no, devuelve {@code null}.
      * @param nombreEnemigo El nombre del {@link Enemigo} que se desea crear del JSON
@@ -124,8 +124,8 @@ public class EstadoPartida {
      * <p>
      * Esta función crea una clase (record) contenedor <strong>{@link DatosMap}</strong> y guarda los parámetros pasados
      * <strong>(seed y eventos)</strong> después serializa ese contenedor al JSON antes mencionado. Si no genera un error.
-     * @param seed
-     * @param eventos
+     * @param seed La semilla del mapa
+     * @param eventos La matriz con los eventos que tiene el mapa
      */
     public static void guardarMapa(int seed, Evento[][] eventos) {
         final var gson = createGson();
