@@ -1,5 +1,9 @@
 package Juego_nuevo;
 
+import Juego_nuevo.Entidades.Enemigo;
+import Juego_nuevo.Entidades.Personaje;
+import Juego_nuevo.Objetos.Objeto;
+
 public class Habilidad {
     private String nombre;
     private int costeMana;

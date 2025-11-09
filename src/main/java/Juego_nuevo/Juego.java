@@ -1,5 +1,12 @@
 package Juego_nuevo;
 
+import Juego_nuevo.Entidades.Enemigo;
+import Juego_nuevo.Entidades.Entidad;
+import Juego_nuevo.Entidades.Personaje;
+import Juego_nuevo.Objetos.Armaduras;
+import Juego_nuevo.Objetos.Armas;
+import Juego_nuevo.Objetos.Objeto;
+
 import java.util.*;
 
 public class Juego {
@@ -21,7 +28,7 @@ public class Juego {
 
 
     //Devuelve el metodo a usar dependiendo del nombre del objeto
-    static String getString(Objeto objetoSeleccionado) {
+    public static String getString(Objeto objetoSeleccionado) {
         String nombreObjeto = objetoSeleccionado.getNombre().toLowerCase();
         String nombreMetodo = "";
 

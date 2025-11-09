@@ -1,4 +1,4 @@
-package Juego_nuevo;
+package Juego_nuevo.Eventos;
 
 
 import java.lang.reflect.Method;

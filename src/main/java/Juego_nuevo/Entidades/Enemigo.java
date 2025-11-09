@@ -1,4 +1,4 @@
-package Juego_nuevo;
+package Juego_nuevo.Entidades;
 
 public class Enemigo extends Entidad {
 

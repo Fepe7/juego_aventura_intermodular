@@ -1,8 +1,8 @@
 package Juego_nuevo.persistencia_datos_JSON;
 
-import Juego_nuevo.Evento;
-import Juego_nuevo.Objeto;
-import Juego_nuevo.Personaje;
+import Juego_nuevo.Eventos.Evento;
+import Juego_nuevo.Objetos.Objeto;
+import Juego_nuevo.Entidades.Personaje;
 
 import java.util.ArrayList;
 import java.util.List;

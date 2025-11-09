@@ -1,4 +1,6 @@
-package Juego_nuevo;
+package Juego_nuevo.Entidades;
+
+import Juego_nuevo.Habilidad;
 
 import java.util.List;
 

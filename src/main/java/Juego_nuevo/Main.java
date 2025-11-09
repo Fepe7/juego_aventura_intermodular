@@ -1,5 +1,8 @@
 package Juego_nuevo;
 
+import Juego_nuevo.Entidades.Personaje;
+import Juego_nuevo.Eventos.Eventos;
+import Juego_nuevo.Objetos.Objeto;
 import Juego_nuevo.mapa.Room;
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 

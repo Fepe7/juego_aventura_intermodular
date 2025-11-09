@@ -1,9 +1,13 @@
-package Juego_nuevo;
+package Juego_nuevo.Eventos;
 
+import Juego_nuevo.*;
+import Juego_nuevo.Entidades.Enemigo;
+import Juego_nuevo.Entidades.Personaje;
+import Juego_nuevo.Objetos.Armaduras;
+import Juego_nuevo.Objetos.Armas;
+import Juego_nuevo.Objetos.Objeto;
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
-import Juego_original.Enemigos;
 
-import java.io.File;
 import java.io.FileReader;
 import java.util.*;
 

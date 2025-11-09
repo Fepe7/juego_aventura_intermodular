@@ -4,8 +4,8 @@ package Juego_nuevo.mapa;
  * @author Marcos
  */
 
-import Juego_nuevo.Evento;
-import Juego_nuevo.Personaje;
+import Juego_nuevo.Eventos.Evento;
+import Juego_nuevo.Entidades.Personaje;
 
 import java.util.Random;
 

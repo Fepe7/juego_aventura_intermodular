@@ -1,10 +1,9 @@
 package Juego_nuevo.mapa;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-import Juego_nuevo.Evento;
-import Juego_nuevo.Eventos;
+import Juego_nuevo.Eventos.Evento;
+import Juego_nuevo.Eventos.Eventos;
 
 public class Room extends MapTile{
 

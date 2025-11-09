@@ -1,4 +1,6 @@
-package Juego_nuevo;
+package Juego_nuevo.Objetos;
+
+import Juego_nuevo.Entidades.Personaje;
 
 public class Armas extends Objeto {
     public Armas(String nombre, String descripcion) {

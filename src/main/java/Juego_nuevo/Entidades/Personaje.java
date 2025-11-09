@@ -1,11 +1,16 @@
-package Juego_nuevo;
+package Juego_nuevo.Entidades;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Juego_nuevo.Habilidad;
+import Juego_nuevo.InventarioGlobal;
+import Juego_nuevo.Juego;
+import Juego_nuevo.Objetos.Armaduras;
+import Juego_nuevo.Objetos.Armas;
+import Juego_nuevo.Objetos.Objeto;
 import Juego_nuevo.mapa.Mapa;
-
-import java.util.Scanner;
+import Juego_nuevo.Juego;
 
 
 public class Personaje extends Entidad {

@@ -1,5 +1,7 @@
 package Juego_nuevo;
 
+import Juego_nuevo.Objetos.Objeto;
+
 import java.util.ArrayList;
 import java.util.List;
 
