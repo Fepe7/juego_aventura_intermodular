@@ -27,7 +27,7 @@ import java.util.List;
  * <p>
  * <strong>QUE ES {@link Record}</strong>
  * <p>
- * {@link Record} es una alternativa a las clases que te crea los getters automáticamente para los atributos de la clase.
+ * {@link Record} es una alternativa a las clases que te crea los getters automáticamente para los atributos de la clase,
  * estos atributos son privados e inmutables.
  */
 public record DatosJuego(Personaje[] personajes, ArrayList<Objeto> objetos, int seed, Evento[][] eventos) {}
