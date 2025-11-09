@@ -2,6 +2,9 @@ package Juego_nuevo.Eventos;
 
 
 import Juego_nuevo.Entidades.Personaje;
+import Juego_nuevo.InventarioGlobal;
+import Juego_nuevo.Main;
+import Juego_nuevo.mapa.Mapa;
 
 import java.lang.reflect.Method;
 
@@ -32,7 +35,7 @@ public class Evento {
 
 
     //Ejecuta el evento llamando al metodo correspondiente en la clase Eventos mediante reflexion
-    public static void ejecutarEvento(Evento evento, Personaje[] personajes){
+    public static void ejecutarEvento(Evento evento, Personaje[] personajes, Mapa mapa){
 
         if (evento.isCompletado()){
             System.out.println("El evento ya ha sido completado.");
@@ -45,13 +48,22 @@ public class Evento {
                 metodoEjecuta = Eventos.class.getMethod(evento.getEventoNombre());
                 metodoEjecuta.invoke(null);
                 evento.setCompletado(true);
+
+                //Se guarda la partida despues de ejecutar el evento
+                Main.guardadPartida(personajes, InventarioGlobal.getInventarioGlobal(), mapa.getSeed());
+
             } catch (Exception e) {
                 //Si al intentar ejecutar el metodo sin parametros da error, lo intenta ejecutar con los personajes
                 try{
                     metodoEjecuta = Eventos.class.getMethod(evento.getEventoNombre(), Personaje[].class);
                     metodoEjecuta.invoke(null, (Object) personajes);
+                    evento.setCompletado(true);
+                    Main.guardadPartida(personajes, InventarioGlobal.getInventarioGlobal(), mapa.getSeed());
+
                 }catch (Exception e2){
                     System.out.println("Error al ejecutar el evento: " + e2.getMessage());
+                    e2.printStackTrace();
+                    e2.getLocalizedMessage();
                 }
             }
         }

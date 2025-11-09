@@ -233,6 +233,9 @@ public class Eventos {
                 afectado.setVida(afectado.getVida() - 25);
                 System.out.println(afectado.getNombre() + " recibe 25 de daño!");
             }
+        }else {
+            System.out.println("No has investigado las ruinas.");
+            System.out.println("Te quedas sin saber que ahi...");
         }
     }
 

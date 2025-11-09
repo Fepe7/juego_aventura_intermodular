@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InventarioGlobal {
-    private static List<Objeto> inventarioGlobal = new ArrayList<>();
+    private static ArrayList<Objeto> inventarioGlobal = new ArrayList<>();
 
     public static void agregarAlInventarioGlobal(Objeto objeto) {
         inventarioGlobal.add(objeto);
@@ -16,7 +16,7 @@ public class InventarioGlobal {
         inventarioGlobal.remove(objeto);
     }
 
-    public static List<Objeto> getInventarioGlobal() {
+    public static ArrayList<Objeto> getInventarioGlobal() {
         return inventarioGlobal;
     }
 

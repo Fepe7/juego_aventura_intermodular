@@ -8,7 +8,7 @@ import Juego_nuevo.Entidades.Personaje;
 
 public class Room extends MapTile{
 
-    private boolean unlocked = false;
+    private final boolean unlocked = false;
 
     ArrayList<Room> connections;
 
@@ -26,10 +26,11 @@ public class Room extends MapTile{
 
 
     //Activa el evento de la sala
-    public void activarEvento(Personaje[] personajes){
+    public void activarEvento(Personaje[] personajes, Mapa mapa){
         if(evento != null){
             //La comprobacion de si el evento ya ha sido completado se hace dentro del metodo ejecutarEvento
-            Evento.ejecutarEvento(evento, personajes);
+            Evento.ejecutarEvento(evento, personajes, mapa);
+
         }
 
     }

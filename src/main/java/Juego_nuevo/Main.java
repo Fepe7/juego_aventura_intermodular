@@ -36,12 +36,13 @@ public class Main {
     }
 
 
-    //Array estatico de persoanjes
-    private Personaje[] personajesPartida = new Personaje[4];
 
-    private int seed;
+
 
     private static Mapa mapa = new Mapa();
+
+    //Pilla la ubicacion inicial de la habitacion
+    private static int [] h_inicial;
 
 
     //Coger los personajes de la party
@@ -165,8 +166,8 @@ public class Main {
         System.out.println("Estas solo. Rodeado de puertas, hacia que habitacion quieres ir?");
 
         // Posiciona al jugador en la primera hab generada
-        int[] coords = mapa.getRoomCoords(0);
-        personajesPartida[0].setPosicion(coords[0], coords[1]);
+        h_inicial = mapa.getRoomCoords(0);
+        personajesPartida[0].setPosicion(h_inicial[0], h_inicial[1]);
 
         while (algunPersonajeVivo(personajesPartida)) {
             System.out.println(mapa.toString(personajesPartida[0]));
@@ -203,7 +204,7 @@ public class Main {
 
         // Solo activa evento si no es la habitación inicial (generatedOrder != 0)
         if (h.getGeneratedOrder() != 0) {
-            h.activarEvento(personajesPartida);
+            h.activarEvento(personajesPartida, mapa);
         }
 
 
@@ -221,6 +222,7 @@ public class Main {
     }
 
 
+    //Se guarda la partida cada vez que se completa un evento
     public static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal, int seed) {
         System.out.println("Guardando partida...");
         EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
