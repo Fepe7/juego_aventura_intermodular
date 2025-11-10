@@ -68,7 +68,14 @@ public class Main {
                             1) Importar partida guardada
                             2) Crear una nueva partida
                             Escoge una opción (1-2): """);
-                    opcion = scanner.nextInt();
+                    try {
+                        opcion = scanner.nextInt();
+
+                    }catch (java.util.InputMismatchException e){
+                        scanner.nextLine();
+                        System.out.println("Caracter invalido.");
+                        opcion = 0;
+                    }
                     if (opcion < 1 || opcion > 2) {
                         System.out.println("Introduce uno de los números indicados.");
                     }

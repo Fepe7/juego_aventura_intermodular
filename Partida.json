@@ -21,187 +21,117 @@
           "tipoHabilidad": "APOYO"
         }
       ],
-      "posicion": [
-        0,
-        4
-      ],
-      "vida": 68,
+      "vida": 100,
       "ataque": 15,
       "velocidad": 15,
       "nombre": "Protagonista",
       "vivo": true,
-      "mana": 30
-    },
-    {
-      "vidaMaxima": 70,
-      "dialogos": [
-        "La magia fluye por mis venas",
-        "¡Que la arcana te proteja!"
-      ],
-      "habilidades": [
-        {
-          "nombre": "Bola de Fuego",
-          "costeMana": 20,
-          "danyo": 35,
-          "descripcion": "Hechizo de fuego",
-          "tipoHabilidad": "ATAQUE"
-        },
-        {
-          "nombre": "Escudo Mágico",
-          "costeMana": 15,
-          "danyo": 0,
-          "descripcion": "Protección mágica",
-          "tipoHabilidad": "APOYO"
-        }
-      ],
-      "vida": 70,
-      "ataque": 10,
-      "velocidad": 14,
-      "nombre": "Merlin",
-      "vivo": true,
-      "mana": 80
-    },
-    {
-      "vidaMaxima": 90,
-      "dialogos": [
-        "La luz te sanará",
-        "¡Que los dioses nos protejan!"
-      ],
-      "habilidades": [
-        {
-          "nombre": "Curación",
-          "costeMana": 15,
-          "danyo": 0,
-          "descripcion": "Sana aliados",
-          "tipoHabilidad": "APOYO"
-        },
-        {
-          "nombre": "Ataque Furtivo",
-          "costeMana": 12,
-          "danyo": 25,
-          "descripcion": "Ataque por sorpresa",
-          "tipoHabilidad": "ATAQUE"
-        }
-      ],
-      "vida": 90,
-      "ataque": 16,
-      "velocidad": 10,
-      "nombre": "Kael",
-      "vivo": true,
-      "mana": 60
+      "mana": 50
     }
   ],
-  "objetos": [
-    {
-      "nombre": "Poción de vida",
-      "descripcion": "Restaura 50 puntos de vida"
-    }
-  ],
-  "seed": 32353809,
+  "objetos": [],
+  "seed": 70708000,
   "eventos": [
     [
       null,
       null,
       null,
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
       null,
       {
-        "eventoNombre": "meterParty",
-        "completado": true
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
       },
       {
         "eventoNombre": "meterParty",
-        "completado": true
+        "completado": false
       },
       null
     ],
     [
       null,
+      null,
+      null,
       {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
         "completado": false
       },
       {
         "eventoNombre": "trampaEnCamino",
         "completado": false
       },
+      null
+    ],
+    [
+      null,
+      null,
+      null,
       {
         "eventoNombre": "meterParty",
         "completado": false
       },
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "encuentroMercader",
         "completado": false
       },
       {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
+        "eventoNombre": "meterParty",
+        "completado": false
       },
       null
     ],
     [
+      null,
+      null,
+      null,
+      null,
       null,
       {
         "eventoNombre": "hallazgoTesoro",
         "completado": false
       },
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
       {
-        "eventoNombre": "encuentroMercader",
+        "eventoNombre": "hallazgoTesoro",
         "completado": false
       },
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
       {
         "eventoNombre": "meterParty",
         "completado": false
       },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": true
-      },
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": true
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      }
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null
     ]
   ]
