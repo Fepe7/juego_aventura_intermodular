@@ -42,6 +42,10 @@ public class Main {
     }
 
 
+    public static Personaje[] personajesPartida;
+
+
+
     public static void main(String[] args) {
 
         //Este escaner se pasa a todos los metodos que lo necesiten
@@ -49,7 +53,6 @@ public class Main {
         //Creo que es lo mas optiomo
         Scanner scanner = new Scanner(System.in);
 
-        Personaje[] personajesPartida;
         ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
 
         //Fichero de guardado
@@ -157,7 +160,7 @@ public class Main {
             System.out.println(mapa.toString(personajesPartida[0]));
 
             //Se pasa scanner para leer la direccion
-            pedirDireccionMover(personajesPartida[0], mapa, scanner);
+            pedirDireccionMover(personajesPartida, mapa, scanner);
 
             //Se pasa scanner para eventos que lo necesiten
             procesarEventoHab(personajesPartida, mapa, scanner);
@@ -202,13 +205,21 @@ public class Main {
 
     //Para simplificar las direcciones en el bucle principal
     //Se pasa scanner para leer la direccion
-    public static void pedirDireccionMover(Personaje personaje, Mapa mapa, Scanner scanner) {
+    public static void pedirDireccionMover(Personaje personajes[], Mapa mapa, Scanner scanner) {
         System.out.println("1 - Arriba");
         System.out.println("2 - Derecha");
         System.out.println("3 - Abajo");
         System.out.println("4 - Izquierda");
+        System.out.println("5 - Informacion de la party");
         int direccion = scanner.nextInt() - 1;
-        personaje.mover(mapa, direccion);
+
+        if (direccion >= 0 && direccion <= 3) {
+            personajes[0].mover(mapa, direccion);
+        } else if (direccion == 4) {
+            infoParty(personajes);
+        }
+
+
     }
 
 
@@ -220,4 +231,18 @@ public class Main {
     }
 
 
+    public static void infoParty(Personaje[] personajesPartida) {
+        System.out.println("La party tiene:");
+        for (Personaje p : personajesPartida) {
+            if (p != null) {
+                System.out.println(p);
+            }
+        }
+    }
+
+    public static void setPersonajesPartida(Personaje[] personajesPartida) {
+        Main.personajesPartida = personajesPartida;
+    }
+
+    
 }

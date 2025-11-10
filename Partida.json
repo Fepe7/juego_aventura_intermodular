@@ -22,40 +22,131 @@
         }
       ],
       "posicion": [
-        2,
-        0
+        3,
+        5
       ],
-      "vida": 77,
+      "vida": 100,
       "ataque": 15,
       "velocidad": 15,
       "nombre": "Protagonista",
       "vivo": true,
       "mana": 50
+    },
+    {
+      "vidaMaxima": 70,
+      "dialogos": [
+        "La magia fluye por mis venas",
+        "¡Que la arcana te proteja!"
+      ],
+      "habilidades": [
+        {
+          "nombre": "Bola de Fuego",
+          "costeMana": 20,
+          "danyo": 35,
+          "descripcion": "Hechizo de fuego",
+          "tipoHabilidad": "ATAQUE"
+        },
+        {
+          "nombre": "Escudo Mágico",
+          "costeMana": 15,
+          "danyo": 0,
+          "descripcion": "Protección mágica",
+          "tipoHabilidad": "APOYO"
+        }
+      ],
+      "vida": 70,
+      "ataque": 10,
+      "velocidad": 14,
+      "nombre": "Merlin",
+      "vivo": true,
+      "mana": 80
+    },
+    {
+      "vidaMaxima": 90,
+      "dialogos": [
+        "La luz te sanará",
+        "¡Que los dioses nos protejan!"
+      ],
+      "habilidades": [
+        {
+          "nombre": "Curación",
+          "costeMana": 15,
+          "danyo": 0,
+          "descripcion": "Sana aliados",
+          "tipoHabilidad": "APOYO"
+        },
+        {
+          "nombre": "Ataque Furtivo",
+          "costeMana": 12,
+          "danyo": 25,
+          "descripcion": "Ataque por sorpresa",
+          "tipoHabilidad": "ATAQUE"
+        }
+      ],
+      "vida": 90,
+      "ataque": 16,
+      "velocidad": 10,
+      "nombre": "Kael",
+      "vivo": true,
+      "mana": 60
+    },
+    {
+      "vidaMaxima": 90,
+      "dialogos": [
+        "La luz te sanará",
+        "¡Que los dioses nos protejan!"
+      ],
+      "habilidades": [
+        {
+          "nombre": "Curación",
+          "costeMana": 15,
+          "danyo": 0,
+          "descripcion": "Sana aliados",
+          "tipoHabilidad": "APOYO"
+        },
+        {
+          "nombre": "Ataque Furtivo",
+          "costeMana": 12,
+          "danyo": 25,
+          "descripcion": "Ataque por sorpresa",
+          "tipoHabilidad": "ATAQUE"
+        }
+      ],
+      "vida": 90,
+      "ataque": 16,
+      "velocidad": 10,
+      "nombre": "Kael",
+      "vivo": true,
+      "mana": 60
     }
   ],
   "objetos": [],
-  "seed": 87722963,
+  "seed": 44649309,
   "eventos": [
     [
-      null,
-      null,
-      null,
-      null,
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
       null,
       null,
       null
     ],
     [
       {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
@@ -63,62 +154,64 @@
         "completado": false
       },
       {
-        "eventoNombre": "hallazgoTesoro",
+        "eventoNombre": "meterParty",
         "completado": false
       },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      null,
       null,
       null
     ],
     [
+      null,
+      null,
+      null,
       {
-        "eventoNombre": "trampaEnCamino",
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "meterParty",
         "completado": true
       },
       {
         "eventoNombre": "meterParty",
         "completado": false
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      null,
-      null,
-      null,
-      null
+      }
     ],
     [
+      null,
+      null,
+      null,
+      null,
+      null,
       {
         "eventoNombre": "meterParty",
-        "completado": false
+        "completado": true
       },
       {
         "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
-      null,
-      null,
-      null,
-      null,
-      null
+        "completado": true
+      }
     ],
     [
       null,

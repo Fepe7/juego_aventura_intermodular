@@ -36,7 +36,6 @@ public class Evento {
 
 
     //Ejecuta el evento llamando al metodo correspondiente en la clase Eventos mediante reflexion
-    //Ejecuta el evento llamando al metodo correspondiente en la clase Eventos mediante reflexion
     public static void ejecutarEvento(Evento evento, Personaje[] personajes, Mapa mapa, Scanner scanner) {
 
         if (evento.isCompletado()) {
@@ -45,10 +44,10 @@ public class Evento {
         } else {
             try {
                 if ("meterParty".equals(evento.getEventoNombre())) {
-                    Personaje[] nuevosPersonajes = Eventos.meterParty(personajes);
-                    //Actualiza el array de personajes con los nuevos personajes devueltos por el evento
-                    //Copia los personajes nuevos en el array original hasta donde quepa (en caso de que haya mas personajes nuevos que espacio)
-                    System.arraycopy(nuevosPersonajes, 0, personajes, 0, Math.min(nuevosPersonajes.length, personajes.length));
+                    Eventos.meterParty(personajes);
+                    //Actualiza el array
+                    personajes = Main.personajesPartida;
+
                     evento.setCompletado(true);
                     Main.guardadPartida(personajes, InventarioGlobal.getInventarioGlobal(), mapa.getSeed());
                     return;

@@ -15,12 +15,19 @@ public class Juego {
     //Esto devuelve un array list con el orden de los turnos segun la velocidad de los personajes y enemigos
     //El el orden en el que estan en el array es el orden de los turnos
     //El primero ataca el primero etc...
-    public static ArrayList obtenerOrdenTurnos(Personaje[] personajes, Enemigo enemigo) {
+    public static ArrayList<Entidad> obtenerOrdenTurnos(Personaje[] personajes, Enemigo enemigo) {
         ArrayList<Entidad> ordenTurnos = new ArrayList<>();
 
-        ordenTurnos.addAll(Arrays.asList(personajes));
+        //Añade los personajes del array al arraylist
+        for (Personaje p : personajes) {
+            if (p != null) {
+                ordenTurnos.add(p);
+            }
+        }
+
         ordenTurnos.add(enemigo);
 
+        //Ordena el turno del array por su velocidad
         ordenTurnos.sort(Comparator.comparing(Entidad::getVelocidad).reversed());
         return ordenTurnos;
     }
@@ -98,24 +105,49 @@ public class Juego {
     //El metodo recorre el array list del orden de los turnos y ejecuta la accion correspondiente
     //Si el personaje o enemigo esta vivo, va a atacar a un personaje random
     //El scanner es del main para no tener que crear un scanner en cada metodo
-    public static void turnoActual(Personaje[] personajes, Enemigo enemigo, Scanner sc) {
-        ArrayList<Object> ordenTurnos = obtenerOrdenTurnos(personajes, enemigo);
+    public static void combateEnemigo(Personaje[] personajes, Enemigo enemigo, Scanner sc) {
+        System.out.println("HA APARECIDO UN ENEMIGO: " + enemigo.getNombre());
+        enemigo.setVivo(true);
 
-        for (Object combatiente : ordenTurnos) {
-            if (combatiente instanceof Personaje) {
-                Personaje p = (Personaje) combatiente;
-                if (p.isVivo()) {
-                    accionPersonaje(p, enemigo, sc);
-                }
+        boolean hayPersonajeVivo = false;
+        for (Personaje p : personajes) {
+            if (p != null && p.isVivo()) {
+                hayPersonajeVivo = true;
+                break;
+            }
+        }
+
+        while (enemigo.isVivo() && hayPersonajeVivo) {
+            var ordenTurnos = obtenerOrdenTurnos(personajes, enemigo);
+
+            for (Entidad combatiente : ordenTurnos) {
                 if (!enemigo.isVivo()) {
                     break;
                 }
-            } else if (combatiente instanceof Enemigo) {
-                Enemigo e = (Enemigo) combatiente;
-                if (e.isVivo()) {
-                    accionEnemigo(e, personajes);
+                if (combatiente instanceof Personaje p) {
+                    if (p.isVivo()) {
+                        accionPersonaje(p, enemigo, sc);
+                    }
+                } else if (combatiente instanceof Enemigo e) {
+                    if (e.isVivo()) {
+                        accionEnemigo(e, personajes);
+                    }
                 }
             }
+
+            hayPersonajeVivo = false;
+            for (Personaje p : personajes) {
+                if (p != null && p.isVivo()) {
+                    hayPersonajeVivo = true;
+                    break;
+                }
+            }
+        }
+
+        if (!enemigo.isVivo()) {
+            System.out.println("Has derrotado al enemigo: " + enemigo.getNombre());
+        } else {
+            System.out.println("Todos los personajes han sido derrotados por: " + enemigo.getNombre());
         }
     }
 
@@ -130,17 +162,25 @@ public class Juego {
     public static void accionEnemigo(Enemigo e, Personaje[] personajes) {
         System.out.println();
         System.out.println("Es el turno del enemigo " + e.getNombre() + ", ataca a un personaje!");
-        //Elige un personaje random para atacar, si no esta vivo vuelve a elegir otro personaje
         Random rand = new Random();
-        Personaje objetivo;
-        do {
-            objetivo = personajes[rand.nextInt(personajes.length)];
-        } while (!objetivo.isVivo());
+        // Filtra objetivos válidos (no nulos y vivos)
+        List<Personaje> objetivos = new ArrayList<>();
+        for (Personaje pj : personajes) {
+            if (pj != null && pj.isVivo()) {
+                objetivos.add(pj);
+            }
+        }
+        // Si no hay objetivos válidos, terminar
+        if (objetivos.isEmpty()) {
+            System.out.println("No quedan personajes vivos a los que atacar.");
+            return;
+        }
+        Personaje objetivo = objetivos.get(rand.nextInt(objetivos.size()));
 
         System.out.println(e.getNombre() + " ataca a " + objetivo.getNombre());
         int vida_quitar = e.getAtaque();
         System.out.println("Ha quitado " + vida_quitar + " de vida a " + objetivo.getNombre());
-        //Quita la vida del personaje
+        System.out.println();
         objetivo.setVida(objetivo.getVida() - vida_quitar);
         if (objetivo.getVida() <= 0) {
             objetivo.setVivo(false);
@@ -156,7 +196,6 @@ public class Juego {
             return true;
         } else return false;
     }
-
 
 
     //Esto es el menu de acciones del personaje en  el combate contra enemigos
@@ -243,14 +282,12 @@ public class Juego {
                                         continuar = 1;
                                         habilidadValida = true;
                                         if (comporbarMuerte(enemigo)) {
-                                            continuar = 1;
                                             break;
-
                                         }
                                         System.out.println("El " + enemigo.getNombre() + " tiene " + enemigo.getVida() + " de vida");
                                     } catch (Exception e) {
                                         System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
-                                        System.out.println(e);
+                                        System.out.println(e.getMessage());
                                     }
                                 } else {
                                     System.out.println("No tienes suficiente maná para usar esa habilidad. Elige otra.");
@@ -306,7 +343,7 @@ public class Juego {
                                     inventario.remove(decisionObjeto);
                                 } catch (Exception e) {
                                     System.out.println("No se pudo ejecutar el método: " + nombreMetodo);
-                                    System.out.println(e);
+                                    System.out.println(e.getMessage());
                                 }
                             }
                             continuar = 1;

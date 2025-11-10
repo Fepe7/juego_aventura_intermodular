@@ -16,7 +16,7 @@ public class Eventos {
 
     static Random random = new Random();
 
-//NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Evento hoguera donde se recupera la vida y el mana de los personajes
     public static void irAHoguera(Personaje[] personajes) {
         System.out.println("\n=== HOGUERA ===");
@@ -35,11 +35,9 @@ public class Eventos {
     }
 
 
-
-
     public static Evento generarEventoAleatorio() {
 
-        int eventoRandom = random.nextInt(6);
+        int eventoRandom = random.nextInt(2);
         String nombre = "";
 
         switch (eventoRandom) {
@@ -47,7 +45,7 @@ public class Eventos {
                 nombre = "generarEnemigoAleatorio";
                 break;
             case 1:
-                nombre = "encuentroMercader";
+                nombre = "meterParty";
                 break;
             case 2:
                 nombre = "trampaEnCamino";
@@ -59,7 +57,7 @@ public class Eventos {
                 nombre = "ruinasAntiguas";
                 break;
             case 5:
-                nombre = "meterParty";
+                nombre = "encuentroMercader";
                 break;
 
         }
@@ -74,9 +72,9 @@ public class Eventos {
 
         ArrayList<String> nombresEnemigos = new ArrayList<>();
         Collections.addAll(nombresEnemigos,
-        "Orco Guerrero", "Goblin Pícaro", "Mago Oscuro", "Dragón Menor",
-        "Esbirro Esqueleto", "Troll de Montaña", "Bandido Mercenario", "Bruja del Bosque",
-        "Guardia de Hierro", "Cazador Vampiro", "Golem de Piedra", "Demonio Menor");
+                "Orco Guerrero", "Goblin Pícaro", "Mago Oscuro", "Dragón Menor",
+                "Esbirro Esqueleto", "Troll de Montaña", "Bandido Mercenario", "Bruja del Bosque",
+                "Guardia de Hierro", "Cazador Vampiro", "Golem de Piedra", "Demonio Menor");
 
         String nombre = nombresEnemigos.get(random.nextInt(nombresEnemigos.size()));
         //Se crea el enemigo a partir del nombre
@@ -89,45 +87,11 @@ public class Eventos {
         enemigo.setVivo(true);
 
         System.out.println(nombre);
-        combateEnemigo(personajes, enemigo, sc);
+        // Pasar el scanner para reutilizar la entrada y permitir que todos los personajes actúen
+        Juego.combateEnemigo(personajes, enemigo, sc);
 
     }
 
-
-
-    public static void combateEnemigo(Personaje[] personajes, Enemigo enemigo, Scanner sc) {
-        System.out.println("HA APARECIDO UN ENEMIGO: " + enemigo.getNombre());
-
-        // Verifica que hay al menos un personaje vivo
-        boolean hayPersonajeVivo = false;
-        for (Personaje p : personajes) {
-            if (p != null && p.isVivo()) {
-                hayPersonajeVivo = true;
-                break;
-            }
-        }
-
-        // Mientras el enemigo y al menos un personaje estén vivos
-        while (enemigo.isVivo() && hayPersonajeVivo) {
-            Juego.turnoActual(personajes, enemigo, sc);
-
-            // Recalcular si hay personajes vivos después de cada turno
-            hayPersonajeVivo = false;
-            for (Personaje p : personajes) {
-                if (p != null && p.isVivo()) {
-                    hayPersonajeVivo = true;
-                    break;
-                }
-            }
-        }
-
-        if (!enemigo.isVivo()) {
-            System.out.println("Has derrotado al enemigo: " + enemigo.getNombre());
-        } else {
-            System.out.println("Todos los personajes han sido derrotados por: " + enemigo.getNombre());
-        }
-
-    }
 
 
     //Genera un personaje aleatorio
@@ -151,14 +115,14 @@ public class Eventos {
     }
 
 
-    public static Personaje generarProragonista(){
+    public static Personaje generarProragonista() {
 
-        try(FileReader leer = new FileReader("Personajes.json")) {
+        try (FileReader leer = new FileReader("Personajes.json")) {
             //Leer el primer objeto del JSON (el protagonista)
             Personaje[] personajes = new com.google.gson.Gson().fromJson(leer, Personaje[].class);
             return personajes[0];
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Error al crear el personaje");
             return null;
         }
@@ -168,32 +132,29 @@ public class Eventos {
 
     //Mete un personaje aleatorio en la party
     //ESTE ES EL QUE SE USA PARA METER PERSONAJES EN LA PARTY
-    public static Personaje[] meterParty(Personaje[] personajesParty){
-
+    public static void meterParty(Personaje[] personajesParty) {
         int tamanyoParty = personajesParty.length;
 
-        if (tamanyoParty < 4){
-            //Crea un nuevo array con espacio para un personaje más
-            Personaje[] personajes_nuevo = new Personaje[tamanyoParty+1];
+        if (tamanyoParty < 4) {
+            // Crea un nuevo array con espacio para un personaje mas
+            Personaje[] personajes_nuevo = new Personaje[tamanyoParty + 1];
 
-            //Copia los personajes actuales al nuevo array
+            // Copia todos los personajes antiguos al nuevo array
             System.arraycopy(personajesParty, 0, personajes_nuevo, 0, tamanyoParty);
 
-            //Genera un personaje aleatorio y lo añade al nuevo array
+            // Genera un personaje aleatorio y lo añade al nuevo array
             Personaje p = generarPersonajeAleatorio(personajesParty);
             personajes_nuevo[tamanyoParty] = p;
 
             System.out.println("Personaje " + p.getNombre() + " se ha unido a la party");
 
-            //Devuelve el nuevo array con el personaje añadido
-            return personajes_nuevo;
-        }else {
+            // Asigna el nuevo array a la variable statica del Main
+            Main.setPersonajesPartida(personajes_nuevo);
+        } else {
             System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
-            return personajesParty;
         }
-
-
     }
+
 
     //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Te ofrece un objeto gratis
@@ -232,7 +193,7 @@ public class Eventos {
                 default:
                     System.out.println("Opción no válida. Intenta de nuevo.");
             }
-        }while (decision < 0 || decision > 3);
+        } while (decision < 0 || decision > 3);
     }
 
     //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
@@ -245,11 +206,11 @@ public class Eventos {
         System.out.println(afectado.getNombre() + " ha caído en una trampa y recibe " + danyo + " de daño");
     }
 
-//NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Objeto random
     public static void hallazgoTesoro() {
         System.out.println("\n=== TESORO ENCONTRADO ===");
-        int random = new Random().nextInt(3)+1;
+        int random = new Random().nextInt(3) + 1;
         switch (random) {
             case 1:
                 Armas arma = generarArmaAleatoria();
@@ -269,7 +230,7 @@ public class Eventos {
         }
     }
 
-//NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Random si recibes daño o encuentras un objeto
     public static void ruinasAntiguas(Personaje[] personajes) {
         System.out.println("\n=== RUINAS ANTIGUAS ===");
@@ -290,12 +251,11 @@ public class Eventos {
                 afectado.setVida(afectado.getVida() - 25);
                 System.out.println(afectado.getNombre() + " recibe 25 de daño!");
             }
-        }else {
+        } else {
             System.out.println("No has investigado las ruinas.");
             System.out.println("Te quedas sin saber que ahi...");
         }
     }
-
 
 
     private static Armas generarArmaAleatoria() {
@@ -336,8 +296,6 @@ public class Eventos {
         int indice = random.nextInt(objetos.length);
         return new Objeto(objetos[indice][0], objetos[indice][1]);
     }
-
-
 
 
 }

@@ -59,7 +59,15 @@ public class EstadoPartida {
      */
     public static DatosJuego cargarPartida() {
         try (final var fr = new FileReader("Partida.json")) {
-            return new Gson().fromJson(fr, DatosJuego.class);
+            DatosJuego datos = new Gson().fromJson(fr, DatosJuego.class);
+            if (datos != null && datos.personajes() != null) {
+                for (var p : datos.personajes()) {
+                    if (p != null && !p.isVivo() && p.getVida() > 0) {
+                        p.setVivo(true);
+                    }
+                }
+            }
+            return datos;
         } catch (Exception e) {
             System.out.println("Error al cargar partida");
             System.out.println(e.getMessage());
@@ -81,6 +89,10 @@ public class EstadoPartida {
             final var personajes = new Gson().fromJson(fr, Personaje[].class);
             for (final var p : personajes) {
                 if (p.getNombre().equals(nombrePersonaje)) {
+                    // Forzar que esté vivo si viene sin el campo 'vivo' en el JSON
+                    if (!p.isVivo() && p.getVida() > 0) {
+                        p.setVivo(true);
+                    }
                     return p;
                 }
             }
@@ -135,5 +147,3 @@ public class EstadoPartida {
         }
     }
 }
-
-
