@@ -4,7 +4,7 @@
     "vida": 100,
     "vidaMaxima": 100,
     "ataque": 15,
-    "velocidad": 10,
+    "velocidad": 15,
     "mana": 50,
     "vivo": true,
     "habilidades": [

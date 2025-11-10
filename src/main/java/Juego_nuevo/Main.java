@@ -17,14 +17,10 @@ import java.util.Scanner;
 public class Main {
 
 
-
-
-
-
     private static Mapa mapa = new Mapa();
 
     //Pilla la ubicacion inicial de la habitacion
-    private static int [] h_inicial;
+    private static int[] h_inicial;
 
 
     //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
@@ -35,16 +31,15 @@ public class Main {
 
     //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     public static void agregarPersonajeParty(Personaje p, Personaje[] personajesPartida) {
-    for (int i = 0; i < personajesPartida.length; i++) {
-        if (personajesPartida[i] == null) {
-            personajesPartida[i] = p;
-            System.out.println("Personaje " + p.getNombre() + " agregado a la party.");
-            return;
+        for (int i = 0; i < personajesPartida.length; i++) {
+            if (personajesPartida[i] == null) {
+                personajesPartida[i] = p;
+                System.out.println("Personaje " + p.getNombre() + " agregado a la party.");
+                return;
+            }
         }
+        System.out.println("La party ya está llena. No se puede agregar más personajes.");
     }
-    System.out.println("La party ya está llena. No se puede agregar más personajes.");
-}
-
 
 
     public static void main(String[] args) {

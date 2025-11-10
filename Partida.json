@@ -22,70 +22,64 @@
         }
       ],
       "posicion": [
-        0,
-        2
+        2,
+        0
       ],
-      "vida": 100,
+      "vida": 77,
       "ataque": 15,
-      "velocidad": 10,
+      "velocidad": 15,
       "nombre": "Protagonista",
       "vivo": true,
       "mana": 50
     }
   ],
   "objetos": [],
-  "seed": 61190844,
+  "seed": 87722963,
   "eventos": [
     [
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
       {
         "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
-        "eventoNombre": "generarEnemigoAleatorio",
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "trampaEnCamino",
         "completado": true
       },
       {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
+        "eventoNombre": "meterParty",
         "completado": false
       },
       {
-        "eventoNombre": "generarEnemigoAleatorio",
+        "eventoNombre": "trampaEnCamino",
         "completado": false
       },
       null,
@@ -94,8 +88,32 @@
       null
     ],
     [
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
       null,
       null,
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
       null,
       null,
       null,

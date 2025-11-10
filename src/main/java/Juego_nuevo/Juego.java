@@ -128,6 +128,7 @@ public class Juego {
 
     //Accion del enemigo, ataca a un personaje random, si el personaje muere se pone su estado a muerto
     public static void accionEnemigo(Enemigo e, Personaje[] personajes) {
+        System.out.println();
         System.out.println("Es el turno del enemigo " + e.getNombre() + ", ataca a un personaje!");
         //Elige un personaje random para atacar, si no esta vivo vuelve a elegir otro personaje
         Random rand = new Random();

@@ -112,9 +112,9 @@ public class Mapa {
 
     public void generateLayout() {
 
-        int maxRooms = 10;
-        int minRooms = 7;
-        finalRoomN = (rng.nextInt() % (maxRooms + 1 - minRooms)) + minRooms;
+        int maxRooms = 16;
+        int minRooms = 13;
+        finalRoomN = rng.nextInt(maxRooms - minRooms) + minRooms;
 
         layoutStart();
 
