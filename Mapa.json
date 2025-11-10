@@ -1,58 +1,25 @@
 {
-  "seed": 70708000,
+  "seed": 55116768,
   "eventos": [
     [
-      null,
-      null,
-      null,
       {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "encuentroMercader",
         "completado": false
       },
       {
         "eventoNombre": "ruinasAntiguas",
         "completado": false
       },
+      null,
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "hallazgoTesoro",
         "completado": false
       },
+      null,
+      null,
       null
     ],
     [
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      null
-    ],
-    [
-      null,
-      null,
-      null,
       {
         "eventoNombre": "meterParty",
         "completado": false
@@ -65,42 +32,78 @@
         "eventoNombre": "meterParty",
         "completado": false
       },
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
       {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
+        "eventoNombre": "trampaEnCamino",
+        "completado": true
       },
+      null,
+      null,
       null
     ],
     [
-      null,
-      null,
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
-      },
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
       {
         "eventoNombre": "meterParty",
         "completado": false
       },
+      null,
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ]
   ]

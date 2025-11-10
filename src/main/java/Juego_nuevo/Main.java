@@ -218,17 +218,24 @@ public class Main {
         System.out.println("3 - Abajo");
         System.out.println("4 - Izquierda");
         System.out.println("5 - Informacion de la party");
-        int direccion = scanner.nextInt() - 1;
+
+        int direccion;
+        try {
+            direccion = scanner.nextInt() - 1;
+        } catch (java.util.InputMismatchException e) {
+            scanner.nextLine(); //limipia el scanner
+            System.out.println("Caracter invalido. Usa un número (1-5).");
+            return;
+        }
 
         if (direccion >= 0 && direccion <= 3) {
             personajes[0].mover(mapa, direccion);
         } else if (direccion == 4) {
             infoParty(personajes);
+        } else {
+            System.out.println("Introduce uno de los numeros.");
         }
-
-
     }
-
 
     //Se guarda la partida cada vez que se completa un evento
     public static void guardadPartida(Personaje[] personajesPartida, ArrayList<Objeto> inventarioGlobal, int seed) {

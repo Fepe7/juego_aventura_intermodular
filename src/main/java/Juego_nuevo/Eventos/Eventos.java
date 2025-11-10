@@ -16,24 +16,6 @@ public class Eventos {
 
     static Random random = new Random();
 
-    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
-    //Evento hoguera donde se recupera la vida y el mana de los personajes
-    public static void irAHoguera(Personaje[] personajes) {
-        System.out.println("\n=== HOGUERA ===");
-        System.out.println("Te acercas a la hoguera reconfortante...");
-        System.out.println("El calor de las llamas restaura tus fuerzas.");
-
-        for (Personaje p : personajes) {
-            if (p.isVivo()) {
-                p.setVida(p.getVida_maxima());
-                p.setMana(p.getMana() + 20); //
-                System.out.println("Se recupera 20 puntos de maná.");
-                System.out.println(p.getNombre() + " ha recuperado toda su vida! [" + p.getVida() + "/" + p.getVida_maxima() + "]");
-            }
-        }
-        System.out.println("\nTu equipo está completamente recuperado y listo para continuar.");
-    }
-
 
     public static Evento generarEventoAleatorio() {
 
@@ -91,7 +73,6 @@ public class Eventos {
         Juego.combateEnemigo(personajes, enemigo, sc);
 
     }
-
 
 
     //Genera un personaje aleatorio
@@ -175,7 +156,15 @@ public class Eventos {
         do {
             System.out.println("¿Qué deseas coger? (1-3)");
             Scanner scanner = new Scanner(System.in);
-            decision = scanner.nextInt();
+            try {
+                decision = scanner.nextInt();
+
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                System.out.println("Caracter invalido. Usa un número (1-3).");
+                decision = -1;
+                continue;
+            }
 
             switch (decision) {
                 case 1:
@@ -195,6 +184,7 @@ public class Eventos {
             }
         } while (decision < 0 || decision > 3);
     }
+
 
     //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Te quita daño
@@ -216,16 +206,19 @@ public class Eventos {
                 Armas arma = generarArmaAleatoria();
                 System.out.println("Has encontrado un arma: " + arma.getNombre());
                 InventarioGlobal.agregarAlInventarioGlobal(arma);
+                System.out.println(arma);
                 break;
             case 2:
                 Armaduras armadura = generarArmaduraAleatoria();
                 System.out.println("Has encontrado una armadura: " + armadura.getNombre());
                 InventarioGlobal.agregarAlInventarioGlobal(armadura);
+                System.out.println(armadura);
                 break;
             case 3:
                 Objeto objeto = generarObjetoAleatorio();
                 System.out.println("Has encontrado un objeto: " + objeto.getNombre());
                 InventarioGlobal.agregarAlInventarioGlobal(objeto);
+                System.out.println(objeto);
                 break;
         }
     }
@@ -238,7 +231,24 @@ public class Eventos {
         System.out.println("¿Investigas las ruinas? (1: Sí, 2: No)");
 
         Scanner scanner = new Scanner(System.in);
-        int decision = scanner.nextInt();
+
+        int decision = 0;
+
+        //Para que no metas un caractor no valido
+        while (decision < 1 || decision > 2) {
+            try {
+                decision = scanner.nextInt();
+                if (decision < 1 || decision > 2) {
+                    System.out.println("Opción no válida. Intenta de nuevo.");
+                    decision = -1;
+                }
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                System.out.println("Caracter invalido. Usa un número (1-2).");
+                decision = -1;
+            }
+        }
+
 
         if (decision == 1) {
             int suerte = random.nextInt(2);
