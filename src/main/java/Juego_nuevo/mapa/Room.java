@@ -9,7 +9,7 @@ import Juego_nuevo.Entidades.Personaje;
 
 public class Room extends MapTile{
 
-    private final boolean unlocked = false;
+    private boolean visitada = false;
 
     ArrayList<Room> connections;
 
@@ -28,6 +28,7 @@ public class Room extends MapTile{
 
     //Activa el evento de la sala
     public void activarEvento(Personaje[] personajes, Mapa mapa, Scanner scanner){
+        this.visitada = true;
         if(evento != null){
             //La comprobacion de si el evento ya ha sido completado se hace dentro del metodo ejecutarEvento
             Evento.ejecutarEvento(evento, personajes, mapa, scanner);
@@ -36,6 +37,14 @@ public class Room extends MapTile{
 
     }
 
+
+      public boolean isVisitada() {
+        return visitada;
+    }
+
+    public void setVisitada(boolean visitada) {
+        this.visitada = visitada;
+    }
 
 
     public Evento getEvento() {
@@ -50,13 +59,16 @@ public class Room extends MapTile{
 
     @Override
     public String toString() {
-        return "["+this.getTileSymbol()+"]";
+        String simboloPrintear;
+        if(this.isVisitada() || this.getGeneratedOrder()== 0){
+            simboloPrintear = "X";
+        }else{
+            simboloPrintear = "?";
+        }
+        return "["+simboloPrintear+"]";
     }
 
-//    @Override
-//    public String toString() {
-//        return "["+this.getTileSymbol()+"]";
-//    }
+
 
     public ArrayList<Room> getConnections() {
         return connections;

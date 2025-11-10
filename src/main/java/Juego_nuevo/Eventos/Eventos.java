@@ -37,7 +37,7 @@ public class Eventos {
 
     public static Evento generarEventoAleatorio() {
 
-        int eventoRandom = random.nextInt(2);
+        int eventoRandom = random.nextInt(6);
         String nombre = "";
 
         switch (eventoRandom) {

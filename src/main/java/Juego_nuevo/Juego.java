@@ -355,7 +355,8 @@ public class Juego {
                     }
 
                 case 4:
-                    System.out.println(p);
+                    //Coge la party de main y se la pasa a infoParty
+                    Main.infoParty(Main.getPersonajesPartida());
                     break;
 
 

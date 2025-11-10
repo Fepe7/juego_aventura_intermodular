@@ -22,15 +22,15 @@
         }
       ],
       "posicion": [
-        3,
-        5
+        0,
+        4
       ],
-      "vida": 100,
+      "vida": 68,
       "ataque": 15,
       "velocidad": 15,
       "nombre": "Protagonista",
       "vivo": true,
-      "mana": 50
+      "mana": 30
     },
     {
       "vidaMaxima": 70,
@@ -89,108 +89,87 @@
       "nombre": "Kael",
       "vivo": true,
       "mana": 60
-    },
-    {
-      "vidaMaxima": 90,
-      "dialogos": [
-        "La luz te sanará",
-        "¡Que los dioses nos protejan!"
-      ],
-      "habilidades": [
-        {
-          "nombre": "Curación",
-          "costeMana": 15,
-          "danyo": 0,
-          "descripcion": "Sana aliados",
-          "tipoHabilidad": "APOYO"
-        },
-        {
-          "nombre": "Ataque Furtivo",
-          "costeMana": 12,
-          "danyo": 25,
-          "descripcion": "Ataque por sorpresa",
-          "tipoHabilidad": "ATAQUE"
-        }
-      ],
-      "vida": 90,
-      "ataque": 16,
-      "velocidad": 10,
-      "nombre": "Kael",
-      "vivo": true,
-      "mana": 60
     }
   ],
-  "objetos": [],
-  "seed": 44649309,
+  "objetos": [
+    {
+      "nombre": "Poción de vida",
+      "descripcion": "Restaura 50 puntos de vida"
+    }
+  ],
+  "seed": 32353809,
   "eventos": [
     [
+      null,
+      null,
+      null,
+      null,
       {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
+        "eventoNombre": "meterParty",
+        "completado": true
       },
       {
         "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
+        "completado": true
       },
       null
     ],
     [
       null,
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": true
+      },
+      null
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": true
+      },
+      null
+    ],
+    [
+      null,
       null,
       null,
       null,
       null,
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "trampaEnCamino",
         "completado": true
       },
       {
@@ -204,14 +183,8 @@
       null,
       null,
       null,
-      {
-        "eventoNombre": "meterParty",
-        "completado": true
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": true
-      }
+      null,
+      null
     ],
     [
       null,

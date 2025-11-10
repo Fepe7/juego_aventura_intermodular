@@ -244,5 +244,7 @@ public class Main {
         Main.personajesPartida = personajesPartida;
     }
 
-    
+    public static Personaje[] getPersonajesPartida() {
+        return personajesPartida;
+    }
 }
