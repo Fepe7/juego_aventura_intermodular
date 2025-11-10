@@ -16,7 +16,7 @@ public class Eventos {
 
     static Random random = new Random();
 
-
+//NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Evento hoguera donde se recupera la vida y el mana de los personajes
     public static void irAHoguera(Personaje[] personajes) {
         System.out.println("\n=== HOGUERA ===");
@@ -39,7 +39,7 @@ public class Eventos {
 
     public static Evento generarEventoAleatorio() {
 
-        int eventoRandom = random.nextInt(6);
+        int eventoRandom = 0;
         String nombre = "";
 
         switch (eventoRandom) {
@@ -61,6 +61,7 @@ public class Eventos {
             case 5:
                 nombre = "meterParty";
                 break;
+
         }
 
         //Genera un objeto Evento con el nombre del evento, para despues llamorlo por reflexion
@@ -69,7 +70,7 @@ public class Eventos {
 
 
     //Devuelve un enemigo aleatorio
-    public static Enemigo generarEnemigoAleatorio(){
+    public static void generarEnemigoAleatorio(Personaje[] personajes, Scanner sc) {
 
         ArrayList<String> nombresEnemigos = new ArrayList<>();
         Collections.addAll(nombresEnemigos,
@@ -78,8 +79,53 @@ public class Eventos {
         "Guardia de Hierro", "Cazador Vampiro", "Golem de Piedra", "Demonio Menor");
 
         String nombre = nombresEnemigos.get(random.nextInt(nombresEnemigos.size()));
+        //Se crea el enemigo a partir del nombre
+        Enemigo enemigo = EstadoPartida.crearEnemigo(nombre);
 
-        return EstadoPartida.crearEnemigo(nombre);
+
+        // Asegurar que el enemigo empieza vivo
+        // Sin esto, el combate no se inicia correcamente, no se porque porque el costructor ya pone vivo a true
+        //Tengo que mirar por que pasa esto luego
+        enemigo.setVivo(true);
+
+        System.out.println(nombre);
+        combateEnemigo(personajes, enemigo, sc);
+
+    }
+
+
+
+    public static void combateEnemigo(Personaje[] personajes, Enemigo enemigo, Scanner sc) {
+        System.out.println("HA APARECIDO UN ENEMIGO: " + enemigo.getNombre());
+
+        // Verifica que hay al menos un personaje vivo
+        boolean hayPersonajeVivo = false;
+        for (Personaje p : personajes) {
+            if (p != null && p.isVivo()) {
+                hayPersonajeVivo = true;
+                break;
+            }
+        }
+
+        // Mientras el enemigo y al menos un personaje estén vivos
+        while (enemigo.isVivo() && hayPersonajeVivo) {
+            Juego.turnoActual(personajes, enemigo, sc);
+
+            // Recalcular si hay personajes vivos después de cada turno
+            hayPersonajeVivo = false;
+            for (Personaje p : personajes) {
+                if (p != null && p.isVivo()) {
+                    hayPersonajeVivo = true;
+                    break;
+                }
+            }
+        }
+
+        if (!enemigo.isVivo()) {
+            System.out.println("Has derrotado al enemigo: " + enemigo.getNombre());
+        } else {
+            System.out.println("Todos los personajes han sido derrotados por: " + enemigo.getNombre());
+        }
 
     }
 
@@ -127,9 +173,19 @@ public class Eventos {
         int tamanyoParty = personajesParty.length;
 
         if (tamanyoParty < 4){
+            //Crea un nuevo array con espacio para un personaje más
             Personaje[] personajes_nuevo = new Personaje[tamanyoParty+1];
+
+            //Copia los personajes actuales al nuevo array
+            System.arraycopy(personajesParty, 0, personajes_nuevo, 0, tamanyoParty);
+
+            //Genera un personaje aleatorio y lo añade al nuevo array
             Personaje p = generarPersonajeAleatorio(personajesParty);
-            Main.agregarPersonajeParty(p, personajes_nuevo);
+            personajes_nuevo[tamanyoParty] = p;
+
+            System.out.println("Personaje " + p.getNombre() + " se ha unido a la party");
+
+            //Devuelve el nuevo array con el personaje añadido
             return personajes_nuevo;
         }else {
             System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
@@ -139,7 +195,7 @@ public class Eventos {
 
     }
 
-
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Te ofrece un objeto gratis
     public static void encuentroMercader() {
         System.out.println("\n=== MERCADER AMBULANTE ===");
@@ -179,6 +235,7 @@ public class Eventos {
         }while (decision < 0 || decision > 3);
     }
 
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Te quita daño
     public static void trampaEnCamino(Personaje[] personajes) {
         System.out.println("\n=== ¡TRAMPA! ===");
@@ -188,7 +245,7 @@ public class Eventos {
         System.out.println(afectado.getNombre() + " ha caído en una trampa y recibe " + danyo + " de daño");
     }
 
-
+//NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Objeto random
     public static void hallazgoTesoro() {
         System.out.println("\n=== TESORO ENCONTRADO ===");
@@ -212,7 +269,7 @@ public class Eventos {
         }
     }
 
-
+//NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Random si recibes daño o encuentras un objeto
     public static void ruinasAntiguas(Personaje[] personajes) {
         System.out.println("\n=== RUINAS ANTIGUAS ===");

@@ -16,13 +16,12 @@ public class Juego {
     //El el orden en el que estan en el array es el orden de los turnos
     //El primero ataca el primero etc...
     public static ArrayList obtenerOrdenTurnos(Personaje[] personajes, Enemigo enemigo) {
-
         ArrayList<Entidad> ordenTurnos = new ArrayList<>();
 
         ordenTurnos.addAll(Arrays.asList(personajes));
-        ordenTurnos.addAll(Arrays.asList(enemigo));
+        ordenTurnos.add(enemigo);
 
-        ordenTurnos.sort(Comparator.comparing(p -> Integer.valueOf(p instanceof Personaje ? ((Personaje) p).getVelocidad() : ((Enemigo) p).getVelocidad())).reversed());
+        ordenTurnos.sort(Comparator.comparing(Entidad::getVelocidad).reversed());
         return ordenTurnos;
     }
 
@@ -98,17 +97,15 @@ public class Juego {
     //Recibe como parametros los arrays de personajes y enemigos
     //El metodo recorre el array list del orden de los turnos y ejecuta la accion correspondiente
     //Si el personaje o enemigo esta vivo, va a atacar a un personaje random
-    public static void turnoActual(Personaje[] personajes, Enemigo enemigo) {
+    //El scanner es del main para no tener que crear un scanner en cada metodo
+    public static void turnoActual(Personaje[] personajes, Enemigo enemigo, Scanner sc) {
         ArrayList<Object> ordenTurnos = obtenerOrdenTurnos(personajes, enemigo);
 
-        //Recorre el array list
         for (Object combatiente : ordenTurnos) {
-            //SI el objeto que se esta recorriendo es un personaje o un enemigo
             if (combatiente instanceof Personaje) {
                 Personaje p = (Personaje) combatiente;
-                //Si esta vivo hace la accion
                 if (p.isVivo()) {
-                    accionPersonaje(p, enemigo);
+                    accionPersonaje(p, enemigo, sc);
                 }
                 if (!enemigo.isVivo()) {
                     break;
@@ -116,7 +113,6 @@ public class Juego {
             } else if (combatiente instanceof Enemigo) {
                 Enemigo e = (Enemigo) combatiente;
                 if (e.isVivo()) {
-                    //Accion del enemigo
                     accionEnemigo(e, personajes);
                 }
             }
@@ -163,8 +159,7 @@ public class Juego {
 
 
     //Esto es el menu de acciones del personaje en  el combate contra enemigos
-    public static void accionPersonaje(Personaje p, Enemigo enemigo) {
-
+    public static void accionPersonaje(Personaje p, Enemigo enemigo, Scanner sc) {
 
         int continuar = 0;
         do {
@@ -174,7 +169,7 @@ public class Juego {
             System.out.println("3. Objetos");
             System.out.println("4. Informacion");
 
-            int decision = new Scanner(System.in).nextInt();
+            int decision = sc.nextInt();
             switch (decision) {
 
                 //Ataque normal sin maná,esto siempre estara disponible, y hace el daño basico del personaje, sin bonificaciones
@@ -208,7 +203,7 @@ public class Juego {
                         }
                         System.out.println("0 - Cancelar y volver al menú principal");
 
-                        Scanner sc = new Scanner(System.in);
+
                         if (sc.hasNextInt()) {
                             habilidad_decision = sc.nextInt();
                             if (habilidad_decision == 0) {
@@ -286,7 +281,6 @@ public class Juego {
                             System.out.println((i + 1) + "- " + objeto.toString());
                         }
                         System.out.println("0 - Volver al menú anterior");
-                        Scanner sc = new Scanner(System.in);
                         int decisionObjeto = sc.hasNextInt() ? sc.nextInt() : -1;
                         if (decisionObjeto == 0) {
                             System.out.println("Has vuelto al menú anterior.");

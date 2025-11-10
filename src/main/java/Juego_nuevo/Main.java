@@ -17,24 +17,6 @@ import java.util.Scanner;
 public class Main {
 
 
-    public static void mostrarVictoria() {
-        System.out.println("\n==============================");
-        System.out.println("        ¡VICTORIA! 🏆");
-        System.out.println("==============================");
-        System.out.println("¡Has derrotado al jefe final!");
-        System.out.println("¡Felicidades, has ganado la partida!");
-        System.out.println("==============================\n");
-    }
-
-    public static void mostrarDerrota() {
-        System.out.println("\n==============================");
-        System.out.println("        DERROTA ☠️");
-        System.out.println("==============================");
-        System.out.println("Todos tus personajes han caído.");
-        System.out.println("Fin del juego. ¡Inténtalo de nuevo!");
-        System.out.println("==============================\n");
-    }
-
 
 
 
@@ -45,27 +27,34 @@ public class Main {
     private static int [] h_inicial;
 
 
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     //Coger los personajes de la party
     public static Personaje[] personajesPartida(Personaje[] personajesPartida) {
         return personajesPartida;
     }
 
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
     public static void agregarPersonajeParty(Personaje p, Personaje[] personajesPartida) {
-        if (personajesPartida.length < 4) {
-            personajesPartida[personajesPartida.length] = p;
+    for (int i = 0; i < personajesPartida.length; i++) {
+        if (personajesPartida[i] == null) {
+            personajesPartida[i] = p;
             System.out.println("Personaje " + p.getNombre() + " agregado a la party.");
-        } else {
-            System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
+            return;
         }
     }
+    System.out.println("La party ya está llena. No se puede agregar más personajes.");
+}
+
 
 
     public static void main(String[] args) {
 
-        //Pa la consola en otra ventana
+        //Este escaner se pasa a todos los metodos que lo necesiten
+        //Para no estar creado un objeto scanner en cada metodo
+        //Creo que es lo mas optiomo
         Scanner scanner = new Scanner(System.in);
 
-        Personaje[] personajesPartida = new Personaje[4];
+        Personaje[] personajesPartida;
         ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
 
         //Fichero de guardado
@@ -171,8 +160,12 @@ public class Main {
 
         while (algunPersonajeVivo(personajesPartida)) {
             System.out.println(mapa.toString(personajesPartida[0]));
+
+            //Se pasa scanner para leer la direccion
             pedirDireccionMover(personajesPartida[0], mapa, scanner);
-            procesarEventoHab(personajesPartida, mapa);
+
+            //Se pasa scanner para eventos que lo necesiten
+            procesarEventoHab(personajesPartida, mapa, scanner);
 
 
         }
@@ -195,7 +188,8 @@ public class Main {
     }
 
 
-    public static void procesarEventoHab(Personaje[] personajesPartida, Mapa mapa) {
+    //Se pasa scanner para eventos que lo necesiten
+    public static void procesarEventoHab(Personaje[] personajesPartida, Mapa mapa, Scanner scanner) {
         //Recoge la posicon actual del personaje
         int[] posicion = personajesPartida[0].getPosicion();
 
@@ -204,7 +198,7 @@ public class Main {
 
         // Solo activa evento si no es la habitación inicial (generatedOrder != 0)
         if (h.getGeneratedOrder() != 0) {
-            h.activarEvento(personajesPartida, mapa);
+            h.activarEvento(personajesPartida, mapa, scanner);
         }
 
 
@@ -212,6 +206,7 @@ public class Main {
 
 
     //Para simplificar las direcciones en el bucle principal
+    //Se pasa scanner para leer la direccion
     public static void pedirDireccionMover(Personaje personaje, Mapa mapa, Scanner scanner) {
         System.out.println("1 - Arriba");
         System.out.println("2 - Derecha");

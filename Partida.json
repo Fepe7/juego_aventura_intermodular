@@ -22,10 +22,10 @@
         }
       ],
       "posicion": [
-        5,
-        0
+        0,
+        2
       ],
-      "vida": 33,
+      "vida": 100,
       "ataque": 15,
       "velocidad": 10,
       "nombre": "Protagonista",
@@ -33,48 +33,31 @@
       "mana": 50
     }
   ],
-  "objetos": [
-    {
-      "nombre": "Elixir de poder",
-      "descripcion": "Aumenta el ataque en 10 puntos"
-    }
-  ],
-  "seed": 57746378,
+  "objetos": [],
+  "seed": 61190844,
   "eventos": [
     [
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
       {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": true
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       null,
@@ -84,25 +67,10 @@
       null
     ],
     [
+      null,
       {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
-      },
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
       },
       null,
       null,
@@ -113,17 +81,41 @@
     [
       null,
       {
-        "eventoNombre": "trampaEnCamino",
-        "completado": true
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null

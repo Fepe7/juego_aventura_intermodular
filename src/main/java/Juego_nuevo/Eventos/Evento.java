@@ -7,6 +7,7 @@ import Juego_nuevo.Main;
 import Juego_nuevo.mapa.Mapa;
 
 import java.lang.reflect.Method;
+import java.util.Scanner;
 
 //Se crea la clase Evento para representar eventos en el juego, esto genera un objeto para ver si esta completado o no
 public class Evento {
@@ -35,39 +36,55 @@ public class Evento {
 
 
     //Ejecuta el evento llamando al metodo correspondiente en la clase Eventos mediante reflexion
-    public static void ejecutarEvento(Evento evento, Personaje[] personajes, Mapa mapa){
+    //Ejecuta el evento llamando al metodo correspondiente en la clase Eventos mediante reflexion
+    public static void ejecutarEvento(Evento evento, Personaje[] personajes, Mapa mapa, Scanner scanner) {
 
-        if (evento.isCompletado()){
+        if (evento.isCompletado()) {
             System.out.println("El evento ya ha sido completado.");
             System.out.println("La sala esta vacia ahora.");
-        }else {
-            Method metodoEjecuta;
-
-            //Primero intenta ejecutar el evento sin parametros
+        } else {
             try {
-                metodoEjecuta = Eventos.class.getMethod(evento.getEventoNombre());
-                metodoEjecuta.invoke(null);
-                evento.setCompletado(true);
+                if ("meterParty".equals(evento.getEventoNombre())) {
+                    Personaje[] nuevosPersonajes = Eventos.meterParty(personajes);
+                    //Actualiza el array de personajes con los nuevos personajes devueltos por el evento
+                    //Copia los personajes nuevos en el array original hasta donde quepa (en caso de que haya mas personajes nuevos que espacio)
+                    System.arraycopy(nuevosPersonajes, 0, personajes, 0, Math.min(nuevosPersonajes.length, personajes.length));
+                    evento.setCompletado(true);
+                    Main.guardadPartida(personajes, InventarioGlobal.getInventarioGlobal(), mapa.getSeed());
+                    return;
+                }
 
-                //Se guarda la partida despues de ejecutar el evento
+                //Caso especial para generarEnemigoAleatorio que requiere Personaje[]
+                if ("generarEnemigoAleatorio".equals(evento.getEventoNombre())) {
+                    java.lang.reflect.Method metodo = Eventos.class.getMethod(evento.getEventoNombre(), Personaje[].class, Scanner.class);
+                    metodo.invoke(null, (Object) personajes, scanner);
+                    evento.setCompletado(true);
+                    Main.guardadPartida(personajes, InventarioGlobal.getInventarioGlobal(), mapa.getSeed());
+                    return;
+                }
+
+                //Primero intenta ejecutar el evento sin parametros
+                try {
+                    java.lang.reflect.Method metodo = Eventos.class.getMethod(evento.getEventoNombre());
+                    metodo.invoke(null);
+                } catch (NoSuchMethodException e1) {
+                    // Si falla, intentar con parámetros de Personaje[]
+                    try {
+                        java.lang.reflect.Method metodo = Eventos.class.getMethod(evento.getEventoNombre(), Personaje[].class);
+                        metodo.invoke(null, (Object) personajes);
+                    } catch (NoSuchMethodException e2) {
+                        // Si tampoco existe, lanzar excepción
+                        throw new NoSuchMethodException("No se encontró el método: " + evento.getEventoNombre());
+                    }
+                }
+
+                evento.setCompletado(true);
                 Main.guardadPartida(personajes, InventarioGlobal.getInventarioGlobal(), mapa.getSeed());
 
             } catch (Exception e) {
-                //Si al intentar ejecutar el metodo sin parametros da error, lo intenta ejecutar con los personajes
-                try{
-                    metodoEjecuta = Eventos.class.getMethod(evento.getEventoNombre(), Personaje[].class);
-                    metodoEjecuta.invoke(null, (Object) personajes);
-                    evento.setCompletado(true);
-                    Main.guardadPartida(personajes, InventarioGlobal.getInventarioGlobal(), mapa.getSeed());
-
-                }catch (Exception e2){
-                    System.out.println("Error al ejecutar el evento: " + e2.getMessage());
-                    e2.printStackTrace();
-                    e2.getLocalizedMessage();
-                }
+                System.out.println("Error al ejecutar el evento: " + e.getMessage());
+                e.printStackTrace();
             }
         }
     }
-
-
 }

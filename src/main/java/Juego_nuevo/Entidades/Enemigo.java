@@ -8,7 +8,6 @@ public class Enemigo extends Entidad {
     public Enemigo(String nombre, int vida, int ataque, int velocidad, String descripcion) {
         super(nombre, vida, ataque, velocidad);
         this.descripcion = descripcion;
-        setVivo(true);
     }
 
     @Override

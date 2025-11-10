@@ -1,40 +1,28 @@
 {
-  "seed": 57746378,
+  "seed": 61190844,
   "eventos": [
     [
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
       {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": true
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       null,
@@ -44,25 +32,10 @@
       null
     ],
     [
+      null,
       {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
-      },
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
       },
       null,
       null,
@@ -73,17 +46,41 @@
     [
       null,
       {
-        "eventoNombre": "trampaEnCamino",
-        "completado": true
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null

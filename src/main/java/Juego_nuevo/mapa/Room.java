@@ -1,6 +1,7 @@
 package Juego_nuevo.mapa;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Juego_nuevo.Eventos.Evento;
 import Juego_nuevo.Eventos.Eventos;
@@ -26,10 +27,10 @@ public class Room extends MapTile{
 
 
     //Activa el evento de la sala
-    public void activarEvento(Personaje[] personajes, Mapa mapa){
+    public void activarEvento(Personaje[] personajes, Mapa mapa, Scanner scanner){
         if(evento != null){
             //La comprobacion de si el evento ya ha sido completado se hace dentro del metodo ejecutarEvento
-            Evento.ejecutarEvento(evento, personajes, mapa);
+            Evento.ejecutarEvento(evento, personajes, mapa, scanner);
 
         }
 

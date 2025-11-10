@@ -11,7 +11,7 @@ public class Entidad {
     protected int ataque;
     protected int velocidad;
     protected String nombre;
-    private boolean vivo;
+    protected boolean vivo;
     private int mana;
 
 

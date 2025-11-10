@@ -1,1 +1,5 @@
 .idea/
+/target/classes/Juego_nuevo/persistencia_datos_JSON/DatosMap.class
+/target/classes/Juego_nuevo/Evento.class
+/Mapa.json
+/Partida.json
