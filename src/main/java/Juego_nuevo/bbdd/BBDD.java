@@ -1,5 +1,7 @@
 package Juego_nuevo.bbdd;
 
+import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
+
 import java.sql.SQLException;
 
 /**
@@ -29,6 +31,7 @@ public class BBDD {
         int nEnemigosMatados,
         int nObjetosRecogidos
     ) {
+
         final var conn = ConexionBBDD.getConnection();
         
         final var sql = "UPDATE usuarios " +
@@ -60,7 +63,8 @@ public class BBDD {
     public static void crearUsuario(String nombreUsuario) {
         final var conn = ConexionBBDD.getConnection();
 
-        final var sql = "INSERT INTO usuarios (nombre) " +
+        // Usamos INSERT IGNORE para evitar errores si el usuario ya existe
+        final var sql = "INSERT IGNORE INTO usuarios (nombre) " +
                         "VALUES (?)";
 
         try (final var stmt = conn.prepareStatement(sql)) {

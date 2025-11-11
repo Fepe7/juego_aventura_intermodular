@@ -4,12 +4,16 @@ import Juego_nuevo.Entidades.Enemigo;
 import Juego_nuevo.Eventos.Evento;
 import Juego_nuevo.Objetos.Objeto;
 import Juego_nuevo.Entidades.Personaje;
+import Juego_nuevo.bbdd.BBDD;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * La clase <strong>{@link EstadoPartida}</strong> es la clase que alberga los métodos de <strong>guardado y carga</strong>
@@ -20,9 +24,12 @@ public class EstadoPartida {
     /**
      * La función <strong>{@code createGson()}</strong> crea el objeto {@link Gson} con {@link GsonBuilder} para obtener su
      * función {@code setPrettyPrinting()} el cual permite mostrarlo de forma ordenada y bonita.
-     * @return  el objeto {@link Gson}
+     *
+     * @return el objeto {@link Gson}
      */
-    private static Gson createGson() { return new GsonBuilder().setPrettyPrinting().create(); }
+    private static Gson createGson() {
+        return new GsonBuilder().setPrettyPrinting().create();
+    }
 
     /**
      * La función <strong>{@code guardarPartida()}</strong> guarda la partida actual, contando los personajes, objetos
@@ -32,9 +39,10 @@ public class EstadoPartida {
      * atributos de la clase. Dentro del {@code try-catch-with-resources} declaramos el {@link FileWriter}
      * con archivo en <strong>Partida.json</strong> y ahí serializa el contenedor {@link DatosJuego} que tiene ambas
      * listas y la seed. Si no, lanza una excepción dando un error.
+     *
      * @param personajes La lista de personajes que hay
-     * @param objeto La lista de objetos que tienen globalmente todos
-     * @param seed La semilla que se usa para generar el mapa
+     * @param objeto     La lista de objetos que tienen globalmente todos
+     * @param seed       La semilla que se usa para generar el mapa
      */
     public static void guardarPartida(Personaje[] personajes, ArrayList<Objeto> objeto, int seed, Evento[][] eventos) {
         final var gson = createGson();
@@ -55,7 +63,8 @@ public class EstadoPartida {
      * Esta función está dentro de un {@code try-catch-with-resources} donde declaramos {@link FileReader} con fichero
      * de <strong>partida.json</strong> y cargamos partidas, devolviendo el contenedor con los datos. Si no, lanza una
      * excepción de tipo {@link Exception}, el cual devolverá null si eso pasara
-     * @return  El contenedor {@link DatosJuego} que contiene personajes y objetos | {@code null} si hay un error
+     *
+     * @return El contenedor {@link DatosJuego} que contiene personajes y objetos | {@code null} si hay un error
      */
     public static DatosJuego cargarPartida() {
         try (final var fr = new FileReader("Partida.json")) {
@@ -81,6 +90,7 @@ public class EstadoPartida {
      * Esta función lee {@code Personajes.json} y desestructura el contenido en un array y después evalúa ese array con
      * un {@code for-each} el cual compara nombres, si el nombre es el pasado por argumentos de la función, lo devuelve.
      * Si no, devuelve {@code null}.
+     *
      * @param nombrePersonaje Es el nombre del personaje que se desea.
      * @return El {@link Personaje} si se encuentra | {@code null} si no se ha encontrado | {@code null} debido a una excepción
      */
@@ -104,12 +114,70 @@ public class EstadoPartida {
         }
     }
 
+
+    // Verifica si existe el usuario guardado en Usuario.txt
+    public static String verificarUsuario() {
+        File file = new File("Usuario.txt");
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            // Verifica si el archivo existe
+            if (!file.exists()) {
+                System.out.println("Archivo de usuario no encontrado, creando uno nuevo...");
+                System.out.println("Ingrese su nombre de usuario: ");
+                String usuario = sc.nextLine().trim();
+
+                try (final var fw = new FileWriter(file)) {
+                    fw.write(usuario);
+                }
+                BBDD.crearUsuario(usuario);
+                return usuario;
+            }
+
+            // Lee el archivo existente
+            try (final var br = new BufferedReader(new FileReader(file))) {
+                String usuario = br.readLine();
+
+                if (usuario == null || usuario.isBlank()) {
+                    System.out.println("Archivo vacio. Ingrese su nombre de usuario: ");
+                    usuario = sc.nextLine().trim();
+                    try (final var fw = new FileWriter(file)) {
+                        fw.write(usuario);
+                    }
+                    BBDD.crearUsuario(usuario);
+                    return usuario;
+                }
+
+                System.out.println("Hemos detectado un usuario guardado: " + usuario + ". ¿Quieres usarlo? (1: sí / 2: no)");
+                String respuesta = sc.nextLine().trim();
+
+                if (respuesta.equals("2")) {
+                    System.out.println("Ingrese su nombre de usuario: ");
+                    String nuevoUsuario = sc.nextLine().trim();
+                    try (final var fw = new FileWriter(file)) {
+                        fw.write(nuevoUsuario);
+                    }
+                    BBDD.crearUsuario(nuevoUsuario);
+                    return nuevoUsuario;
+                } else {
+                    BBDD.crearUsuario(usuario);
+                    return usuario;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error al verificar el usuario: " + e.getMessage());
+            return null;
+        }
+    }
+
+
     /**
      * La función <strong>{@code crearEnemigo()}</strong> crea un enemigo a partir del nombre pasado, que está serializado
      * <p>
      * Esta función lee {@code Enemigos.json} y lo desestructura en un array de {@link Enemigo}. Después evalúa el array
      * con un {@code for-each} y, si el nombre del {@link Enemigo} coincide con el nombre pasado, devuelve él
      * {@link Enemigo}. Si no, devuelve {@code null}.
+     *
      * @param nombreEnemigo El nombre del {@link Enemigo} que se desea crear del JSON
      * @return Él {@link Enemigo} con el nombre | {@code null} si no lo encuentra | {@code null} si hay una excepción
      */
@@ -134,7 +202,8 @@ public class EstadoPartida {
      * <p>
      * Esta función crea una clase (record) contenedor <strong>{@link DatosMap}</strong> y guarda los parámetros pasados
      * <strong>(seed y eventos)</strong> después serializa ese contenedor al JSON antes mencionado. Si no genera un error.
-     * @param seed La semilla del mapa
+     *
+     * @param seed    La semilla del mapa
      * @param eventos La matriz con los eventos que tiene el mapa
      */
     public static void guardarMapa(int seed, Evento[][] eventos) {

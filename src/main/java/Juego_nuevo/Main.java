@@ -3,6 +3,7 @@ package Juego_nuevo;
 import Juego_nuevo.Entidades.Personaje;
 import Juego_nuevo.Eventos.Eventos;
 import Juego_nuevo.Objetos.Objeto;
+import Juego_nuevo.bbdd.BBDD;
 import Juego_nuevo.mapa.Room;
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 
@@ -17,6 +18,33 @@ import java.util.Scanner;
 public class Main {
 
 
+    //Creo las variables estaticas para guardar las estadisticas de la partida
+    private static String nombreUsuario;
+    private static int nHabitacionesMeter;
+    private static int nPersonajesMeter;
+    private static int nEnemigosMatadosMeter;
+    private static int nObjetosRecogidosMeter;
+
+
+    //Crea o verifica el fichero del usuario
+    public static void ficheroUsuario() {
+        String nombreUsuario = EstadoPartida.verificarUsuario();
+        setNombreUsuario(nombreUsuario);
+    }
+
+
+    public static void actualizarEstadisticasUsuario() {
+        BBDD.actualizarBBDD(
+                getNombreUsuario(),
+                getnHabitacionesMeter(),
+                getnPersonajesMeter(),
+                getnEnemigosMatadosMeter(),
+                getnObjetosRecogidosMeter()
+        );
+    }
+
+
+    //Mapa del juego
     private static Mapa mapa = new Mapa();
 
     //Pilla la ubicacion inicial de la habitacion
@@ -45,7 +73,6 @@ public class Main {
     public static Personaje[] personajesPartida;
 
 
-
     public static void main(String[] args) {
 
         //Este escaner se pasa a todos los metodos que lo necesiten
@@ -57,6 +84,9 @@ public class Main {
 
         //Fichero de guardado
         File partidaGuardada = new File("Partida.json");
+
+        //Crea o verifica el fichero del usuario
+        ficheroUsuario();
 
 
         if (partidaGuardada.exists()) {
@@ -71,7 +101,7 @@ public class Main {
                     try {
                         opcion = scanner.nextInt();
 
-                    }catch (java.util.InputMismatchException e){
+                    } catch (java.util.InputMismatchException e) {
                         scanner.nextLine();
                         System.out.println("Caracter invalido.");
                         opcion = 0;
@@ -242,6 +272,10 @@ public class Main {
         System.out.println("Guardando partida...");
         EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
         System.out.println("Partida guardada correctamente.");
+
+
+        //Actualiza las estadisticas del usuario en la BBDD
+        actualizarEstadisticasUsuario();
     }
 
 
@@ -254,11 +288,57 @@ public class Main {
         }
     }
 
+
+    //Setters y getters de las variables estaticas de la clase Main
+
     public static void setPersonajesPartida(Personaje[] personajesPartida) {
         Main.personajesPartida = personajesPartida;
     }
 
     public static Personaje[] getPersonajesPartida() {
         return personajesPartida;
+    }
+
+
+    //Setters y getters de las variables estaticas de la clase Main
+
+    public static String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public static void setNombreUsuario(String nombreUsuario) {
+        Main.nombreUsuario = nombreUsuario;
+    }
+
+    public static int getnHabitacionesMeter() {
+        return nHabitacionesMeter;
+    }
+
+    public static void setnHabitacionesMeter(int nHabitacionesMeter) {
+        Main.nHabitacionesMeter = nHabitacionesMeter;
+    }
+
+    public static int getnPersonajesMeter() {
+        return nPersonajesMeter;
+    }
+
+    public static void setnPersonajesMeter(int nPersonajesMeter) {
+        Main.nPersonajesMeter = nPersonajesMeter;
+    }
+
+    public static int getnEnemigosMatadosMeter() {
+        return nEnemigosMatadosMeter;
+    }
+
+    public static void setnEnemigosMatadosMeter(int nEnemigosMatadosMeter) {
+        Main.nEnemigosMatadosMeter = nEnemigosMatadosMeter;
+    }
+
+    public static int getnObjetosRecogidosMeter() {
+        return nObjetosRecogidosMeter;
+    }
+
+    public static void setnObjetosRecogidosMeter(int nObjetosRecogidosMeter) {
+        Main.nObjetosRecogidosMeter = nObjetosRecogidosMeter;
     }
 }

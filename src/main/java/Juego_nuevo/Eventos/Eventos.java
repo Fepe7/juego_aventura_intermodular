@@ -96,6 +96,7 @@ public class Eventos {
     }
 
 
+    //Genera el protagonista (el primer personaje del JSON)
     public static Personaje generarProragonista() {
 
         try (FileReader leer = new FileReader("Personajes.json")) {
@@ -131,6 +132,11 @@ public class Eventos {
 
             // Asigna el nuevo array a la variable statica del Main
             Main.setPersonajesPartida(personajes_nuevo);
+
+            //Se suma 1 al contador de personajes metidos, para las estadisticas
+            Main.setnPersonajesMeter(Main.getnPersonajesMeter()+1);
+            Main.setnHabitacionesMeter(Main.getnHabitacionesMeter()+1);
+
         } else {
             System.out.println("La party ya tiene 4 personajes. No se puede agregar más.");
         }
@@ -183,6 +189,11 @@ public class Eventos {
                     System.out.println("Opción no válida. Intenta de nuevo.");
             }
         } while (decision < 0 || decision > 3);
+
+        //Se suma 1 al contador de objetos recogidos, para las estadisticas
+        Main.setnObjetosRecogidosMeter(Main.getnObjetosRecogidosMeter()+1);
+
+        Main.setnHabitacionesMeter(Main.getnHabitacionesMeter()+1);
     }
 
 
@@ -194,6 +205,7 @@ public class Eventos {
         int danyo = 10 + random.nextInt(20);
         afectado.setVida(afectado.getVida() - danyo);
         System.out.println(afectado.getNombre() + " ha caído en una trampa y recibe " + danyo + " de daño");
+        Main.setnHabitacionesMeter(Main.getnHabitacionesMeter()+1);
     }
 
     //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
@@ -221,6 +233,9 @@ public class Eventos {
                 System.out.println(objeto);
                 break;
         }
+        Main.setnObjetosRecogidosMeter(Main.getnObjetosRecogidosMeter()+1);
+        Main.setnHabitacionesMeter(Main.getnHabitacionesMeter()+1);
+
     }
 
     //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
@@ -254,12 +269,17 @@ public class Eventos {
             int suerte = random.nextInt(2);
             if (suerte == 0) {
                 System.out.println("¡Encuentras un artefacto antiguo!");
-                InventarioGlobal.agregarAlInventarioGlobal(generarObjetoAleatorio());
+                Objeto objeto = generarObjetoAleatorio();
+                InventarioGlobal.agregarAlInventarioGlobal(objeto);
+                System.out.println("Has encontrado: " + objeto.getNombre());
+                Main.setnObjetosRecogidosMeter(Main.getnObjetosRecogidosMeter()+1);
+                Main.setnHabitacionesMeter(Main.getnHabitacionesMeter()+1);
             } else {
                 System.out.println("¡Una trampa antigua se activa!");
                 Personaje afectado = personajes[random.nextInt(personajes.length)];
                 afectado.setVida(afectado.getVida() - 25);
                 System.out.println(afectado.getNombre() + " recibe 25 de daño!");
+                Main.setnHabitacionesMeter(Main.getnHabitacionesMeter()+1);
             }
         } else {
             System.out.println("No has investigado las ruinas.");

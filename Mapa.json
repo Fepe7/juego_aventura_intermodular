@@ -1,83 +1,78 @@
 {
-  "seed": 55116768,
+  "seed": 38659265,
   "eventos": [
     [
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
+      null,
+      null,
+      null,
+      null,
       null,
       {
         "eventoNombre": "hallazgoTesoro",
-        "completado": false
-      },
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
+        "completado": true
       },
       {
         "eventoNombre": "trampaEnCamino",
         "completado": true
-      },
-      null,
-      null,
-      null
+      }
     ],
     [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": true
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": true
+      }
+    ],
+    [
+      null,
+      null,
       {
         "eventoNombre": "meterParty",
         "completado": false
       },
-      null,
       {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "hallazgoTesoro",
         "completado": false
       },
       {
         "eventoNombre": "trampaEnCamino",
         "completado": false
       },
-      null,
-      null,
-      null,
-      null,
-      null
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": true
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": true
+      }
     ],
     [
+      null,
+      null,
       {
         "eventoNombre": "hallazgoTesoro",
         "completado": false
       },
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      }
+    ],
+    [
+      null,
+      null,
       {
         "eventoNombre": "encuentroMercader",
         "completado": false
@@ -85,13 +80,15 @@
       null,
       null,
       null,
-      null,
       null
     ],
     [
       null,
       null,
-      null,
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
       null,
       null,
       null,
