@@ -11,17 +11,17 @@ import java.util.Random;
 
 public class Mapa {
 
-    // tamaño del mapa. Siempre es cuadrado
-    private final int mapSize = 7;
+    // Tamaño del mapa. Siempre es cuadrado
+    private static final int mapSize = 7;
 
-    // matriz
-    private final MapTile[][] map = new MapTile[mapSize][mapSize];
+    // Matriz
+    private static final MapTile[][] map = new MapTile[mapSize][mapSize];
 
-    // número final de habitaciones que tendrá el Juego_nuevo.mapa
+    // Número final de habitaciones que tendrá el Juego_nuevo.mapa
     private int finalRoomN;
 
-    // seed para generar las cosas de forma chula
-    private int seed;
+    // Seed para generar las cosas de forma chula
+    private final int seed;
 
     private final Random rng;
 
@@ -30,8 +30,6 @@ public class Mapa {
      * Esta función solo se usa en el constructor.
      * Rellena la matriz con MapTiles.
      */
-
-
     private void fillArray() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -66,11 +64,11 @@ public class Mapa {
      * Las 4 posiciones son los bordes del mapa (esto es solo para que el mapa se genere de forma un poco más interesante)
      */
     private void layoutStart() { //chooses a random number between 4 and sets the room 0 at a specific location
-        int halfSize = mapSize / 2;
+        final int halfSize = mapSize / 2;
 
-        int positions[][] = {{0, halfSize}, {halfSize, mapSize - 1}, {mapSize - 1, halfSize}, {halfSize, 0}};
+        final int[][] positions = {{0, halfSize}, {halfSize, mapSize - 1}, {mapSize - 1, halfSize}, {halfSize, 0}};
 
-        int startPosition = (seed % positions.length);
+        final int startPosition = (seed % positions.length);
 
         map[positions[startPosition][0]]
                 [positions[startPosition][1]] = new Room();
@@ -82,7 +80,7 @@ public class Mapa {
      * Se le pasa la id de la habitación.
      */
     public int[] getRoomCoords(int generatedOrder) {
-        int[] coords = new int[]{0, 0};
+        final int[] coords = new int[]{0, 0};
 
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++) {
@@ -95,16 +93,6 @@ public class Mapa {
         return coords;
     }
 
-    public int moveRoomN(int currentLocation, int direction) {
-        int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-        int currentLocationCoord[] = getRoomCoords(currentLocation);
-
-        int newRow = currentLocationCoord[0] + directions[direction][0];
-        int newCol = currentLocationCoord[1] + directions[direction][1];
-
-        return map[newRow][newCol].getGeneratedOrder();
-    }
-
 
     /*
      * Función principal para generar las habitaciones.
@@ -112,8 +100,8 @@ public class Mapa {
 
     public void generateLayout() {
 
-        int maxRooms = 16;
-        int minRooms = 13;
+        final int maxRooms = 16;
+        final int minRooms = 13;
         finalRoomN = rng.nextInt(maxRooms - minRooms) + minRooms;
 
         layoutStart();
@@ -129,8 +117,8 @@ public class Mapa {
         System.out.println("Starting generation of map...");
         do { // big loop to generate all rooms
 
-//            System.out.println("Generating room "+ totalRooms);
-//            System.out.println("room "+totalRooms+". Last room generated: "+ lastGeneratedCoords[0]+", "+lastGeneratedCoords[1]);
+            // System.out.println("Generating room "+ totalRooms);
+            // System.out.println("room "+totalRooms+". Last room generated: "+ lastGeneratedCoords[0]+", "+lastGeneratedCoords[1]);
 
             tries = 0;
             do { //loop to generate a room
@@ -139,11 +127,11 @@ public class Mapa {
                 int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
                 // Directions: 0 ^, 1 >, 2 v, 3 <
-                int random = rng.nextInt(directions.length);
+                final int random = rng.nextInt(directions.length);
 
                 //adds a random set to the coords to get the next coords
-                int newRow = lastGeneratedCoords[0] + directions[random][0];
-                int newCol = lastGeneratedCoords[1] + directions[random][1];
+                final int newRow = lastGeneratedCoords[0] + directions[random][0];
+                final int newCol = lastGeneratedCoords[1] + directions[random][1];
 
                 // Check límit of array
                 if (newRow >= 0 && newRow < map.length &&
@@ -187,11 +175,6 @@ public class Mapa {
     }
 
 
-    public int getFinalRoomN() {
-        return finalRoomN;
-    }
-
-
     public int getSeed() {
         return seed;
     }
@@ -199,7 +182,6 @@ public class Mapa {
     public String toString(Personaje player) {
 
         final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_YELLOW = "\u001B[33m";
         final String ANSI_RED = "\u001B[31m";
 
         StringBuilder outputMap = new StringBuilder();
@@ -222,7 +204,7 @@ public class Mapa {
                 }
             }
             outputMap.append('\n');
-            //IF la posicion de jugador == i & j se cambia color  a rojo
+            //IF la posición de jugador == i & j se cambia color a rojo
 
 
         }
@@ -248,15 +230,6 @@ public class Mapa {
             }
         }
         return eventos;
-    }
-
-    //Calcula la nueva posicion del personaje, devuelve la posicion de la matriz del mapaa
-    public int[] calcularNuevaPosicion(int[] posicionActual, int direccion) {
-        int[][] movimientos = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-        return new int[]{
-                posicionActual[0] + movimientos[direccion][0],
-                posicionActual[1] + movimientos[direccion][1]
-        };
     }
 
 
@@ -287,7 +260,7 @@ public class Mapa {
 }
 
 
-    //Verifica si el movimiento que se va a hhacer es valido o no
+    //Verifica si el movimiento que se va a hacer es válido o no
     public boolean esMovimientoValido(int fila, int columna) {
     return fila >= 0 && fila < mapSize && columna >= 0 && columna < mapSize &&
            map[fila][columna] instanceof Room;

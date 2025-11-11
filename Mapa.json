@@ -1,106 +1,103 @@
 {
-  "seed": 87392303,
+  "seed": 15026711,
   "eventos": [
     [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
       {
         "eventoNombre": "trampaEnCamino",
         "completado": false
       },
       {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      null,
-      null,
-      null
-    ],
-    [
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
-      },
-      {
         "eventoNombre": "meterParty",
         "completado": false
       },
-      null,
       {
-        "eventoNombre": "hallazgoTesoro",
+        "eventoNombre": "ruinasAntiguas",
         "completado": false
       },
-      null,
-      null,
-      null
-    ],
-    [
       {
         "eventoNombre": "meterParty",
-        "completado": true
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
-      },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
         "eventoNombre": "encuentroMercader",
         "completado": false
       },
-      null,
-      null,
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
       null
     ],
     [
       {
         "eventoNombre": "generarEnemigoAleatorio",
-        "completado": true
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null
+    ],
+    [
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      null
+    ],
+    [
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
       },
       {
         "eventoNombre": "trampaEnCamino",
         "completado": false
       },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
       null,
       null,
       null,

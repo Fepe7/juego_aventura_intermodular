@@ -100,14 +100,14 @@ public class BBDD {
         final var sql = "SELECT * FROM usuarios WHERE nombre = '" + usuario + "'";
 
         try (final var stmt = conn.prepareStatement(sql)) {
-            ResultSet resultadoConsulta = stmt.executeQuery();
+            final var resultadoConsulta = stmt.executeQuery();
 
-            for (ResultSet rs = resultadoConsulta; rs.next(); ) {
-                String nombre = rs.getString("nombre");
-                int numero_habitaciones = rs.getInt("numero_habitaciones");
-                int numero_personajes = rs.getInt("numero_personajes");
-                int numero_enemigos_matados = rs.getInt("numero_enemigos_matados");
-                int numero_objetos_recogidos = rs.getInt("numero_objetos_recogidos");
+            while (resultadoConsulta.next()) {
+                String nombre = resultadoConsulta.getString("nombre");
+                final int numero_habitaciones = resultadoConsulta.getInt("numero_habitaciones");
+                final int numero_personajes = resultadoConsulta.getInt("numero_personajes");
+                final int numero_enemigos_matados = resultadoConsulta.getInt("numero_enemigos_matados");
+                final int numero_objetos_recogidos = resultadoConsulta.getInt("numero_objetos_recogidos");
 
                 System.out.println(
                         "Nombre: " + nombre +

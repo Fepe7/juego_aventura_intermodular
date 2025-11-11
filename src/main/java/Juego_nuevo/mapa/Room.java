@@ -6,7 +6,6 @@ import java.util.Scanner;
 import Juego_nuevo.Eventos.Evento;
 import Juego_nuevo.Eventos.Eventos;
 import Juego_nuevo.Entidades.Personaje;
-import Juego_nuevo.Main;
 
 public class Room extends MapTile {
 
@@ -45,10 +44,6 @@ public class Room extends MapTile {
         return visitada;
     }
 
-    public void setVisitada(boolean visitada) {
-        this.visitada = visitada;
-    }
-
 
     public Evento getEvento() {
         return evento;
@@ -74,13 +69,8 @@ public class Room extends MapTile {
         return "[" + simboloPrintear + "]";
     }
 
-
     public ArrayList<Room> getConnections() {
         return connections;
-    }
-
-    public void setConnections(ArrayList<Room> connections) {
-        this.connections = connections;
     }
 
     static public int getTotalRooms() {

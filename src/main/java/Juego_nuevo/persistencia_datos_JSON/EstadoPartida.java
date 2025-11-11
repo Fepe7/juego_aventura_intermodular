@@ -68,7 +68,7 @@ public class EstadoPartida {
      */
     public static DatosJuego cargarPartida() {
         try (final var fr = new FileReader("Partida.json")) {
-            DatosJuego datos = new Gson().fromJson(fr, DatosJuego.class);
+            final var datos = new Gson().fromJson(fr, DatosJuego.class);
             if (datos != null && datos.personajes() != null) {
                 for (var p : datos.personajes()) {
                     if (p != null && !p.isVivo() && p.getVida() > 0) {
@@ -118,7 +118,7 @@ public class EstadoPartida {
     // Verifica si existe el usuario guardado en Usuario.txt
     public static String verificarUsuario() {
         final var file = new File("Usuario.txt");
-        Scanner sc = new Scanner(System.in);
+        final var sc = new Scanner(System.in);
 
         try {
             // Verifica si el archivo existe
