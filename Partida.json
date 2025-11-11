@@ -23,73 +23,90 @@
       ],
       "posicion": [
         2,
-        5
+        6
       ],
-      "vida": 74,
+      "vida": 90,
       "ataque": 15,
       "velocidad": 15,
       "nombre": "Protagonista",
       "vivo": true,
-      "mana": 30
-    },
-    {
-      "vidaMaxima": 100,
-      "dialogos": [
-        "¡Prepárate para la batalla!",
-        "Un ranger nunca se rinde"
-      ],
-      "habilidades": [
-        {
-          "nombre": "Ataque Rápido",
-          "costeMana": 5,
-          "danyo": 15,
-          "descripcion": "Ataque veloz",
-          "tipoHabilidad": "ATAQUE"
-        },
-        {
-          "nombre": "Golpe Mortal",
-          "costeMana": 10,
-          "danyo": 30,
-          "descripcion": "Un ataque devastador",
-          "tipoHabilidad": "ATAQUE"
-        }
-      ],
-      "vida": 62,
-      "ataque": 18,
-      "velocidad": 12,
-      "nombre": "Aragorn",
-      "vivo": true,
-      "mana": 20
+      "mana": 50
     }
   ],
-  "objetos": [
-    {
-      "nombre": "Poción de velocidad",
-      "descripcion": "Aumenta la velocidad en 20 puntos"
-    },
-    {
-      "nombre": "Comida curativa",
-      "descripcion": "Restaura 10 puntos de vida"
-    }
-  ],
-  "seed": 38659265,
+  "objetos": [],
+  "seed": 79238837,
   "eventos": [
+    [
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      }
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      }
+    ],
     [
       null,
       null,
       null,
       null,
       null,
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
+      null,
       {
         "eventoNombre": "trampaEnCamino",
         "completado": true
       }
     ],
     [
+      null,
       null,
       null,
       null,
@@ -97,59 +114,13 @@
       null,
       {
         "eventoNombre": "generarEnemigoAleatorio",
-        "completado": true
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": true
-      }
-    ],
-    [
-      null,
-      null,
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": true
-      }
-    ],
-    [
-      null,
-      null,
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
-      },
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "ruinasAntiguas",
         "completado": false
       }
     ],
     [
       null,
       null,
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
+      null,
       null,
       null,
       null,
@@ -158,10 +129,7 @@
     [
       null,
       null,
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
+      null,
       null,
       null,
       null,

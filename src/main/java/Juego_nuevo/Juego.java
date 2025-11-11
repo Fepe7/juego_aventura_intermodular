@@ -146,6 +146,7 @@ public class Juego {
 
         if (!enemigo.isVivo()) {
             System.out.println("Has derrotado al enemigo: " + enemigo.getNombre());
+            Main.setnEnemigosMatadosMeter(Main.getnEnemigosMatadosMeter() + 1);
         } else {
             System.out.println("Todos los personajes han sido derrotados por: " + enemigo.getNombre());
         }

@@ -248,6 +248,7 @@ public class Main {
         System.out.println("3 - Abajo");
         System.out.println("4 - Izquierda");
         System.out.println("5 - Informacion de la party");
+        System.out.println("6 - Informacion del usuario");
 
         int direccion;
         try {
@@ -262,7 +263,10 @@ public class Main {
             personajes[0].mover(mapa, direccion);
         } else if (direccion == 4) {
             infoParty(personajes);
-        } else {
+        }else if (direccion == 5) {
+            BBDD.consultasBBDD(getNombreUsuario());
+        }
+        else {
             System.out.println("Introduce uno de los numeros.");
         }
     }

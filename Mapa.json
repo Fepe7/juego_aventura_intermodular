@@ -1,22 +1,77 @@
 {
-  "seed": 38659265,
+  "seed": 79238837,
   "eventos": [
+    [
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      }
+    ],
+    [
+      null,
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": false
+      }
+    ],
     [
       null,
       null,
       null,
       null,
       null,
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
+      null,
       {
         "eventoNombre": "trampaEnCamino",
         "completado": true
       }
     ],
     [
+      null,
       null,
       null,
       null,
@@ -24,59 +79,13 @@
       null,
       {
         "eventoNombre": "generarEnemigoAleatorio",
-        "completado": true
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": true
-      }
-    ],
-    [
-      null,
-      null,
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": true
-      }
-    ],
-    [
-      null,
-      null,
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
-      },
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "ruinasAntiguas",
         "completado": false
       }
     ],
     [
       null,
       null,
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": false
-      },
+      null,
       null,
       null,
       null,
@@ -85,10 +94,7 @@
     [
       null,
       null,
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
+      null,
       null,
       null,
       null,

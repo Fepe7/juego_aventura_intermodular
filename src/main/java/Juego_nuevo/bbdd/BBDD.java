@@ -2,6 +2,7 @@ package Juego_nuevo.bbdd;
 
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -35,10 +36,10 @@ public class BBDD {
         final var conn = ConexionBBDD.getConnection();
         
         final var sql = "UPDATE usuarios " +
-            "SET numero_habitaciones = ?, " +
-            "numero_personajes = ?, " +
-            "numero_enemigos_matados = ?, " +
-            "numero_objetos_recogidos = ? " +
+            "SET numero_habitaciones = numero_habitaciones + ?, " +
+            "numero_personajes = numero_personajes + ?, " +
+            "numero_enemigos_matados = numero_enemigos_matados + ?, " +
+            "numero_objetos_recogidos = numero_objetos_recogidos + ? " +
             "WHERE nombre = ?";
         
         try (final var stmt = conn.prepareStatement(sql)) {
@@ -75,13 +76,30 @@ public class BBDD {
         }
     }
 
-    public static void consultasBBDD() {
+    public static void consultasBBDD(String usuario) {
         final var conn = ConexionBBDD.getConnection();
 
-        final var sql = "SELECT * FROM usuarios";
+        final var sql = "SELECT * FROM usuarios WHERE nombre = '" + usuario + "'";
 
         try (final var stmt = conn.prepareStatement(sql)) {
-            stmt.executeQuery();
+            ResultSet resultadoConsulta = stmt.executeQuery();
+
+            for (ResultSet rs = resultadoConsulta; rs.next(); ) {
+                String nombre = rs.getString("nombre");
+                int numero_habitaciones = rs.getInt("numero_habitaciones");
+                int numero_personajes = rs.getInt("numero_personajes");
+                int numero_enemigos_matados = rs.getInt("numero_enemigos_matados");
+                int numero_objetos_recogidos = rs.getInt("numero_objetos_recogidos");
+
+                System.out.println(
+                    "Nombre: " + nombre +
+                    ", Habitaciones superadas: " + numero_habitaciones +
+                    ", Personajes recogidos: " + numero_personajes +
+                    ", Enemigos matados: " + numero_enemigos_matados +
+                    ", Objetos recogidos: " + numero_objetos_recogidos
+                );
+            }
+
         } catch (SQLException e) {
             System.out.println("Error al consultar la BBDD.\n" + e.getMessage());
         }
