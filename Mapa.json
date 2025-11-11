@@ -1,83 +1,74 @@
 {
-  "seed": 22829035,
+  "seed": 72437718,
   "eventos": [
     [
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": true
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": true
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": true
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
-      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     [
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      {
-        "eventoNombre": "encuentroMercader",
-        "completado": true
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
       null,
       {
         "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
-      null
-    ],
-    [
-      null,
       {
         "eventoNombre": "trampaEnCamino",
-        "completado": true
-      },
-      null,
-      null,
-      null,
-      null,
-      null
+        "completado": false
+      }
     ],
     [
+      null,
+      null,
+      null,
+      null,
       {
-        "eventoNombre": "meterParty",
+        "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
       },
       {
-        "eventoNombre": "trampaEnCamino",
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      }
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      {
+        "eventoNombre": "ruinasAntiguas",
         "completado": true
       },
-      null,
-      null,
-      null,
-      null,
-      null
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": true
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      }
     ],
     [
       null,
@@ -85,26 +76,35 @@
       null,
       null,
       null,
-      null,
-      null
+      {
+        "eventoNombre": "meterParty",
+        "completado": true
+      },
+      {
+        "eventoNombre": "meterParty",
+        "completado": false
+      }
     ],
     [
       null,
       null,
       null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": true
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": true
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      }
     ]
   ]
 }

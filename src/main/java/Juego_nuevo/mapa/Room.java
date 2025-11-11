@@ -31,7 +31,6 @@ public class Room extends MapTile {
 
     }
 
-
     //Activa el evento de la sala
     public void activarEvento(Personaje[] personajes, Mapa mapa, Scanner scanner) {
         this.visitada = true;

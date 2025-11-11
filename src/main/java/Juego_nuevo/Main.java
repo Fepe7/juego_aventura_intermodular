@@ -234,6 +234,7 @@ public class Main {
         // Solo activa evento si no es la habitación inicial (generatedOrder != 0)
         if (h.getGeneratedOrder() != 0) {
             h.activarEvento(personajesPartida, mapa, scanner);
+
         }
 
 
