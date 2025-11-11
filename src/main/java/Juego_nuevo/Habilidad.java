@@ -21,6 +21,10 @@ public class Habilidad {
         this.tipoHabilidad = tipo;
     }
 
+
+
+    //NO BORRAR NINGUN METODO AUNQUE DIGA QUE NUNCA SE USA, SE LLAMA MEDIANTE REFLEXION
+
     public void bendicionElfa(Personaje p) {
         p.setVida(p.getVida() + 15);
         p.setAtaque(p.getAtaque() + 5);

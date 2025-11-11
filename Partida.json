@@ -22,10 +22,10 @@
         }
       ],
       "posicion": [
-        2,
-        6
+        0,
+        5
       ],
-      "vida": 90,
+      "vida": 49,
       "ataque": 15,
       "velocidad": 15,
       "nombre": "Protagonista",
@@ -33,89 +33,103 @@
       "mana": 50
     }
   ],
-  "objetos": [],
-  "seed": 79238837,
+  "objetos": [
+    {
+      "nombre": "Espada de Hierro Perfeccionada",
+      "descripcion": "Aumenta el ataque en 10 puntos "
+    },
+    {
+      "nombre": "Escudo Perfeccionado",
+      "descripcion": "Aumenta la vida máxima en 10 puntos"
+    },
+    {
+      "nombre": "Arco Largo Élfico",
+      "descripcion": "Aumenta el ataque en 20 puntos "
+    },
+    {
+      "nombre": "Túnica Mágica",
+      "descripcion": "Aumenta la vida maxíma en 15 puntos"
+    }
+  ],
+  "seed": 22829035,
   "eventos": [
     [
       {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      {
         "eventoNombre": "ruinasAntiguas",
         "completado": false
       },
       {
-        "eventoNombre": "meterParty",
-        "completado": false
+        "eventoNombre": "hallazgoTesoro",
+        "completado": true
       },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      },
-      {
-        "eventoNombre": "trampaEnCamino",
-        "completado": false
-      },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      }
-    ],
-    [
-      null,
       {
         "eventoNombre": "encuentroMercader",
-        "completado": false
+        "completado": true
       },
       {
         "eventoNombre": "hallazgoTesoro",
+        "completado": true
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": true
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": true
+      },
+      null
+    ],
+    [
+      {
+        "eventoNombre": "ruinasAntiguas",
         "completado": false
       },
       {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
-      },
-      {
-        "eventoNombre": "hallazgoTesoro",
-        "completado": false
+        "eventoNombre": "encuentroMercader",
+        "completado": true
       },
       {
         "eventoNombre": "trampaEnCamino",
         "completado": false
-      }
+      },
+      {
+        "eventoNombre": "ruinasAntiguas",
+        "completado": false
+      },
+      null,
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null
     ],
     [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       {
         "eventoNombre": "trampaEnCamino",
         "completado": true
-      }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       {
-        "eventoNombre": "generarEnemigoAleatorio",
+        "eventoNombre": "meterParty",
         "completado": false
-      }
+      },
+      {
+        "eventoNombre": "trampaEnCamino",
+        "completado": true
+      },
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     [
       null,

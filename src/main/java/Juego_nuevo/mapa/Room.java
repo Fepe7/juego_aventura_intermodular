@@ -6,8 +6,9 @@ import java.util.Scanner;
 import Juego_nuevo.Eventos.Evento;
 import Juego_nuevo.Eventos.Eventos;
 import Juego_nuevo.Entidades.Personaje;
+import Juego_nuevo.Main;
 
-public class Room extends MapTile{
+public class Room extends MapTile {
 
     private boolean visitada = false;
 
@@ -20,16 +21,21 @@ public class Room extends MapTile{
     public Room() {
         super("?", totalRooms);
         totalRooms++;
-        //Agregar un evento aleatorio a la sala
-        this.evento = Eventos.generarEventoAleatorio();
+        //Genera un enemigo aleatorio si es la sala con !
+        if (this.getTileSymbol().equals("!")) {
+            //Hace que el nombre del evento sea generarEnemigoAleatorio para que sea siempre un enemigo, eso se llama mediante reflexion
+            this.evento = new Evento("generarEnemigoAleatorio");
+        } else {
+            this.evento = Eventos.generarEventoAleatorio();
+        }
 
     }
 
 
     //Activa el evento de la sala
-    public void activarEvento(Personaje[] personajes, Mapa mapa, Scanner scanner){
+    public void activarEvento(Personaje[] personajes, Mapa mapa, Scanner scanner) {
         this.visitada = true;
-        if(evento != null){
+        if (evento != null) {
             //La comprobacion de si el evento ya ha sido completado se hace dentro del metodo ejecutarEvento
             Evento.ejecutarEvento(evento, personajes, mapa, scanner);
 
@@ -38,7 +44,7 @@ public class Room extends MapTile{
     }
 
 
-      public boolean isVisitada() {
+    public boolean isVisitada() {
         return visitada;
     }
 
@@ -56,18 +62,20 @@ public class Room extends MapTile{
     }
 
 
-
     @Override
     public String toString() {
         String simboloPrintear;
-        if(this.isVisitada() || this.getGeneratedOrder()== 0){
+        if (this.isVisitada() || this.getGeneratedOrder() == 0) {
             simboloPrintear = "X";
-        }else{
+            //La ultima sala siempre sera la de boss y tiene el simbolo de calavera
+        } else if (this.getGeneratedOrder() == getTotalRooms() - 1) {
+            simboloPrintear = "!";
+
+        } else {
             simboloPrintear = "?";
         }
-        return "["+simboloPrintear+"]";
+        return "[" + simboloPrintear + "]";
     }
-
 
 
     public ArrayList<Room> getConnections() {
