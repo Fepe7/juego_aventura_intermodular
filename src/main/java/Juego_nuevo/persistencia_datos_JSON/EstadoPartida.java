@@ -117,7 +117,7 @@ public class EstadoPartida {
 
     // Verifica si existe el usuario guardado en Usuario.txt
     public static String verificarUsuario() {
-        File file = new File("Usuario.txt");
+        final var file = new File("Usuario.txt");
         Scanner sc = new Scanner(System.in);
 
         try {
@@ -125,7 +125,7 @@ public class EstadoPartida {
             if (!file.exists()) {
                 System.out.println("Archivo de usuario no encontrado, creando uno nuevo...");
                 System.out.println("Ingrese su nombre de usuario: ");
-                String usuario = sc.nextLine().trim();
+                final var usuario = sc.nextLine().trim();
 
                 try (final var fw = new FileWriter(file)) {
                     fw.write(usuario);
@@ -149,11 +149,11 @@ public class EstadoPartida {
                 }
 
                 System.out.println("Hemos detectado un usuario guardado: " + usuario + ". ¿Quieres usarlo? (1: sí / 2: no)");
-                String respuesta = sc.nextLine().trim();
+                final var respuesta = sc.nextLine().trim();
 
                 if (respuesta.equals("2")) {
                     System.out.println("Ingrese su nombre de usuario: ");
-                    String nuevoUsuario = sc.nextLine().trim();
+                    final var nuevoUsuario = sc.nextLine().trim();
                     try (final var fw = new FileWriter(file)) {
                         fw.write(nuevoUsuario);
                     }

@@ -78,12 +78,12 @@ public class Main {
         //Este escaner se pasa a todos los metodos que lo necesiten
         //Para no estar creado un objeto scanner en cada metodo
         //Creo que es lo mas optiomo
-        Scanner scanner = new Scanner(System.in);
+        final var scanner = new Scanner(System.in);
 
-        ArrayList<Objeto> inventarioGlobal = new ArrayList<>(InventarioGlobal.getInventarioGlobal());
+        final var inventarioGlobal = new ArrayList<Objeto>(InventarioGlobal.getInventarioGlobal());
 
         //Fichero de guardado
-        File partidaGuardada = new File("Partida.json");
+        final var partidaGuardada = new File("Partida.json");
 
         //Crea o verifica el fichero del usuario
         ficheroUsuario();
@@ -115,7 +115,7 @@ public class Main {
             }
 
             if (opcion == 1) {
-                var datosPartida = EstadoPartida.cargarPartida();
+                final var datosPartida = EstadoPartida.cargarPartida();
                 personajesPartida = datosPartida.personajes();
 
                 if (personajesPartida == null || personajesPartida.length == 0) {
@@ -131,7 +131,7 @@ public class Main {
                 } else {
                     System.out.println("Partida importada correctamente.");
 
-                    var objetos = datosPartida.objetos();
+                    final var objetos = datosPartida.objetos();
                     if (objetos != null) {
                         InventarioGlobal.setInventarioGlobal(objetos);
                         System.out.println("Objetos importados correctamente.");
@@ -145,7 +145,7 @@ public class Main {
                     mapa.generateLayout();
 
                     // Restaurar los eventos del mapa guardado
-                    var eventosGuardados = datosPartida.eventos();
+                    final var eventosGuardados = datosPartida.eventos();
                     if (eventosGuardados != null) {
                         mapa.restaurarEventos(eventosGuardados);
                     }
@@ -163,7 +163,7 @@ public class Main {
                 //Genera el mapa y guarda la seed
                 mapa = new Mapa();
                 mapa.generateLayout();
-                int seed = mapa.getSeed();
+                final int seed = mapa.getSeed();
                 EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
 
 
@@ -180,7 +180,7 @@ public class Main {
             //Genera el mapa y guarda la seed
             mapa = new Mapa();
             mapa.generateLayout();
-            int seed = mapa.getSeed();
+            final int seed = mapa.getSeed();
             EstadoPartida.guardarPartida(personajesPartida, inventarioGlobal, seed, mapa.extraerEventos());
 
 

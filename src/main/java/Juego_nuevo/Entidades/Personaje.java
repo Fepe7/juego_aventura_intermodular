@@ -15,10 +15,10 @@ import Juego_nuevo.Juego;
 
 public class Personaje extends Entidad {
 
-    private static List<Objeto> objetosEquipados = new ArrayList<>();
+    private static final List<Objeto> objetosEquipados = new ArrayList<>();
     private int vidaMaxima;
     private List<String> dialogos = new ArrayList<>();
-    private List<Habilidad> habilidades = new ArrayList<>();
+    private final List<Habilidad> habilidades = new ArrayList<>();
     private int[] posicion;
 
 

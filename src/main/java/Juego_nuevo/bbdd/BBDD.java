@@ -63,7 +63,7 @@ public class BBDD {
     public static void crearUsuario(String nombreUsuario) {
         final var conn = ConexionBBDD.getConnection();
 
-        // Usamos INSERT IGNORE para evitar errores si el usuario ya existe
+        // INSERT IGNORE se usa para comprobar que el PIMRARY KEY o UNIQUE no se repite
         final var sql = "INSERT IGNORE INTO usuarios (nombre) " +
                         "VALUES (?)";
 
@@ -72,6 +72,18 @@ public class BBDD {
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error al insertar el usuario en la BBDD.\n" + e.getMessage());
+        }
+    }
+
+    public static void consultasBBDD() {
+        final var conn = ConexionBBDD.getConnection();
+
+        final var sql = "SELECT * FROM usuarios";
+
+        try (final var stmt = conn.prepareStatement(sql)) {
+            stmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println("Error al consultar la BBDD.\n" + e.getMessage());
         }
     }
 }
