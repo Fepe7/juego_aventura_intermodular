@@ -22,10 +22,10 @@
         }
       ],
       "posicion": [
-        4,
-        4
+        6,
+        0
       ],
-      "vida": 86,
+      "vida": 84,
       "ataque": 15,
       "velocidad": 15,
       "nombre": "Protagonista",
@@ -33,37 +33,37 @@
       "mana": 30
     },
     {
-      "vidaMaxima": 100,
+      "vidaMaxima": 70,
       "dialogos": [
-        "¡Prepárate para la batalla!",
-        "Un ranger nunca se rinde"
+        "La magia fluye por mis venas",
+        "¡Que la arcana te proteja!"
       ],
       "habilidades": [
         {
-          "nombre": "Ataque Rápido",
-          "costeMana": 5,
-          "danyo": 15,
-          "descripcion": "Ataque veloz",
+          "nombre": "Bola de Fuego",
+          "costeMana": 20,
+          "danyo": 35,
+          "descripcion": "Hechizo de fuego",
           "tipoHabilidad": "ATAQUE"
         },
         {
-          "nombre": "Golpe Mortal",
-          "costeMana": 10,
-          "danyo": 30,
-          "descripcion": "Un ataque devastador",
-          "tipoHabilidad": "ATAQUE"
+          "nombre": "Escudo Mágico",
+          "costeMana": 15,
+          "danyo": 0,
+          "descripcion": "Protección mágica",
+          "tipoHabilidad": "APOYO"
         }
       ],
-      "vida": 100,
-      "ataque": 18,
-      "velocidad": 12,
-      "nombre": "Aragorn",
+      "vida": 70,
+      "ataque": 10,
+      "velocidad": 14,
+      "nombre": "Merlin",
       "vivo": true,
-      "mana": 20
+      "mana": 60
     }
   ],
   "objetos": [],
-  "seed": 72437718,
+  "seed": 87392303,
   "eventos": [
     [
       null,
@@ -89,6 +89,14 @@
       null,
       null,
       null,
+      null,
+      null
+    ],
+    [
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
       {
         "eventoNombre": "generarEnemigoAleatorio",
         "completado": false
@@ -96,79 +104,71 @@
       {
         "eventoNombre": "trampaEnCamino",
         "completado": false
-      }
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "generarEnemigoAleatorio",
-        "completado": false
       },
       {
-        "eventoNombre": "generarEnemigoAleatorio",
+        "eventoNombre": "ruinasAntiguas",
         "completado": false
       },
-      {
-        "eventoNombre": "meterParty",
-        "completado": false
-      }
+      null,
+      null,
+      null
     ],
     [
-      null,
-      null,
-      null,
-      null,
       {
         "eventoNombre": "ruinasAntiguas",
         "completado": true
       },
       {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": true
-      },
-      {
-        "eventoNombre": "ruinasAntiguas",
-        "completado": false
-      }
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      {
-        "eventoNombre": "meterParty",
-        "completado": true
-      },
-      {
         "eventoNombre": "meterParty",
         "completado": false
-      }
-    ],
-    [
-      null,
-      null,
+      },
       null,
       {
         "eventoNombre": "hallazgoTesoro",
         "completado": false
       },
+      null,
+      null,
+      null
+    ],
+    [
       {
-        "eventoNombre": "ruinasAntiguas",
+        "eventoNombre": "meterParty",
         "completado": true
       },
+      {
+        "eventoNombre": "hallazgoTesoro",
+        "completado": false
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      {
+        "eventoNombre": "encuentroMercader",
+        "completado": false
+      },
+      null,
+      null,
+      null
+    ],
+    [
       {
         "eventoNombre": "generarEnemigoAleatorio",
         "completado": true
       },
       {
-        "eventoNombre": "encuentroMercader",
+        "eventoNombre": "trampaEnCamino",
         "completado": false
-      }
+      },
+      {
+        "eventoNombre": "generarEnemigoAleatorio",
+        "completado": false
+      },
+      null,
+      null,
+      null,
+      null
     ]
   ]
 }

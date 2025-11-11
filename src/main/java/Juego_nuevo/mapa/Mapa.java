@@ -272,6 +272,20 @@ public class Mapa {
         }
     }
 
+    //Verifica si la ultima sala esta completada
+    public boolean ultimaSalaCompletada() {
+    int lastOrder = finalRoomN - 1;
+    for (int i = 0; i < map.length; i++) {
+        for (int j = 0; j < map[i].length; j++) {
+            if (map[i][j] instanceof Room room && room.getGeneratedOrder() == lastOrder) {
+                var ev = room.getEvento();
+                return ev != null && ev.isCompletado();
+            }
+        }
+    }
+    return false;
+}
+
 
     //Verifica si el movimiento que se va a hhacer es valido o no
     public boolean esMovimientoValido(int fila, int columna) {

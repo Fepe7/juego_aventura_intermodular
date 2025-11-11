@@ -25,7 +25,7 @@ public class Habilidad {
 
     //NO BORRAR NINGUN METODO AUNQUE DIGA QUE NUNCA SE USA, SE LLAMA MEDIANTE REFLEXION
 
-    public void bendicionElfa(Personaje p) {
+    public void bendicionElfa(Personaje p,  Enemigo e) {
         p.setVida(p.getVida() + 15);
         p.setAtaque(p.getAtaque() + 5);
         Objeto.comprobarVidaMaxima(p);
@@ -48,13 +48,13 @@ public class Habilidad {
         System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
     }
 
-    public void escudoMagico(Personaje p) {
+    public void escudoMagico(Personaje p,  Enemigo e) {
         p.setAtaque(p.getAtaque() + 8);
         System.out.println("Has usado " + nombre);
         System.out.println("Escudo mágico activado: +8 de defensa temporal");
     }
 
-    public void gritoDGuerra(Personaje p) {
+    public void gritoDeGuerra(Personaje p,  Enemigo e) {
         p.setAtaque(p.getAtaque() + 10);
         System.out.println("Has usado " + nombre);
         System.out.println("¡Grito de guerra! Tu ataque aumentó en 10 puntos");
@@ -69,7 +69,7 @@ public class Habilidad {
 
 
     //Aumenta el daño toda la batalla
-    public void rugidoDeBatalla(Personaje p) {
+    public void rugidoDeBatalla(Personaje p,  Enemigo e) {
         p.setAtaque(p.getAtaque() + 10);
         System.out.println("Has usado " + nombre);
         System.out.println("Tu ataque ha aumentado en 10 puntos");
@@ -86,7 +86,7 @@ public class Habilidad {
     }
 
     // Palabra curativa: cura al personaje
-    public void palabraCurativa(Personaje p) {
+    public void palabraCurativa(Personaje p,  Enemigo e) {
         p.setVida(p.getVida() + 20);
         Objeto.comprobarVidaMaxima(p);
         System.out.println("Has usado " + nombre);
@@ -103,7 +103,7 @@ public class Habilidad {
     }
 
     // Trozo de carne: cura al personaje
-    public void trozoDeCarne(Personaje p) {
+    public void trozoDeCarne(Personaje p,  Enemigo e) {
         p.setVida(p.getVida() + 20);
         Objeto.comprobarVidaMaxima(p);
         System.out.println("Has usado " + nombre);
@@ -121,7 +121,16 @@ public class Habilidad {
 
     public void golpeVenenoso(Personaje p, Enemigo e) {
         int vidaQuitar = p.getAtaque() + 15; // Daño base
-        e.setVida(e.getVida() - vidaQuitar - 15);
+        e.setVida(e.getVida() - vidaQuitar);
+        System.out.println("Has usado " + nombre);
+        System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
+
+    }
+
+
+    public void golpeDeHacha(Personaje p, Enemigo e) {
+        int vidaQuitar = p.getAtaque() + 15; // Daño base
+        e.setVida(e.getVida() - vidaQuitar);
         System.out.println("Has usado " + nombre);
         System.out.println("Has inflingido " + vidaQuitar + " puntos de daño a " + e.getNombre());
 

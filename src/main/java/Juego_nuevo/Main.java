@@ -26,22 +26,8 @@ public class Main {
     private static int nObjetosRecogidosMeter;
 
 
-    //Crea o verifica el fichero del usuario
-    public static void ficheroUsuario() {
-        String nombreUsuario = EstadoPartida.verificarUsuario();
-        setNombreUsuario(nombreUsuario);
-    }
 
-
-    public static void actualizarEstadisticasUsuario() {
-        BBDD.actualizarBBDD(
-                getNombreUsuario(),
-                getnHabitacionesMeter(),
-                getnPersonajesMeter(),
-                getnEnemigosMatadosMeter(),
-                getnObjetosRecogidosMeter()
-        );
-    }
+    private static boolean partidaTerminada = false;
 
 
     //Mapa del juego
@@ -57,17 +43,6 @@ public class Main {
         return personajesPartida;
     }
 
-    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
-    public static void agregarPersonajeParty(Personaje p, Personaje[] personajesPartida) {
-        for (int i = 0; i < personajesPartida.length; i++) {
-            if (personajesPartida[i] == null) {
-                personajesPartida[i] = p;
-                System.out.println("Personaje " + p.getNombre() + " agregado a la party.");
-                return;
-            }
-        }
-        System.out.println("La party ya está llena. No se puede agregar más personajes.");
-    }
 
 
     public static Personaje[] personajesPartida;
@@ -193,7 +168,7 @@ public class Main {
         h_inicial = mapa.getRoomCoords(0);
         personajesPartida[0].setPosicion(h_inicial[0], h_inicial[1]);
 
-        while (algunPersonajeVivo(personajesPartida)) {
+        while (algunPersonajeVivo(personajesPartida) && !partidaTerminada) {
             System.out.println(mapa.toString(personajesPartida[0]));
 
             //Se pasa scanner para leer la direccion
@@ -202,10 +177,10 @@ public class Main {
             //Se pasa scanner para eventos que lo necesiten
             procesarEventoHab(personajesPartida, mapa, scanner);
 
-
+            if (mapa.ultimaSalaCompletada()){
+                finalizarPartida();
+            }
         }
-
-
     }
 
 
@@ -292,6 +267,48 @@ public class Main {
             }
         }
     }
+
+     //Crea o verifica el fichero del usuario
+    public static void ficheroUsuario() {
+        String nombreUsuario = EstadoPartida.verificarUsuario();
+        setNombreUsuario(nombreUsuario);
+    }
+
+
+    public static void actualizarEstadisticasUsuario() {
+        BBDD.actualizarBBDD(
+                getNombreUsuario(),
+                getnHabitacionesMeter(),
+                getnPersonajesMeter(),
+                getnEnemigosMatadosMeter(),
+                getnObjetosRecogidosMeter()
+        );
+    }
+
+    //NO BORRAR, SE LLAMA MEDANTE REFLEXION, APARECE QUE NO SE USA PERO SI SE USA
+    public static void agregarPersonajeParty(Personaje p, Personaje[] personajesPartida) {
+        for (int i = 0; i < personajesPartida.length; i++) {
+            if (personajesPartida[i] == null) {
+                personajesPartida[i] = p;
+                System.out.println("Personaje " + p.getNombre() + " agregado a la party.");
+                return;
+            }
+        }
+        System.out.println("La party ya está llena. No se puede agregar más personajes.");
+    }
+
+
+    // Marca el fin de la partida al completar la última habitación
+    public static void finalizarPartida() {
+        System.out.println("\n¡HAS COMPLETADO LA PARTIDA.");
+        try {
+            actualizarEstadisticasUsuario();
+        } catch (Exception e) {
+            System.out.println("No se pudieron actualizar las estadísticas: " + e.getMessage());
+        }
+        partidaTerminada = true;
+    }
+
 
 
     //Setters y getters de las variables estaticas de la clase Main

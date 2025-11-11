@@ -2,6 +2,7 @@ package Juego_nuevo.bbdd;
 
 import Juego_nuevo.persistencia_datos_JSON.EstadoPartida;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -19,29 +20,34 @@ public class BBDD {
      * Esta función crea obtiene la conexión y precompila el SQL en la base de datos, pasándole el String con el SQL, a
      * esta clase se le llama {@link java.sql.Statement}. Después, insertamos los valores que nos asignan al SQL y
      * ejecuta la consulta. Si diese algún fallo, véase de sintáxis u otro, tiraría una excepción {@link SQLException}
-     * @param nombreUsuario El nombre del usuario que queremos actualizar
-     * @param nHabitaciones El número de habitaciones por las cuales ha pasado en esa partida
-     * @param nPersonajes El número de {@link Juego_nuevo.Entidades.Personaje} que hay en la party
-     * @param nEnemigosMatados El número de {@link Juego_nuevo.Entidades.Enemigo} que ha matado en esa partida
+     *
+     * @param nombreUsuario     El nombre del usuario que queremos actualizar
+     * @param nHabitaciones     El número de habitaciones por las cuales ha pasado en esa partida
+     * @param nPersonajes       El número de {@link Juego_nuevo.Entidades.Personaje} que hay en la party
+     * @param nEnemigosMatados  El número de {@link Juego_nuevo.Entidades.Enemigo} que ha matado en esa partida
      * @param nObjetosRecogidos El número de objetos que ha recogido en la partida
      */
     public static void actualizarBBDD(
-        String nombreUsuario,
-        int nHabitaciones,
-        int nPersonajes,
-        int nEnemigosMatados,
-        int nObjetosRecogidos
+            String nombreUsuario,
+            int nHabitaciones,
+            int nPersonajes,
+            int nEnemigosMatados,
+            int nObjetosRecogidos
     ) {
 
         final var conn = ConexionBBDD.getConnection();
-        
+        if (conn == null) {
+            System.out.println("NO se ha podido conectar a la BBDD");
+            return;
+        }
+
         final var sql = "UPDATE usuarios " +
-            "SET numero_habitaciones = numero_habitaciones + ?, " +
-            "numero_personajes = numero_personajes + ?, " +
-            "numero_enemigos_matados = numero_enemigos_matados + ?, " +
-            "numero_objetos_recogidos = numero_objetos_recogidos + ? " +
-            "WHERE nombre = ?";
-        
+                "SET numero_habitaciones = numero_habitaciones + ?, " +
+                "numero_personajes = numero_personajes + ?, " +
+                "numero_enemigos_matados = numero_enemigos_matados + ?, " +
+                "numero_objetos_recogidos = numero_objetos_recogidos + ? " +
+                "WHERE nombre = ?";
+
         try (final var stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, nHabitaciones);
             stmt.setInt(2, nPersonajes);
@@ -50,7 +56,7 @@ public class BBDD {
             stmt.setString(5, nombreUsuario);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error al actualizar el usuario.\n" + e.getMessage());
+            System.out.println("Como no se ha podido conectar a la base de datos, no se ha podido actualizar");
         }
     }
 
@@ -59,25 +65,37 @@ public class BBDD {
      * <p>
      * Esta función obtiene una conexión y y prepara el precompilado ({@link java.sql.Statement}) para después ejecutar
      * el SQL. Después pone el nombre de usuario en el SQL y lo ejecuta.
+     *
      * @param nombreUsuario El nombre del usuario que se quiere añadir
      */
     public static void crearUsuario(String nombreUsuario) {
         final var conn = ConexionBBDD.getConnection();
 
+        if (conn == null) {
+            System.out.println("No se pudo obtener conexión a la base de datos.");
+            return;
+        }
+
+
         // INSERT IGNORE se usa para comprobar que el PIMRARY KEY o UNIQUE no se repite
         final var sql = "INSERT IGNORE INTO usuarios (nombre) " +
-                        "VALUES (?)";
+                "VALUES (?)";
 
         try (final var stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, nombreUsuario);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error al insertar el usuario en la BBDD.\n" + e.getMessage());
+            System.out.println("Como no se ha podido conectar a la base de datos, no se ha podido crear el usuario");
         }
     }
 
     public static void consultasBBDD(String usuario) {
         final var conn = ConexionBBDD.getConnection();
+
+        if (conn == null) {
+            System.out.println("No se pudo obtener conexión a la base de datos.");
+            return;
+        }
 
         final var sql = "SELECT * FROM usuarios WHERE nombre = '" + usuario + "'";
 
@@ -92,16 +110,17 @@ public class BBDD {
                 int numero_objetos_recogidos = rs.getInt("numero_objetos_recogidos");
 
                 System.out.println(
-                    "Nombre: " + nombre +
-                    ", Habitaciones superadas: " + numero_habitaciones +
-                    ", Personajes recogidos: " + numero_personajes +
-                    ", Enemigos matados: " + numero_enemigos_matados +
-                    ", Objetos recogidos: " + numero_objetos_recogidos
+                        "Nombre: " + nombre +
+                                ", Habitaciones superadas: " + numero_habitaciones +
+                                ", Personajes recogidos: " + numero_personajes +
+                                ", Enemigos matados: " + numero_enemigos_matados +
+                                ", Objetos recogidos: " + numero_objetos_recogidos
                 );
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al consultar la BBDD.\n" + e.getMessage());
+            System.out.println("Como no se ha podido conectar a la base de datos, no se ha podido consultar");
+
         }
     }
 }

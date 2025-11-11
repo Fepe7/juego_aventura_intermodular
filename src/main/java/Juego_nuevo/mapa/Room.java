@@ -21,25 +21,23 @@ public class Room extends MapTile {
     public Room() {
         super("?", totalRooms);
         totalRooms++;
-        //Genera un enemigo aleatorio si es la sala con !
-        if (this.getTileSymbol().equals("!")) {
-            //Hace que el nombre del evento sea generarEnemigoAleatorio para que sea siempre un enemigo, eso se llama mediante reflexion
-            this.evento = new Evento("generarEnemigoAleatorio");
-        } else {
-            this.evento = Eventos.generarEventoAleatorio();
-        }
-
+        //Se agrega un evento a la habitacion
+        this.evento = Eventos.generarEventoAleatorio();
     }
 
     //Activa el evento de la sala
     public void activarEvento(Personaje[] personajes, Mapa mapa, Scanner scanner) {
         this.visitada = true;
-        if (evento != null) {
-            //La comprobacion de si el evento ya ha sido completado se hace dentro del metodo ejecutarEvento
-            Evento.ejecutarEvento(evento, personajes, mapa, scanner);
 
+        // Si es la habitacion !, hacer que tenga un enemigo
+        if (this.getGeneratedOrder() == getTotalRooms() - 1) {
+            this.evento = new Evento("generarEnemigoAleatorio");
         }
 
+        if (evento != null) {
+            // La comprobacion de completado se hace dentro de ejecutarEvento
+            Evento.ejecutarEvento(evento, personajes, mapa, scanner);
+        }
     }
 
 
